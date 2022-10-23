@@ -15,7 +15,7 @@ namespace Application.StafiA
 {
     public class Details
     {
-        public class Query : IRequest<Result<StafiDto>>
+        public class Query : IRequest<Result<Stafi>>
         {
 
             public Guid StafiId { get; set; }
@@ -23,26 +23,25 @@ namespace Application.StafiA
 
 
         }
-        public class Handler : IRequestHandler<Query, Result<StafiDto>>
+        public class Handler : IRequestHandler<Query, Result<Stafi>>
         {
             private readonly DataContext _context;
-        private readonly IMapper _mapper;
+      
 
-            public Handler(DataContext context, IMapper mapper )
+            public Handler(DataContext context )
             {
-            _mapper = mapper;
+            
                 _context = context;
             }
 
 
 
-            public async Task<Result<StafiDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<Stafi>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var stafi = await _context.Stafii
-                .ProjectTo<StafiDto>(_mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync( x=> x.StafiId ==request.StafiId);
+                var stafi = await _context.Stafii.FindAsync(request.StafiId);
+                
 
-                return Result<StafiDto>.Success(stafi);
+                return Result<Stafi>.Success(stafi);
             }
         }
     }

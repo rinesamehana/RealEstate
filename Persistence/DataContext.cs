@@ -46,7 +46,7 @@ namespace Persistence
         public DbSet<ShtepiaAmbiente> ShtepiatAmbientet { get; set; }
         public DbSet<ShtepiaPajisjet> ShtepiaPajisjets { get; set; }
 
-        public DbSet<StafiShtepia> StafiShtepiat { get; set; }
+        
        
 
 
@@ -148,12 +148,7 @@ namespace Persistence
 
             //---------------------
             
-            modelBuilder.Entity<StafiShtepia>(x=> x.HasKey(aa => new {aa.StafiId , aa.ShtepiaId}));
-            modelBuilder.Entity<StafiShtepia>()
-            .HasOne(u=> u.Stafi)
-            .WithMany(a => a.Shtepitee)
-            .HasForeignKey( aa => aa.StafiId);
-
+        
 
 
             //--perfundojne lidhjet shum me shum

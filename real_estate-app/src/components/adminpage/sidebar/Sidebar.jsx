@@ -123,7 +123,7 @@ const Sidebar = () => {
               <span>The equipment</span>
             </li>
           </Link>
-          <Link to="/ambient" style={{ textDecoration: "none" }}>
+          <Link to="/ambienti" style={{ textDecoration: "none" }}>
             <li>
               <FaSwimmingPool className="icon" />
               <span>Outside Features</span>

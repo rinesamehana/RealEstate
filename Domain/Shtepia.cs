@@ -28,7 +28,7 @@ namespace Domain
 
         public string Pershkrimi {get;set;}
         
-        public bool IsCancelled{get;set;}
+        
 
        public Guid? LagjjaId { get; set; }
         [JsonIgnore]
@@ -101,8 +101,7 @@ namespace Domain
 
         public ICollection<Rezervimi> Attendees { get; set; }=new List<Rezervimi>();
 
-        public ICollection<StafiShtepia> Stafet { get; set; }= new List<StafiShtepia>();
-
+        
 
 
 

@@ -41,12 +41,12 @@ namespace Domain
 
         public String Adresa { get; set; }
 
-        public bool IsCancelled{get;set;}
+        
 
 
         public ICollection<Shtepia> Shtepite { get; set; }
 
-         public ICollection<StafiShtepia> Shtepitee { get; set; }
+        
         
 
 

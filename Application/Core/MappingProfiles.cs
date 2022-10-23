@@ -32,26 +32,7 @@ namespace Application.Core
             CreateMap <LlojiShtepise , LlojiShtepise>();
             CreateMap <MenyraPageses, MenyraPageses>();
             CreateMap <Shtepia, Shtepia>();
-            // CreateMap<Shtepia, ShtepiaDto>()
-            //  .ForMember(d=>d.HostUsername, o=>o.MapFrom(s=>s.Attendees
-            //  .FirstOrDefault(x=>x.IsHost).AppUser.UserName));
-
-            // CreateMap<Rezervimi, Profiles.Profile>()
-            // .ForMember(d=>d.DisplayName, o=>o.MapFrom(s=>s.AppUser.DisplayName))
-            // .ForMember(d=>d.Username, o=>o.MapFrom(s=>s.AppUser.UserName));
-
-            // // CreateMap<Stafi, StafiDto>()
-            // //   .ForMember(d=>d.HostUsername, o=>o.MapFrom(s=>s.Shtepitee
-            // //  .FirstOrDefault(x=>x.Shtepia).AppUser.UserName));
-
-            //  CreateMap<StafiShtepia, Profiles.Profile>()
-            //  .ForMember(d=>d.DisplayName , o=>o.MapFrom(s=>s.Shtepia.LlojiShtepise))
-            //  .ForMember(d=>d.Username,  o=>o.MapFrom(s=>s.Shtepia.ShtepiaId));
-
-            // CreateMap<Rezervimi, Profiles.Profile>()
-            // .ForMember(d=>d.DisplayName, o=>o.MapFrom(s=>s.AppUser.DisplayName))
-            // .ForMember(d=>d.Username, o=>o.MapFrom(s=>s.AppUser.UserName));
-
+            
            
              CreateMap <Rezervimi, Rezervimi>();
              CreateMap<Rezervimi, RezervimiDto>()

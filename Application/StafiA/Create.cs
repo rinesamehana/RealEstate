@@ -32,11 +32,10 @@ namespace Application.StafiA
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
-        private readonly IUserAccessor _userAccessor;
+    
 
-            public Handler(DataContext context , IUserAccessor userAccessor)
+            public Handler(DataContext context)
             {
-            _userAccessor = userAccessor;
                 
                 _context = context;
             }
@@ -44,16 +43,7 @@ namespace Application.StafiA
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
 
-                var user=await _context.Users.FirstOrDefaultAsync(x=>x.UserName == _userAccessor.GetUsername());
-
-                var stafi = new StafiShtepia
-                {
-                      Stafi = request.Stafi,
-
-                };
-                
-
-                request.Stafi.Shtepitee.Add(stafi);
+    
                 
                 _context.Stafii.Add(request.Stafi);
 
@@ -62,6 +52,7 @@ namespace Application.StafiA
                 if (!result) return Result<Unit>.Failure("Failed to create Staf");
 
                 return Result<Unit>.Success(Unit.Value);
+
             }
         }
     }
