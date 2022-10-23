@@ -1,0 +1,35 @@
+.description {
+  background: black;
+  color: #fff;
+
+  padding: 48px 0;
+  text-align: center;
+  position: relative;
+}
+.items {
+  width: 80%;
+  display: grid;
+  margin-left: 40px;
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+}
+.heading {
+  margin-left: 50px;
+}
+.heading h2 {
+  font-size: 2.2rem;
+}
+.otherheading {
+  display: grid;
+  margin-left: 40px;
+  grid-template-columns: repeat(3, auto);
+}
+.item h3 {
+  font-size: 2rem;
+}
+.item span {
+  display: flex;
+  flex-direction: row;
+  margin-left: 80px;
+}

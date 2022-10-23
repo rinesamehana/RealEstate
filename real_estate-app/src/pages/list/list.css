@@ -1,0 +1,71 @@
+.lists1 {
+  margin: 0px;
+  padding: 20px 20px 0px 20px;
+}
+.list1 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.list1 :hover {
+  color: black;
+  transform: translateY(1px);
+  transition: 0.5s ease;
+}
+.home1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.image1 img {
+  width: 430px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button_Add1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.image1 .button1 {
+  background-color: transparent;
+  margin-top: -70px;
+}
+
+.details1 {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: flex-start;
+}
+.details_first1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.green_box1 {
+  width: 17px;
+  height: 17px;
+  background-color: rgb(64, 133, 64);
+  margin: 4px;
+  border-radius: 5px;
+}
+.details_4rth1 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.details_second1 h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.details_3thd1 span {
+  font-size: 15px;
+  font-weight: 600;
+}

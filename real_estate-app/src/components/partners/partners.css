@@ -1,0 +1,22 @@
+.partners {
+  background: white;
+  display: flex;
+
+  flex-direction: column;
+}
+.partners_title h1 {
+  text-align: center;
+  font-size: 3.5rem;
+  padding-top: 3.3rem;
+}
+.images_partners {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  gap: 20px;
+}
+.images_partners img {
+  width: 200px;
+  height: auto;
+}

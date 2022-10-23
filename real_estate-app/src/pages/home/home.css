@@ -1,0 +1,14 @@
+.homeContainer {
+  margin-top: -9px;
+}
+
+.homeTitle {
+  /* width: 1024px; */
+  font-size: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 60px;
+  margin-top: 60px;
+  margin-right: 40px;
+  font-size: 45px;
+}
