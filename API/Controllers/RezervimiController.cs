@@ -31,6 +31,8 @@ namespace API.Controllers
 
         }
         [HttpPost]
+
+        
         public async Task<IActionResult> Create(Rezervimi rezervimi)
         {
             return HandleResult(await Mediator.Send(new Create.Command { Rezervimi = rezervimi }));
