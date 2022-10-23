@@ -17,8 +17,8 @@ function KafshetAPI() {
     kafshetStore.loadKafshett();
   }, [kafshetStore]);
 
-  if (kafshetStore.loadingInitial)
-    return <LoadingComponent content="Loading..." />;
+  // if (kafshetStore.loadingInitial)
+  //   return <LoadingComponent content="Loading..." />;
 
   return (
     <div className="new">

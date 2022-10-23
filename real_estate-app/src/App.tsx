@@ -115,7 +115,7 @@ function App() {
 
         <Route path="/users" component={List} />
 
-     <Route exact path="/gjinia" component={Gjiniaa} />
+       <Route exact path="/gjinia" component={Gjiniaa} />
 
         <Route path="/gjinia/:gjiniaId" component={GjiniaDetails} />
         <Route
@@ -123,32 +123,32 @@ function App() {
           path={["/manage/:gjiniaId", "/createGjini"]}
           component={GjiniaForm}
         /> 
-        {/* <Route exact path="/pamja" component={PamjaAPI} />
+        <Route exact path="/pamja" component={PamjaAPI} />
         <Route path="/pamja/:pamjaId" component={PamjaDetails} />
         <Route
           key={location.key}
           path={["/createPamja", "/manage/:pamjaId"]}
           component={PamjaForm}
-        /> */}
-        {/* 
-        <Route exact path="/ambienti" component={AmbientiAPI} />
+        />   
+        
+         <Route exact path="/ambienti" component={AmbientiAPI} />
 
         <Route path="/ambienti/:ambientiId" component={AmbientiDetails} />
         <Route
           key={location.key}
           path={["/createAmbient", "/manage/:ambientiId"]}
           component={AmbientiForm}
-        /> */}
+        /> 
 
-        {/* <Route exact path="/kontrata" component={KontrataAPI} />
+          <Route exact path="/kontrata" component={KontrataAPI} />
 
         <Route path="/kontrata/:kontrataId" component={KontrataDetails} />
         <Route
           key={location.key}
           path={["/createKontrata", "/manage/:kontrataId"]}
           component={KontrataForm}
-        /> */}
-        {/* 
+        /> 
+        
         <Route exact path="/llojiUser" component={LlojUserAPI} />
 
         <Route path="/llojiUser/:llojiUserId" component={LlojiUseritDetails} />
@@ -156,26 +156,26 @@ function App() {
           key={location.key}
           path={["/createLlojiUser", "/manage/:llojiUserId"]}
           component={LlojiUseritForm}
-        /> */}
+        /> 
 
-        {/* <Route exact path="/shteti" component={ShtetetAPI} />
+         <Route exact path="/shteti" component={ShtetetAPI} />
 
         <Route path="/shteti/:shtetiId" component={ShtetiDetails} />
         <Route
           key={location.key}
           path={["/createShtet", "/manage/:shtetiId"]}
           component={ShtetiForm}
-        /> */}
+        /> 
 
-        {/* <Route exact path="/qyteti" component={QytetiAPI} />
+         <Route exact path="/qyteti" component={QytetiAPI} />
         <Route path="/qyteti/:qytetiId" component={QytetiDetails} />
         <Route
           key={location.key}
           path={["/createQytet", "/manage/:qytetiId"]}
           component={QytetiForm}
-        /> */}
+        /> 
 
-        {/* <Route exact path="/gjendja" component={GjendjaAPI} />
+         <Route exact path="/gjendja" component={GjendjaAPI} />
 
         <Route exact path="/gjendja" component={GjendjaAPI} />
 
@@ -184,24 +184,24 @@ function App() {
           key={location.key}
           path={["/createGjendje", "/manage/:gjendjaId"]}
           component={GjendjaForm}
-        /> */}
+        /> 
 
-        {/* <Route exact path="/Pajisja" component={PajisjaAPI} />
+        <Route exact path="/Pajisja" component={PajisjaAPI} />
         <Route path="/Pajisja/:pajisjaId" component={PajisjaDetails} />
         <Route
           key={location.key}
           path={["/createPajisje", "/manage/:pajisjaId"]}
           component={PajisjaForm}
-        /> */}
-        {/* <Route exact path="/KohaPunes" component={KohaPunesAPI} />
+        />
+        <Route exact path="/KohaPunes" component={KohaPunesAPI} />
 
         <Route path="/KohaPunes/:kohaId" component={KohaPunesDetails} />
         <Route
           key={location.key}
           path={["/createKohePune", "/manage/:kohaId"]}
           component={KohaPunesForm}
-        /> */}
-        {/* <Route exact path="/MenyraPageses" component={MenyraPagesesAPI} />
+        /> 
+        <Route exact path="/MenyraPageses" component={MenyraPagesesAPI} />
 
         <Route
           path="/MenyraPageses/:menyraPagesesId"
@@ -211,8 +211,8 @@ function App() {
           key={location.key}
           path={["/createMenyrePagese", "/manage/:menyraPagesesId"]}
           component={MenyraPagesesForm}
-        /> */}
-        {/* <Route exact path="/LlojiShtepise" component={LlojiShtepiseAPI} />
+        /> 
+         <Route exact path="/LlojiShtepise" component={LlojiShtepiseAPI} />
 
         <Route
           path="/LlojiShtepise/:llojiShtepiseId"
@@ -222,41 +222,41 @@ function App() {
           key={location.key}
           path={["/createLlojShtepie", "/manage/:llojiShtepiseId"]}
           component={LlojiShtepiseForm}
-        /> */}
-        {/* <Route exact path="/Rolet" component={RoliAPI} />
+        /> 
+       <Route exact path="/Rolet" component={RoliAPI} />
 
         <Route path="/Rolet/:roliId" component={RoliDetails} />
         <Route
           key={location.key}
           path={["/createRole", "/manage/:roliId"]}
           component={RoliForm}
-        /> */}
-        {/* <Route exact path="/Kafshet" component={KafshetAPI} />
+        /> 
+         <Route exact path="/Kafshet" component={KafshetAPI} />
 
         <Route path="/Kafshet/:kafshetId" component={KafshetDetails} />
         <Route
           key={location.key}
           path={["/createKafshet", "/manage/:kafshetId"]}
           component={KafshetForm}
-        /> */}
+        /> 
 
-        {/* <Route exact path="/Stafi" component={StafiAPI} />
+         <Route exact path="/Stafi" component={StafiAPI} />
 
         <Route path="/Stafi/:stafiId" component={StafiDetails} />
         <Route
           key={location.key}
           path={["/createStaf", "/manage/:stafiId"]}
           component={StafiForm}
-        /> */}
+        /> 
 
-        {/* <Route exact path="/lagjja" component={LagjjaAPI} />
+         <Route exact path="/lagjja" component={LagjjaAPI} />
 
         <Route path="/lagjja/:lagjjaId" component={LagjjaDetails} />
         <Route
           key={location.key}
           path={["/createLagje", "/manage/:lagjjaId"]}
           component={LagjjaForm}
-        /> */}
+        /> 
 
         <Route path="/login" component={LoginForm} />
         <Route path="/register" component={RegisterForm} />
