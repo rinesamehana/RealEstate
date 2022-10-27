@@ -66,7 +66,7 @@ export default observer(function GjiniaList() {
                 ></Button>
               </>
             ))}
-            ,
+          
           </>
         );
       },
@@ -80,6 +80,7 @@ export default observer(function GjiniaList() {
           Add New
         </Link>
       </div>
+      
       <DataGrid
         className="datagrid"
         checkboxSelection

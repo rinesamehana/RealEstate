@@ -24,7 +24,7 @@ export default observer(function GjiniaDashboard() {
   return (
     <Grid>
       <Grid.Column width="10">
-        <GjiniteTable />
+        <GjiniaList />
       </Grid.Column>
     </Grid>
   );
