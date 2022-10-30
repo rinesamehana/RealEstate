@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class jcaaaaa : Migration
+    public partial class PGInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -378,8 +378,7 @@ namespace Persistence.Migrations
                     GjiniaId = table.Column<Guid>(type: "TEXT", nullable: true),
                     QytetiId = table.Column<Guid>(type: "TEXT", nullable: true),
                     ShtetiId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    Adresa = table.Column<string>(type: "TEXT", nullable: true),
-                    IsCancelled = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Adresa = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -434,7 +433,6 @@ namespace Persistence.Migrations
                     NrBanjove = table.Column<string>(type: "TEXT", nullable: true),
                     Siperfaqja = table.Column<string>(type: "TEXT", nullable: true),
                     Pershkrimi = table.Column<string>(type: "TEXT", nullable: true),
-                    IsCancelled = table.Column<bool>(type: "INTEGER", nullable: false),
                     LagjjaId = table.Column<Guid>(type: "TEXT", nullable: true),
                     QytetiId = table.Column<Guid>(type: "TEXT", nullable: true),
                     LlojiShtepiseId = table.Column<Guid>(type: "TEXT", nullable: true),
@@ -581,30 +579,6 @@ namespace Persistence.Migrations
                         column: x => x.ShtepiaId,
                         principalTable: "Shtepiat",
                         principalColumn: "ShtepiaId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "StafiShtepiat",
-                columns: table => new
-                {
-                    StafiId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ShtepiaId = table.Column<Guid>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StafiShtepiat", x => new { x.StafiId, x.ShtepiaId });
-                    table.ForeignKey(
-                        name: "FK_StafiShtepiat_Shtepiat_ShtepiaId",
-                        column: x => x.ShtepiaId,
-                        principalTable: "Shtepiat",
-                        principalColumn: "ShtepiaId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_StafiShtepiat_Stafii_StafiId",
-                        column: x => x.StafiId,
-                        principalTable: "Stafii",
-                        principalColumn: "StafiId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -779,11 +753,6 @@ namespace Persistence.Migrations
                 name: "IX_Stafii_ShtetiId",
                 table: "Stafii",
                 column: "ShtetiId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StafiShtepiat_ShtepiaId",
-                table: "StafiShtepiat",
-                column: "ShtepiaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -814,9 +783,6 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "ShtepiatAmbientet");
-
-            migrationBuilder.DropTable(
-                name: "StafiShtepiat");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

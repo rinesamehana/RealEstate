@@ -9,8 +9,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221023134108_jcaaaaa")]
-    partial class jcaaaaa
+    [Migration("20221030201118_PGInitial")]
+    partial class PGInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -395,9 +395,6 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("GjendjaShtepiseId")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsCancelled")
-                        .HasColumnType("INTEGER");
-
                     b.Property<Guid?>("KafshetId")
                         .HasColumnType("TEXT");
 
@@ -518,9 +515,6 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("GjiniaId")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsCancelled")
-                        .HasColumnType("INTEGER");
-
                     b.Property<Guid?>("KohaId")
                         .HasColumnType("TEXT");
 
@@ -557,21 +551,6 @@ namespace Persistence.Migrations
                     b.HasIndex("ShtetiId");
 
                     b.ToTable("Stafii");
-                });
-
-            modelBuilder.Entity("Domain.StafiShtepia", b =>
-                {
-                    b.Property<Guid>("StafiId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("ShtepiaId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("StafiId", "ShtepiaId");
-
-                    b.HasIndex("ShtepiaId");
-
-                    b.ToTable("StafiShtepiat");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -886,25 +865,6 @@ namespace Persistence.Migrations
                     b.Navigation("Shteti");
                 });
 
-            modelBuilder.Entity("Domain.StafiShtepia", b =>
-                {
-                    b.HasOne("Domain.Shtepia", "Shtepia")
-                        .WithMany("Stafet")
-                        .HasForeignKey("ShtepiaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Stafi", "Stafi")
-                        .WithMany("Shtepitee")
-                        .HasForeignKey("StafiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Shtepia");
-
-                    b.Navigation("Stafi");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1049,8 +1009,6 @@ namespace Persistence.Migrations
                     b.Navigation("Attendees");
 
                     b.Navigation("Pajisjet");
-
-                    b.Navigation("Stafet");
                 });
 
             modelBuilder.Entity("Domain.Shteti", b =>
@@ -1063,8 +1021,6 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Stafi", b =>
                 {
                     b.Navigation("Shtepite");
-
-                    b.Navigation("Shtepitee");
                 });
 #pragma warning restore 612, 618
         }
