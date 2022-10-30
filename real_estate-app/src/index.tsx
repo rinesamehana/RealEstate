@@ -1,16 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-// import "semantic-ui-css/semantic.min.css";
-// import "semantic-ui-css/semantic.js";
-
 import { store, StoreContext } from "./app/stores/store";
 import "react-toastify/dist/ReactToastify.min.css";
 import { Router } from "react-router-dom";
 import App from "./App";
 import "react-toastify/dist/ReactToastify.min.css";
-
 import { createBrowserHistory } from "history";
+import ScrollToTop from "./app/axios/ScrollToTop";
 export const history = createBrowserHistory();
 
 const root = ReactDOM.createRoot(
@@ -19,6 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <StoreContext.Provider value={store}>
     <Router history={history}>
+      {/* <ScrollToTop /> */}
       <App />
     </Router>
   </StoreContext.Provider>

@@ -28,7 +28,7 @@ export default observer(function GjiniaForm() {
     loadGjini,
     loadingInitial,
   } = gjiniaStore;
-  const { gjiniaId } = useParams<{ gjiniaId: string }>();
+  const { id } = useParams<{ id: string }>();
 
   const [gjinia, setGjinia] = useState({
     gjiniaId: "",
@@ -39,8 +39,8 @@ export default observer(function GjiniaForm() {
     lloji: Yup.string().required("Place is required"),
   });
   useEffect(() => {
-    if (gjiniaId) loadGjini(gjiniaId).then((gjinia) => setGjinia(gjinia!));
-  }, [gjiniaId, loadGjini]);
+    if (id) loadGjini(id).then((gjinia) => setGjinia(gjinia!));
+  }, [id, loadGjini]);
 
   function handleFormSubmit(gjinia: Gjinia) {
     if (gjinia.gjiniaId.length === 0) {
@@ -74,6 +74,7 @@ export default observer(function GjiniaForm() {
                 <div className="formInput">
                   <Segment clearing>
                     <Formik
+                      key={gjinia.gjiniaId}
                       validationSchema={validationSchema}
                       enableReinitialize
                       initialValues={gjinia}
@@ -81,6 +82,7 @@ export default observer(function GjiniaForm() {
                     >
                       {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                         <Form
+                        key={gjinia.gjiniaId}
                           className="ui-form"
                           onSubmit={handleSubmit}
                           autoComplete="off"

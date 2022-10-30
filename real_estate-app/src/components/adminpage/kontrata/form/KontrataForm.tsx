@@ -27,7 +27,7 @@ export default observer(function KontrataForm() {
     loadKontrat,
     loadingInitial,
   } = kontrataStore;
-  const { kontrataId } = useParams<{ kontrataId: string }>();
+  const { id } = useParams<{ id: string }>();
 
   const [kontrata, setKontrat] = useState({
     kontrataId: "",
@@ -38,9 +38,9 @@ export default observer(function KontrataForm() {
     llojiKontrates: Yup.string().required("Place is required"),
   });
   useEffect(() => {
-    if (kontrataId)
-      loadKontrat(kontrataId).then((kontrata) => setKontrat(kontrata!));
-  }, [kontrataId, loadKontrat]);
+    if (id)
+      loadKontrat(id).then((kontrata) => setKontrat(kontrata!));
+  }, [id, loadKontrat]);
 
   function handleFormSubmit(kontrata: Kontrata) {
     if (kontrata.kontrataId.length === 0) {
@@ -89,6 +89,7 @@ export default observer(function KontrataForm() {
                 <div className="formInput">
                   <Segment clearing>
                     <Formik
+                    key={kontrata.kontrataId}
                       validationSchema={validationSchema}
                       enableReinitialize
                       initialValues={kontrata}
@@ -96,6 +97,7 @@ export default observer(function KontrataForm() {
                     >
                       {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                         <Form
+                        key={kontrata.kontrataId}
                           className="ui-form"
                           onSubmit={handleSubmit}
                           autoComplete="off"

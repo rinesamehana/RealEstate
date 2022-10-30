@@ -45,26 +45,28 @@ export default observer(function GjiniaList() {
         return (
           <>
             {gjinite.map((gjinia) => (
-              <>
+              <div key={gjinia.gjiniaId}>
                 <Button
+                key={gjinia.gjiniaId}
                   // onClick={() => gjiniaStore.selectGjini(gjinia.gjiniaId)}
                   as={Link}
                   to={`/gjinia/${gjinia.gjiniaId}`}
                   loading={loading}
                   basic
                   color="blue"
-                  content="Edit"
+                  content="Edit" kvi  Button
                 ></Button>
                 <Button
                   inverted
                   class="ui negative basic button"
+                  // key={gjinia.gjiniaId}
                   name={gjinia.gjiniaId}
                   loading={loading && target === gjinia.gjiniaId}
                   onClick={() => deleteGjini(gjinia.gjiniaId)}
                   content="Delete"
                   color="red"
                 ></Button>
-              </>
+              </div>
             ))}
           
           </>

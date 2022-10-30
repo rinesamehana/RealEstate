@@ -33,11 +33,11 @@ export default observer(function GjiniaDetails() {
   const { gjiniaStore } = useStore();
 
   const { selectedGjinia: gjinia, loadGjini, loadingInitial } = gjiniaStore;
-  const { gjiniaId } = useParams<{ gjiniaId: string }>();
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    if (gjiniaId) loadGjini(gjiniaId);
-  }, [gjiniaId, loadGjini]);
+    if (id) loadGjini(id);
+  }, [id, loadGjini]);
 
   if (loadingInitial || !gjinia) return <LoadingComponent />;
   return (

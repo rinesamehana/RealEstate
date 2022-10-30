@@ -18,6 +18,7 @@ import Navbar from "../../navbar/Navbar2";
 import { Qyteti } from "../../../../app/models/Qyteti";
 import { categoryOptions } from "../../../../app/common/form1/options/CategoryOptions";
 import CSS from "csstype";
+import { values } from "mobx";
 
 const CardStyles: CSS.Properties = {
   width: "100%",
@@ -128,12 +129,12 @@ export default observer(function QytetiForm() {
                             placeholder="KodiPostar"
                           />
                           <MyTextInput name="shtetiId" placeholder="Shteti" />
-
-                          {/* <MySelectInput
-                            options={categoryOptions}
-                            name="gjiniaId"
+{/* 
+                          <MySelectInput
+                       
+                            name="shtetiId"
                             placeholder="Shteti"
-                            label="sd"
+                          
                           /> */}
 
                           <Button

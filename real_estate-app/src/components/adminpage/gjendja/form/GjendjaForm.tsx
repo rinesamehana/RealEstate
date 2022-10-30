@@ -74,6 +74,7 @@ export default observer(function GjendjaForm() {
                 <div className="formInput">
                   <Segment clearing>
                     <Formik
+                     key={gjendja.gjendjaId}
                       validationSchema={validationSchema}
                       enableReinitialize
                       initialValues={gjendja}
@@ -81,11 +82,12 @@ export default observer(function GjendjaForm() {
                     >
                       {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                         <Form
+                        key={gjendja.gjendjaId}
                           className="ui-form"
                           onSubmit={handleSubmit}
                           autoComplete="off"
                         >
-                          <MyTextInput name="gjendja" placeholder="Gjendja" />
+                          <MyTextInput  key={gjendja.gjendjaId} name="gjendja" placeholder="Gjendja" />
                           <Button
                             disable={isSubmitting || !dirty || !isValid}
                             loading={loading}

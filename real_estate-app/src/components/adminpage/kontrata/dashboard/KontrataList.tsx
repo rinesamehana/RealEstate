@@ -26,7 +26,7 @@ export default observer(function KontrataList() {
   const { kontrataStore } = useStore();
   const { deleteKontrat, kontratat, loading } = kontrataStore;
   return (
-    <TableContainer className="table">
+    <TableContainer className="table" >
       <div className="datatable">
         <div className="datatableTitle">
           Add New User
@@ -54,7 +54,7 @@ export default observer(function KontrataList() {
               <Table.Cell>
                 <Button
                   // onClick={() => gjiniaStore.selectGjini(gjinia.gjiniaId)}
-                  inverted
+                  inverted={true}
                   as={Link}
                   to={`/kontrata/${kontrata.kontrataId}`}
                   loading={loading}
@@ -63,7 +63,7 @@ export default observer(function KontrataList() {
                   content="Edit"
                 />
                 <Button
-                  inverted
+                     inverted={true}
                   class="ui negative basic button"
                   name={kontrata.kontrataId}
                   loading={loading && target === kontrata.kontrataId}

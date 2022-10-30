@@ -26,6 +26,7 @@ const CardStyles: CSS.Properties = {
   marginBottom: "20px",
   textAlign: "center",
 };
+
 export default observer(function ShtetiForm() {
   const history = useHistory();
   const { shtetiStore } = useStore();

@@ -37,11 +37,11 @@ export default observer(function KontrataDetails() {
     loadKontrat,
     loadingInitial,
   } = kontrataStore;
-  const { kontrataId } = useParams<{ kontrataId: string }>();
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    if (kontrataId) loadKontrat(kontrataId);
-  }, [kontrataId, loadKontrat]);
+    if (id) loadKontrat(id);
+  }, [id, loadKontrat]);
 
   if (loadingInitial || !kontrata) return <LoadingComponent />;
   return (
@@ -54,14 +54,14 @@ export default observer(function KontrataDetails() {
             <div className="top">
               <h1>Edit</h1>
             </div>
-            <Card fluid style={CardStyles}>
+            <Card key={kontrata.kontrataId} fluid style={CardStyles}>
               <Card.Content style={CRStyles}>
                 Type of Contract: {kontrata.llojiKontrates}
               </Card.Content>
               <Card.Content>
                 <Button.Group style={CRdStyles}>
                   <Button
-                    inverted
+                    inverted={true}
                     class="ui inverted blue button"
                     as={Link}
                     to={`/manage/${kontrata.kontrataId}`}
@@ -69,7 +69,7 @@ export default observer(function KontrataDetails() {
                     content="Edit"
                   />
                   <Button
-                    inverted
+                         inverted={true}
                     class="ui negative basic button"
                     as={Link}
                     to={`/kontrata`}

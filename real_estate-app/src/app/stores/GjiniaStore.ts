@@ -32,6 +32,7 @@ export default class GjiniaStore {
     }
   };
 
+  
   loadGjini = async (gjiniaId: string) => {
     let gjinia = this.getGjini(gjiniaId);
     if (gjinia) {
