@@ -39,12 +39,15 @@ namespace Persistence
         public DbSet<LlojiShtepise> LlojiShtepive { get; set; }
 
         public DbSet<MenyraPageses> MenyraPagesave { get; set; }
-        public DbSet<Photo> Photos { get; set; }
         public DbSet<Rezervimi> Rezervimi { get; set; }
         public DbSet<Shtepia> Shtepiat { get; set; }
         public DbSet<AppUser> Attendees { get; set; }
         public DbSet<ShtepiaAmbiente> ShtepiatAmbientet { get; set; }
         public DbSet<ShtepiaPajisjet> ShtepiaPajisjets { get; set; }
+       
+       
+        public DbSet<Photo> Photos { get; set; }
+        
 
         
        
