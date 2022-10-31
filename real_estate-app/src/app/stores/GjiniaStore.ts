@@ -16,6 +16,15 @@ export default class GjiniaStore {
   get gjinite() {
     return Array.from(this.gjiniaRegistry.values());
   }
+  private setGjinia = (gjinia: Gjinia) => {
+    this.gjiniaRegistry.set(gjinia.gjiniaId, gjinia);
+  };
+  private getGjini = (gjiniaId: string) => {
+    return this.gjiniaRegistry.get(gjiniaId);
+  };
+  setLoadingInitial = (state: boolean) => {
+    this.loadingInitial = state;
+  };
   loadGjinite = async () => {
     this.loadingInitial = true;
     try {
@@ -35,6 +44,7 @@ export default class GjiniaStore {
   
   loadGjini = async (gjiniaId: string) => {
     let gjinia = this.getGjini(gjiniaId);
+    
     if (gjinia) {
       this.selectedGjinia = gjinia;
       return gjinia;
@@ -55,15 +65,8 @@ export default class GjiniaStore {
       }
     }
   };
-  private setGjinia = (gjinia: Gjinia) => {
-    this.gjiniaRegistry.set(gjinia.gjiniaId, gjinia);
-  };
-  private getGjini = (gjiniaId: string) => {
-    return this.gjiniaRegistry.get(gjiniaId);
-  };
-  setLoadingInitial = (state: boolean) => {
-    this.loadingInitial = state;
-  };
+  
+ 
 
   createGjini = async (gjinia: Gjinia) => {
     this.loading = true;

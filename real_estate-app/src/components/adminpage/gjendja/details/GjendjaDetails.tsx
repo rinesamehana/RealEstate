@@ -62,7 +62,8 @@ export default observer(function GjendjaDetails() {
                 <Button.Group style={CRdStyles}>
                   <Button
                     inverted
-                    class="ui inverted blue button"
+                   
+                    className="ui inverted blue button"
                     as={Link}
                     to={`/manage/${gjendja.gjendjaId}`}
                     color="blue"

@@ -59,13 +59,13 @@ import {
                     as={Link}
                     to={`/gjendja/${gjendja.gjendjaId}`}
                     loading={loading}
-                    class="ui inverted blue button"
+                    className="ui inverted blue button"
                     color="blue"
                     content="Edit"
                   />
                   <Button
                     inverted
-                    class="ui negative basic button"
+                    className="ui negative basic button"
                     name={gjendja.gjendjaId}
                     loading={loading && target === gjendja.gjendjaId}
                     onClick={() => deleteGjendje(gjendja.gjendjaId)}

@@ -54,7 +54,7 @@ export default observer(function GjiniaList() {
                   loading={loading}
                   basic
                   color="blue"
-                  content="Edit" kvi  Button
+                  content="Edit"
                 ></Button>
                 <Button
                   inverted

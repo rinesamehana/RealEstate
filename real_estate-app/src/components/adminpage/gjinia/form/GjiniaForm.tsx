@@ -93,6 +93,7 @@ export default observer(function GjiniaForm() {
                             loading={loading}
                             floated="right"
                             positive
+                            inverted={true}
                             type="submit"
                             content="Submit"
                           />
@@ -100,6 +101,7 @@ export default observer(function GjiniaForm() {
                             as={Link}
                             to="/gjinia"
                             floated="right"
+                            inverted={true}
                             type="button"
                             content="Cancel"
                           />
