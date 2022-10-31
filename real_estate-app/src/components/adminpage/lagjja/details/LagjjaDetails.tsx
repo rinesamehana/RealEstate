@@ -63,7 +63,7 @@ export default observer(function LagjjaDetails() {
                   <Button
                     inverted
                     as={Link}
-                    to={`/manage/${lagjja.lagjjaId}`}
+                    to={`/manageLagje/${lagjja.lagjjaId}`}
                     color="blue"
                     content="Edit"
                     class="ui inverted blue button"

@@ -64,7 +64,7 @@ export default observer(function KontrataDetails() {
                     inverted={true}
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${kontrata.kontrataId}`}
+                    to={`/manageKontrata/${kontrata.kontrataId}`}
                     color="blue"
                     content="Edit"
                   />

@@ -67,7 +67,7 @@ export default observer(function KohaPunesDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${kohaPunes.kohaId}`}
+                    to={`/manageKohaePunes/${kohaPunes.kohaId}`}
                     color="blue"
                     content="Edit"
                   />

@@ -64,7 +64,7 @@ const House = () => {
           <h1 className="houseTitle">Tower Street Apartments</h1>
           <div className="details">
           <h1>$100.000</h1>
-          </div>
+        </div>
            <ul className="list">
             <li> <strong> 3 </strong>beds</li>
             <li> <strong> 1 </strong>bath</li>

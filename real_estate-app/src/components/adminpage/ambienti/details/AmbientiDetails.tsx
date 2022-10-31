@@ -64,7 +64,7 @@ export default observer(function AmbientiDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${ambienti.ambientiId}`}
+                    to={`/manageAmbienti/${ambienti.ambientiId}`}
                     color="blue"
                     content="Edit"
                   />

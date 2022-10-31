@@ -64,7 +64,7 @@ export default observer(function KafshetDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${kafshet.kafshetId}`}
+                    to={`/manageKafshet/${kafshet.kafshetId}`}
                     color="blue"
                     content="Edit"
                   />

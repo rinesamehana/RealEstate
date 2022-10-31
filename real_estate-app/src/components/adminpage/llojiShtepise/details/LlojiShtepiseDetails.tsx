@@ -64,7 +64,7 @@ export default observer(function LlojiShtepiseDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${llojishtepise.llojiShtepiseId}`}
+                    to={`/manageLlojiShtepise/${llojishtepise.llojiShtepiseId}`}
                     color="blue"
                     content="Edit"
                   />

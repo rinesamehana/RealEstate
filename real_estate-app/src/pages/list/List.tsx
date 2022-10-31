@@ -39,7 +39,7 @@ const List = () => {
                   <br /> Jamaica Plaim
                 </div>
                 <div className="buttonn1">
-                  <Button type="submit" content="Submit" />
+                  <Button type="submit" content="Book Now" />
                 </div>
               </div>
             </div>

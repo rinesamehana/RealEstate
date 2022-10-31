@@ -64,7 +64,7 @@ export default observer(function QytetiDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${qyteti.qytetiId}`}
+                    to={`/manageQyteti/${qyteti.qytetiId}`}
                     color="blue"
                     content="Edit"
                   />

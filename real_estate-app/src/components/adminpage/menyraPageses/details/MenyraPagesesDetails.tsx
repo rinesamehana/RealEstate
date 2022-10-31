@@ -64,7 +64,7 @@ export default observer(function MenyraPagesesDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${menyrapageses.menyraPagesesId}`}
+                    to={`/manageMenyraPageses/${menyrapageses.menyraPagesesId}`}
                     color="blue"
                     content="Edit"
                   />
