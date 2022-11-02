@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Dashboard from "./pages/dashboardpages/home/Home";
+import {useState} from 'react';
 
 import Gjiniaa from "./app/axios/GjiniaAPI";
 import LlojUserAPI from "./app/axios/LlojUserAPI";
@@ -52,7 +53,6 @@ import LagjjaForm from "./components/adminpage/lagjja/form/LagjjaForm";
 import StafiAPI from "./app/axios/StafiAPI";
 import StafiDetails from "./components/adminpage/stafi/details/StafiDetails";
 import StafiForm from "./components/adminpage/stafi/form/StafiForm";
-
 import Home from "./pages/home/Home";
 import House from "./pages/house/House";
 import List from "./pages/list/List";
@@ -85,14 +85,48 @@ import KohaPunesAPI from "./app/axios/KohaPunesAPI";
 import KohaPunesDetails from "./components/adminpage/kohaePunes/details/KohaPunesDetails";
 import KohaPunesForm from "./components/adminpage/kohaePunes/form/KohaPunesForm";
 import PrivateRoute from "./app/axios/PrivateRoute";
+import HouseItem from "./pages/list/HouseItem";
 
 // import Qytetet from "./app/axios/QytetetAPI";
 // import Shtetet from "./app/axios/ShtetetAPI";
 // import PamjAA from "./app/axios/PamjaAPI";
 
+
 function App() {
   const location = useLocation();
   const { commonStore, userStore } = useStore();
+  
+  const data : object[] = [
+    {id: 1, 
+      price: 2500 ,
+       room: '1 bed' , 
+       bath: '1 bath', 
+       sqf: '729 sqf' , 
+       location:'323-329 Centre St Unit 201', 
+       place: 'Jamaica Plaim',   
+       img: "https://ap.rdcpix.com/cf7538d7dac381b193d098558847159al-m3899297336od-w480_h360_x2.webp" 
+      },
+      {id: 2, 
+        price: 2000 ,
+         room: '1 bed' , 
+         bath: '1 bath', 
+         sqf: '729 sqf' , 
+         location:'323-329 Centre St Unit 201', 
+         place: 'Jamaica Plaim',   
+         img: "https://ap.rdcpix.com/cf7538d7dac381b193d098558847159al-m3899297336od-w480_h360_x2.webp" 
+        },
+        {id: 3, 
+          price: 1500 ,
+           room: '1 bed' , 
+           bath: '1 bath', 
+           sqf: '729 sqf' , 
+           location:'323-329 Centre St Unit 201', 
+           place: 'Jamaica Plaim',   
+           img: "https://ap.rdcpix.com/cf7538d7dac381b193d098558847159al-m3899297336od-w480_h360_x2.webp" 
+          },
+         
+  ];
+  
 
   useEffect(() => {
     if (commonStore.token) {
@@ -102,6 +136,22 @@ function App() {
     }
   }, [commonStore, userStore]);
 
+
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    setFavorites(data);
+  }, []);
+
+  function handleFavorite(id) {
+    const newFavorites = favorites.map(item => {
+      return item.id === id ? { ...item, favorite: !item.favorite } : item;
+    });
+
+    setFavorites(newFavorites);
+  }
+
+
   if (!commonStore.appLoaded) return <LoadingComponent content="Loading..." />;
 
   return (
@@ -109,9 +159,12 @@ function App() {
       <ToastContainer position="bottom-right" />
 
       <Switch>
+        <Route path='/favorite'><HouseItem  favorites={favorites} handleFavorite={handleFavorite}/>  </Route>
         <Route exact path="/" component={Home} />
         <Route path="/houses/:id" component={House} />
-        <Route path="/houses" component={List} />
+        <Route path="/houses" >
+          <List favorites={favorites} handleFavorite={handleFavorite} /> 
+        </Route>
         <Route path="/dashboard" component={Dashboard} />
 
         <Route path="/users" component={List} />
