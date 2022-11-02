@@ -58,7 +58,7 @@ export default observer(function PamjaDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${pamja.pamjaId}`}
+                    to={`/managePamje/${pamja.pamjaId}`}
                     color="blue"
                     content="Edit"
                   />

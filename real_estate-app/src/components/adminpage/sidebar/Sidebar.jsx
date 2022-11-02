@@ -20,7 +20,12 @@ import { FaFileContract, FaSwimmingPool, FaCity } from "react-icons/fa";
 import { TiBusinessCard } from "react-icons/ti";
 import { TbUserCheck, TbLiveView } from "react-icons/tb";
 import { BsGenderFemale, BsHourglassSplit } from "react-icons/bs";
+import { useStore } from "../../../app/stores/store";
 const Sidebar = () => {
+  const { userStore, modalStore } = useStore();
+  const {
+    userStore: { user, logout },
+  } = useStore();
   const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="sidebar">
@@ -166,7 +171,8 @@ const Sidebar = () => {
 
           <li>
             <LogoutOutlinedIcon className="icon" />
-            <span>Logout</span>
+            
+            <span onClick={logout}>Logout</span>
           </li>
         </ul>
       </div>

@@ -45,7 +45,7 @@ export default observer(function GjiniaList() {
         return (
           <>
             {gjinite.map((gjinia) => (
-              <div key={gjinia.gjiniaId}>
+              <>
                 <Button
                 key={gjinia.gjiniaId}
                   // onClick={() => gjiniaStore.selectGjini(gjinia.gjiniaId)}
@@ -66,7 +66,7 @@ export default observer(function GjiniaList() {
                   content="Delete"
                   color="red"
                 ></Button>
-              </div>
+                </>
             ))}
           
           </>

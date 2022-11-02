@@ -65,7 +65,7 @@ export default observer(function LlojiUseritDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${llojiUserit.llojiUserId}`}
+                    to={`/manageLlojiUser/${llojiUserit.llojiUserId}`}
                     color="blue"
                     content="Edit"
                   />

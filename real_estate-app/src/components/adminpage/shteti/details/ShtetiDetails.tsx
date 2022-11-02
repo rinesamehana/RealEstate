@@ -63,7 +63,7 @@ export default observer(function ShtetiDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${shteti.shtetiId}`}
+                    to={`/manageShteti/${shteti.shtetiId}`}
                     color="blue"
                     content="Edit"
                   />

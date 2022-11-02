@@ -65,7 +65,7 @@ export default observer(function GjendjaDetails() {
                    
                     className="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${gjendja.gjendjaId}`}
+                    to={`/manageGjendja/${gjendja.gjendjaId}`}
                     color="blue"
                     content="Edit"
                   />

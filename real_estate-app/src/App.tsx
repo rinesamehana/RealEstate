@@ -86,11 +86,9 @@ import KohaPunesDetails from "./components/adminpage/kohaePunes/details/KohaPune
 import KohaPunesForm from "./components/adminpage/kohaePunes/form/KohaPunesForm";
 import PrivateRoute from "./app/axios/PrivateRoute";
 import HouseItem from "./pages/list/HouseItem";
-
 // import Qytetet from "./app/axios/QytetetAPI";
 // import Shtetet from "./app/axios/ShtetetAPI";
 // import PamjAA from "./app/axios/PamjaAPI";
-
 
 function App() {
   const location = useLocation();
@@ -183,167 +181,338 @@ function App() {
               />
               <PrivateRoute path="/errors" component={TestErrors} />
               <Route path="/server-error" component={ServerError} />
-        
             </Switch>
           )}
         />
         <Route
-          path={"/(kontrata|manage|createKontrata|errors|server-error)"}
+          path={"/(kontrata|manageKontrata|createKontrata|errors|server-error)"}
           render={() => (
             <Switch>
               <PrivateRoute exact path="/kontrata" component={KontrataAPI} />
               <PrivateRoute path="/kontrata/:id" component={KontrataDetails} />
               <PrivateRoute
                 key={location.key}
-                path={["/createKontrata", "/manage/:id"]}
+                path={["/createKontrata", "/manageKontrata/:id"]}
                 component={KontrataForm}
               />
               <PrivateRoute path="/errors" component={TestErrors} />
               <Route path="/server-error" component={ServerError} />
-              <Route component={NotFound} />
             </Switch>
           )}
         />
         <Route
-          path={"/(pamja|manage|createPamja|errors|server-error)"}
+          path={"/(pamja|managePamje|createPamja|errors|server-error)"}
           render={() => (
             <Switch>
               <PrivateRoute exact path="/pamja" component={PamjaAPI} />
               <PrivateRoute path="/pamja/:pamjaId" component={PamjaDetails} />
               <PrivateRoute
                 key={location.key}
-                path={["/createPamja", "/manage/:pamjaId"]}
+                path={["/createPamja", "/managePamje/:pamjaId"]}
                 component={PamjaForm}
               />
               <PrivateRoute path="/errors" component={TestErrors} />
               <Route path="/server-error" component={ServerError} />
-              <Route component={NotFound} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={"/(pamja|managePamje|createPamja|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/ambienti" component={AmbientiAPI} />
+              <PrivateRoute
+                path="/ambienti/:ambientiId"
+                component={AmbientiDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createAmbient", "/manageAmbienti/:ambientiId"]}
+                component={AmbientiForm}
+              />
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={
+            "/(llojiUser|manageLlojiUser|createLlojiUser|errors|server-error)"
+          }
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/llojiUser" component={LlojUserAPI} />
+              <PrivateRoute
+                path="/llojiUser/:llojiUserId"
+                component={LlojiUseritDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createLlojiUser", "/manageLlojiUser/:llojiUserId"]}
+                component={LlojiUseritForm}
+              />
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={"/(shteti|manageShteti|createShtet|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/shteti" component={ShtetetAPI} />
+              <PrivateRoute
+                path="/shteti/:shtetiId"
+                component={ShtetiDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createShtet", "/manageShteti/:shtetiId"]}
+                component={ShtetiForm}
+              />
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
             </Switch>
           )}
         />
 
-        <Route exact path="/ambienti" component={AmbientiAPI} />
-
-        <Route path="/ambienti/:ambientiId" component={AmbientiDetails} />
         <Route
-          key={location.key}
-          path={["/createAmbient", "/manage/:ambientiId"]}
-          component={AmbientiForm}
-        />
+          path={"/(qyteti|manageQyteti|createQytet|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/qyteti" component={QytetiAPI} />
+              <PrivateRoute
+                path="/qyteti/:qytetiId"
+                component={QytetiDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createQytet", "/manageQyteti/:qytetiId"]}
+                component={QytetiForm}
+              />
 
-        <Route exact path="/llojiUser" component={LlojUserAPI} />
-
-        <Route path="/llojiUser/:llojiUserId" component={LlojiUseritDetails} />
-        <Route
-          key={location.key}
-          path={["/createLlojiUser", "/manage/:llojiUserId"]}
-          component={LlojiUseritForm}
-        />
-
-        <Route exact path="/shteti" component={ShtetetAPI} />
-
-        <Route path="/shteti/:shtetiId" component={ShtetiDetails} />
-        <Route
-          key={location.key}
-          path={["/createShtet", "/manage/:shtetiId"]}
-          component={ShtetiForm}
-        />
-
-        <Route exact path="/qyteti" component={QytetiAPI} />
-        <Route path="/qyteti/:qytetiId" component={QytetiDetails} />
-        <Route
-          key={location.key}
-          path={["/createQytet", "/manage/:qytetiId"]}
-          component={QytetiForm}
-        />
-
-        <Route exact path="/gjendja" component={GjendjaAPI} />
-
-        <Route exact path="/gjendja" component={GjendjaAPI} />
-
-        <Route path="/gjendja/:gjendjaId" component={GjendjaDetails} />
-        <Route
-          key={location.key}
-          path={["/createGjendje", "/manage/:gjendjaId"]}
-          component={GjendjaForm}
-        />
-
-        <Route exact path="/Pajisja" component={PajisjaAPI} />
-        <Route path="/Pajisja/:pajisjaId" component={PajisjaDetails} />
-        <Route
-          key={location.key}
-          path={["/createPajisje", "/manage/:pajisjaId"]}
-          component={PajisjaForm}
-        />
-        <Route exact path="/KohaPunes" component={KohaPunesAPI} />
-
-        <Route path="/KohaPunes/:kohaId" component={KohaPunesDetails} />
-        <Route
-          key={location.key}
-          path={["/createKohePune", "/manage/:kohaId"]}
-          component={KohaPunesForm}
-        />
-        <Route exact path="/MenyraPageses" component={MenyraPagesesAPI} />
-
-        <Route
-          path="/MenyraPageses/:menyraPagesesId"
-          component={MenyraPagesesDetails}
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
         />
         <Route
-          key={location.key}
-          path={["/createMenyrePagese", "/manage/:menyraPagesesId"]}
-          component={MenyraPagesesForm}
+          path={"/(gjendja|manageGjendja|createGjendje|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/gjendja" component={GjendjaAPI} />
+              <PrivateRoute
+                path="/gjendja/:gjendjaId"
+                component={GjendjaDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createGjendje", "/manageGjendja/:gjendjaId"]}
+                component={GjendjaForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
         />
-        <Route exact path="/LlojiShtepise" component={LlojiShtepiseAPI} />
+        <Route
+          path={"/(Pajisja|managePajisja|createPajisje|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/Pajisja" component={PajisjaAPI} />
+              <PrivateRoute
+                path="/Pajisja/:pajisjaId"
+                component={PajisjaDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createPajisje", "/managePajisja/:pajisjaId"]}
+                component={PajisjaForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={
+            "/(KohaPunes|manageKohaePunes|createKohePune|errors|server-error)"
+          }
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/KohaPunes" component={KohaPunesAPI} />
+              <PrivateRoute
+                path="/KohaPunes/:kohaId"
+                component={KohaPunesDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createKohePune", "/manageKohaePunes/:kohaId"]}
+                component={KohaPunesForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={"/(Pajisja|managePajisja|createPajisje|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/Pajisja" component={PajisjaAPI} />
+              <PrivateRoute
+                path="/Pajisja/:pajisjaId"
+                component={PajisjaDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createPajisje", "/managePajisja/:pajisjaId"]}
+                component={PajisjaForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={
+            "/(MenyraPageses|manageMenyraPageses|createMenyrePagese|errors|server-error)"
+          }
+          render={() => (
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/MenyraPageses"
+                component={MenyraPagesesAPI}
+              />
+              <PrivateRoute
+                path="/MenyraPageses/:menyraPagesesId"
+                component={MenyraPagesesDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={[
+                  "/createMenyrePagese",
+                  "/manageMenyraPageses/:menyraPagesesId",
+                ]}
+                component={MenyraPagesesForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={
+            "/(LlojiShtepise|manageLlojiShtepise|createLlojShtepie|errors|server-error)"
+          }
+          render={() => (
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/LlojiShtepise"
+                component={LlojiShtepiseAPI}
+              />
+              <PrivateRoute
+                path="/LlojiShtepise/:llojiShtepiseId"
+                component={LlojiShtepiseDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={[
+                  "/createLlojShtepie",
+                  "/manageLlojiShtepise/:llojiShtepiseId",
+                ]}
+                component={LlojiShtepiseForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={"/(Rolet|manageRolet|createRole|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/Rolet" component={RoliAPI} />
+              <PrivateRoute path="/Rolet/:roliId" component={RoliDetails} />
+              <PrivateRoute
+                key={location.key}
+                path={["/createRole", "/manageRolet/:roliId"]}
+                component={RoliForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={"/(Kafshet|manageKafshet|createKafshet|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/Kafshet" component={KafshetAPI} />
+              <PrivateRoute
+                path="/Kafshet/:kafshetId"
+                component={KafshetDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createKafshet", "/manageKafshet/:kafshetId"]}
+                component={KafshetForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
 
         <Route
-          path="/LlojiShtepise/:llojiShtepiseId"
-          component={LlojiShtepiseDetails}
+          path={"/(Stafi|manageStafi|createStaf|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/Stafi" component={StafiAPI} />
+              <PrivateRoute path="/Stafi/:stafiId" component={StafiDetails} />
+              <PrivateRoute
+                key={location.key}
+                path={["/createStaf", "/manageStafi/:stafiId"]}
+                component={StafiForm}
+              />
+
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
         />
         <Route
-          key={location.key}
-          path={["/createLlojShtepie", "/manage/:llojiShtepiseId"]}
-          component={LlojiShtepiseForm}
-        />
-        <Route exact path="/Rolet" component={RoliAPI} />
+          path={"/(lagjja|manageLagje|createLagje|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/lagjja" component={LagjjaAPI} />
+              <PrivateRoute
+                path="/lagjja/:lagjjaId"
+                component={LagjjaDetails}
+              />
+              <PrivateRoute
+                key={location.key}
+                path={["/createLagje", "/manageLagje/:lagjjaId"]}
+                component={LagjjaForm}
+              />
 
-        <Route path="/Rolet/:roliId" component={RoliDetails} />
-        <Route
-          key={location.key}
-          path={["/createRole", "/manage/:roliId"]}
-          component={RoliForm}
-        />
-        <Route exact path="/Kafshet" component={KafshetAPI} />
-
-        <Route path="/Kafshet/:kafshetId" component={KafshetDetails} />
-        <Route
-          key={location.key}
-          path={["/createKafshet", "/manage/:kafshetId"]}
-          component={KafshetForm}
-        />
-
-        <Route exact path="/Stafi" component={StafiAPI} />
-
-        <Route path="/Stafi/:stafiId" component={StafiDetails} />
-        <Route
-          key={location.key}
-          path={["/createStaf", "/manage/:stafiId"]}
-          component={StafiForm}
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
         />
 
-        <Route exact path="/lagjja" component={LagjjaAPI} />
-
-        <Route path="/lagjja/:lagjjaId" component={LagjjaDetails} />
-        <Route
-          key={location.key}
-          path={["/createLagje", "/manage/:lagjjaId"]}
-          component={LagjjaForm}
-        />
-        {/* 
-     <Route path="/login" component={LoginForm} />
-        <Route path="/register" component={RegisterForm} />
-        <Route path="/errors" component={TestErrors} />
-        <Route path="/server-error" component={ServerError} /> */}
+        <Route component={NotFound} />
       </Switch>
     </>
   );

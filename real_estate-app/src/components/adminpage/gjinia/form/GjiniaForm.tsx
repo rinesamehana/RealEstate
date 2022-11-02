@@ -60,18 +60,18 @@ export default observer(function GjiniaForm() {
 
   if (loadingInitial) return <LoadingComponent content="Loading" />;
   return (
-    <div className="new">
-      <Sidebar />
-      <div className="newContainer">
-        <Navbar />
-        <div className="new">
-          <div className="newContainer">
-            <div className="top">
-              <h1>Add/Edit</h1>
-            </div>
-            <div className="bottom">
-              <div className="right">
-                <div className="formInput">
+    // <div className="new">
+    //   <Sidebar />
+    //   <div className="newContainer">
+    //     <Navbar />
+    //     <div className="new">
+    //       <div className="newContainer">
+    //         <div className="top">
+    //           <h1>Add/Edit</h1>
+    //         </div>
+    //         <div className="bottom">
+    //           <div className="right">
+    //             <div className="formInput">
                   <Segment clearing>
                     <Formik
                       key={gjinia.gjiniaId}
@@ -93,7 +93,7 @@ export default observer(function GjiniaForm() {
                             loading={loading}
                             floated="right"
                             positive
-                            inverted={true}
+                            inverted
                             type="submit"
                             content="Submit"
                           />
@@ -101,7 +101,7 @@ export default observer(function GjiniaForm() {
                             as={Link}
                             to="/gjinia"
                             floated="right"
-                            inverted={true}
+                            inverted
                             type="button"
                             content="Cancel"
                           />
@@ -109,12 +109,12 @@ export default observer(function GjiniaForm() {
                       )}
                     </Formik>
                   </Segment>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 });

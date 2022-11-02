@@ -85,7 +85,7 @@ export default observer(function StafiDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${stafi.stafiId}`}
+                    to={`/manageStafi/${stafi.stafiId}`}
                     color="blue"
                     content="Edit"
                   />

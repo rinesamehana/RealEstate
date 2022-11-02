@@ -58,7 +58,7 @@ export default observer(function RoliDetails() {
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manage/${roli.roliId}`}
+                    to={`/manageRolet/${roli.roliId}`}
                     color="blue"
                     content="Edit"
                   />
