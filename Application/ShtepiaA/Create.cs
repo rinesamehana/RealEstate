@@ -33,36 +33,16 @@ namespace Application.ShtepiaA
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
-               private readonly IUserAccessor _userAccessor;
        
 
-            public Handler(DataContext context, IUserAccessor userAccessor)
+            public Handler(DataContext context)
             {
-                _userAccessor=userAccessor;
+            
                 _context = context;
             }
 
-            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
+           public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var user=await _context.Users.FirstOrDefaultAsync(x=>x.UserName == _userAccessor.GetUsername());
-
-                // var attendee=new Rezervimi
-                // {
-                //     AppUser=user,
-                //     Shtepia=request.Shtepia,
-                //     Emri="",
-                //     Mbiemri="",
-                //     NrTelefonit="",
-                //     email="",
-                //     IsHost= true,
-                //     Check_in=new DateTime(),
-                //     Check_out=new DateTime(),
-                //     MenyraPageses=new MenyraPageses(),
-                //     Kontrata=new Kontrata(),
-                // };
-
-                // request.Shtepia.Attendees.Add(attendee);
-                
                 _context.Shtepiat.Add(request.Shtepia);
 
                 var result = await _context.SaveChangesAsync() > 0;

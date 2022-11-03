@@ -9,6 +9,5 @@ export interface Stafi {
   kohaId: string;
   gjiniaId: string;
   qytetiId: string;
-  shtetiId: string;
   adresa: string;
 }

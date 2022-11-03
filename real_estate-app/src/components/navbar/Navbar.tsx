@@ -41,7 +41,7 @@ export default observer(function Navbar() {
                     <Dropdown pointing="top right" text={user?.displayName}>
                       <Dropdown.Menu>
                         <Dropdown.Item
-                          position="center"
+                          position="bottom"
                           as={Link}
                           to={`profile/${user?.username}`}
                           text="My Profile"

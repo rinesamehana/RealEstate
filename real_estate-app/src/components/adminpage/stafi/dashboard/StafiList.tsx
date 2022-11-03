@@ -48,7 +48,7 @@ export default observer(function StafiList() {
           <TableCell className="tableCell">Orari Punes</TableCell>
           <TableCell className="tableCell">Gjinia</TableCell>
           <TableCell className="tableCell">Qyteti</TableCell>
-          <TableCell className="tableCell">Shteti</TableCell>
+     
           <TableCell className="tableCell">Adressa</TableCell>
           <TableCell className="tableCell"></TableCell>
         </TableRow>
@@ -67,7 +67,7 @@ export default observer(function StafiList() {
               <TableCell className="tableCell">{stafi.kohaId}</TableCell>
               <TableCell className="tableCell">{stafi.gjiniaId}</TableCell>
               <TableCell className="tableCell">{stafi.qytetiId}</TableCell>
-              <TableCell className="tableCell">{stafi.shtetiId}</TableCell>
+        
               <TableCell className="tableCell">{stafi.adresa}</TableCell>
               <Table.Cell>
                 <Button

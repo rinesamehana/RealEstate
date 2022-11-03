@@ -1,6 +1,8 @@
 .partners {
+ 
   background: white;
   display: flex;
+  box-shadow: 0px 0 10px rgba(150, 150, 143, 0.522);
 
   flex-direction: column;
 }
@@ -9,7 +11,7 @@
   font-size: 3.5rem;
   padding-top: 3.3rem;
 }
-.images_partners {
+.images_partners { 
   display: flex;
   flex-direction: row;
   justify-content: center;

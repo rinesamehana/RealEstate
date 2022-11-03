@@ -85,6 +85,12 @@ import KohaPunesAPI from "./app/axios/KohaPunesAPI";
 import KohaPunesDetails from "./components/adminpage/kohaePunes/details/KohaPunesDetails";
 import KohaPunesForm from "./components/adminpage/kohaePunes/form/KohaPunesForm";
 import PrivateRoute from "./app/axios/PrivateRoute";
+import ShtepiaForm from "./components/adminpage/shtepia/form/ShtepiaForm";
+import ShtepiaDetails from "./components/adminpage/shtepia/details/ShtepiaDetails";
+import ShtepiaAPI from "./app/axios/ShtepiaAPI";
+import RezervimiAPI from "./app/axios/RezervimiAPI";
+import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
+import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
 
 function App() {
   const location = useLocation();
@@ -130,6 +136,38 @@ function App() {
           )}
         />
         <Route
+          path={"/(shtepia|manageShtepi|createShtepi|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/shtepia" component={ShtepiaAPI} />
+              <PrivateRoute path="/shtepia/:shtepiaId" component={ShtepiaDetails} />
+              <PrivateRoute
+                key={location.key}
+                path={["/manageShtepi/:shtepiaId", "/createShtepi"]}
+                component={ShtepiaForm}
+              />
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
+          path={"/(rezervimi|manageRezervimi|createRezervim|errors|server-error)"}
+          render={() => (
+            <Switch>
+              <PrivateRoute exact path="/rezervimi" component={RezervimiAPI} />
+              <PrivateRoute path="/rezervimi/:rezervimiId" component={RezervimiDetails} />
+              <PrivateRoute
+                key={location.key}
+                path={["/manageRezervimi/:rezervimiId", "/createRezervim"]}
+                component={RezervimiForm}
+              />
+              <PrivateRoute path="/errors" component={TestErrors} />
+              <Route path="/server-error" component={ServerError} />
+            </Switch>
+          )}
+        />
+        <Route
           path={"/(kontrata|manageKontrata|createKontrata|errors|server-error)"}
           render={() => (
             <Switch>
@@ -162,7 +200,7 @@ function App() {
           )}
         />
         <Route
-          path={"/(pamja|managePamje|createPamja|errors|server-error)"}
+          path={"/(ambienti|manageAmbienti|createAmbient|errors|server-error)"}
           render={() => (
             <Switch>
               <PrivateRoute exact path="/ambienti" component={AmbientiAPI} />

@@ -8,13 +8,12 @@ import { useStore } from "../../../../app/stores/store";
 import CSS from "csstype";
 import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar2";
-
 const CardStyles: CSS.Properties = {
   marginLeft: "50px",
   width: "50%",
   display: "flex",
   flexWrap: "wrap",
-  flexDirection: "row",
+
   marginTop: "50px",
   textAlign: "center",
   border: "2px solid gray",
@@ -30,17 +29,21 @@ const CRdStyles: CSS.Properties = {
   textAlign: "center",
   width: "400px",
 };
-export default observer(function StafiDetails() {
-  const { stafiStore } = useStore();
+export default observer(function ShtepiaDetails() {
+  const { shtepiaStore } = useStore();
 
-  const { selectedStafi: stafi, loadStafi, loadingInitial } = stafiStore;
-  const { stafiId } = useParams<{ stafiId: string }>();
+  const {
+    selectedShtepia: shtepia,
+    loadShtepi,
+    loadingInitial,
+  } = shtepiaStore;
+  const { shtepiaId } = useParams<{ shtepiaId: string }>();
 
   useEffect(() => {
-    if (stafiId) loadStafi(stafiId);
-  }, [stafiId, loadStafi]);
+    if (shtepiaId) loadShtepi(shtepiaId);
+  }, [shtepiaId, loadShtepi]);
 
-  if (loadingInitial || !stafi) return <LoadingComponent />;
+  if (loadingInitial || !shtepia) return <LoadingComponent />;
   return (
     <div className="new">
       <Sidebar />
@@ -52,49 +55,64 @@ export default observer(function StafiDetails() {
               <h1>Edit</h1>
             </div>
             <Card fluid style={CardStyles}>
-              <Card.Content style={CRStyles}>Emri: {stafi.emri}</Card.Content>
               <Card.Content style={CRStyles}>
-                Mbiemri: {stafi.mbiemri}
-              </Card.Content>
-              <Card.Content style={CRStyles}>Email: {stafi.email}</Card.Content>
-              <Card.Content style={CRStyles}>
-                Phone Number: {stafi.nrTelefonit}
-              </Card.Content>
-              <Card.Content style={CRStyles}>Role: {stafi.roliId}</Card.Content>
-              <Card.Content style={CRStyles}>
-                TypeUser: {stafi.llojiUserId}
+                Title: {shtepia.titulli}
               </Card.Content>
               <Card.Content style={CRStyles}>
-                Hours: {stafi.kohaId}
+                Photo: {shtepia.photourl}
               </Card.Content>
               <Card.Content style={CRStyles}>
-                Gender: {stafi.gjiniaId}
+                Price: {shtepia.cmimi}
               </Card.Content>
               <Card.Content style={CRStyles}>
-                City: {stafi.qytetiId}
-              </Card.Content>
-              {/* <Card.Content style={CRStyles}>
-                Country: {stafi.shtetiId}
-              </Card.Content> */}
-              <Card.Content style={CRStyles}>
-                Address: {stafi.adresa}
+                Location: {shtepia.lokacioni}
               </Card.Content>
               <Card.Content style={CRStyles}>
+                Number of Rooms: {shtepia.nrDhomave}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Number of Baths: {shtepia.nrBanjove}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Areas: {shtepia.siperfaqja}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Description: {shtepia.pershkrimi}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+              Neighborhood: {shtepia.lagjjaId}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Type of House: {shtepia.llojiShtepiseId}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+               Conditions: {shtepia.gjendjaShtepiseId}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                View: {shtepia.pamjaId}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Animal: {shtepia.kafshetId}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Staff: {shtepia.stafiId}
+              </Card.Content>
+
+              <Card.Content>
                 <Button.Group style={CRdStyles}>
                   <Button
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manageStafi/${stafi.stafiId}`}
+                    to={`/manageShtepi/${shtepia.shtepiaId}`}
                     color="blue"
                     content="Edit"
                   />
-
                   <Button
                     inverted
                     class="ui negative basic button"
                     as={Link}
-                    to={`/Stafi`}
+                    to={`/shtepia`}
                     color="red"
                     content="Cancel"
                   />

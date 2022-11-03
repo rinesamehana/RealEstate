@@ -10,27 +10,28 @@ import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
 import ShtetiStore from "../stores/ShtetiStore";
 import ShtetiDashboard from "../../components/adminpage/shteti/dashboard/ShtetiDashboard";
+import ShtepiaDashboard from "../../components/adminpage/shtepia/dashboard/ShtepiaDashboard";
 
-function ShtetetAPI() {
-  const { shtetiStore } = useStore();
+function ShtepiaAPI() {
+  const { shtepiaStore } = useStore();
 
   useEffect(() => {
-    shtetiStore.loadShtetet();
-  }, [shtetiStore]);
+    shtepiaStore.loadShtepite();
+  }, [shtepiaStore]);
 
-  if (shtetiStore.loadingInitial)
-    return <LoadingComponent content="Loading..." />;
+//   if (shtepiaStore.loadingInitial)
+//     return <LoadingComponent content="Loading..." />;
 
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
-        <Container style={{ marginTop: "1em" }}>
-          <ShtetiDashboard />
+        <Container style={{ marginTop: "3em" }}>
+          <ShtepiaDashboard />
         </Container>
       </div>
     </div>
   );
 }
-export default observer(ShtetetAPI);
+export default observer(ShtepiaAPI);

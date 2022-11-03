@@ -13,15 +13,6 @@ namespace Domain
     {
          
         public Guid RezervimiId { get; set; }
-
-        public String Emri { get; set; }
-
-        public String Mbiemri { get; set; }
-
-        public String NrTelefonit { get; set; }
-
-        public String email { get; set; }
-
         public DateTime Check_in { get; set; }
 
         public DateTime Check_out { get; set; }
@@ -29,12 +20,11 @@ namespace Domain
       //   public string AppUserId { get; set; }
       //      [ForeignKey("AppUserId")]
       //   public AppUser AppUser { get; set; }
-
         public Guid? ShtepiaId {get;set;}
            [ForeignKey("ShtepiaId")]
         public Shtepia Shtepia {get;set;}
 
-            public Guid? MenyraPagesesId { get; set; }
+         public Guid? MenyraPagesesId { get; set; }
      [ForeignKey("MenyraPagesesId")]
 
       public MenyraPageses MenyraPageses { get; set; }
@@ -47,6 +37,8 @@ namespace Domain
 
       public bool IsCancelled{get;set;}
        
+       public string AppUserId { get; set; } = string.Empty;
+        public AppUser? AppUser { get; set; }
        public ICollection<RezervimiAttendee>Attendees{get; set;}=new List<RezervimiAttendee>();
      
     }

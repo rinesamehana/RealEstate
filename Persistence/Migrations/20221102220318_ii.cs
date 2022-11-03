@@ -435,6 +435,7 @@ namespace Persistence.Migrations
                     ShtepiaId = table.Column<Guid>(type: "TEXT", nullable: false),
                     PhotoUrl = table.Column<string>(type: "TEXT", nullable: true),
                     Lokacioni = table.Column<string>(type: "TEXT", nullable: true),
+                    Titulli = table.Column<string>(type: "TEXT", nullable: true),
                     Cmimi = table.Column<string>(type: "TEXT", nullable: true),
                     NrDhomave = table.Column<string>(type: "TEXT", nullable: true),
                     NrBanjove = table.Column<string>(type: "TEXT", nullable: true),
@@ -510,7 +511,8 @@ namespace Persistence.Migrations
                     MenyraPagesesId = table.Column<Guid>(type: "TEXT", nullable: true),
                     KontrataId = table.Column<Guid>(type: "TEXT", nullable: true),
                     IsCancelled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AppUserId = table.Column<string>(type: "TEXT", nullable: true)
+                    AppUserId = table.Column<string>(type: "TEXT", nullable: true),
+                    AppUserId1 = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -518,6 +520,12 @@ namespace Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_Rezervimi_AspNetUsers_AppUserId",
                         column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Rezervimi_AspNetUsers_AppUserId1",
+                        column: x => x.AppUserId1,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -670,6 +678,11 @@ namespace Persistence.Migrations
                 name: "IX_Rezervimi_AppUserId",
                 table: "Rezervimi",
                 column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rezervimi_AppUserId1",
+                table: "Rezervimi",
+                column: "AppUserId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rezervimi_KontrataId",

@@ -18,6 +18,7 @@ namespace Domain
 
         public string Lokacioni { get; set; } = string.Empty;
 
+        public string Titulli {get;set;}
         public string Cmimi {get;set;}
 
         public string NrDhomave {get;set;}
@@ -54,32 +55,11 @@ namespace Domain
 
 
 
-
-
         public Guid? PamjaId { get; set; }
         [JsonIgnore]
         [ForeignKey("PamjaId")]
 
         public Pamja Pamja { get; set; }
-
-
-        // public Guid? PajisjaId { get; set; }
-        // [JsonIgnore]
-        // [ForeignKey("PajisjaId")]
-
-        // public Pajisja Pajisja { get; set; }
-
-
-
-
-        // public Guid? AmbientiId { get; set; }
-        // [JsonIgnore]
-        // [ForeignKey("AmbientiId")]
-
-        // public Ambienti Ambienti { get; set; }
-
-
-
         public Guid? KafshetId { get; set; }
         [JsonIgnore]
         [ForeignKey("KafshetId")]
@@ -92,17 +72,12 @@ namespace Domain
         [ForeignKey("StafiId")]
         public Stafi Stafi { get; set; }
 
-      
-    
 
         public ICollection<ShtepiaAmbiente> Ambientet { get; set; }
 
         public ICollection<ShtepiaPajisjet> Pajisjet { get; set; }
 
         public ICollection<Rezervimi> Attendees { get; set; }=new List<Rezervimi>();
-
-        
-
 
 
     }

@@ -40,8 +40,10 @@ export default observer(function GjiniaList() {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 512,
       renderCell: (params: Gjinia) => {
+        console.log(gjinite); 
+        
         return (
           <>
             {gjinite.map((gjinia) => (
@@ -93,7 +95,8 @@ export default observer(function GjiniaList() {
         {...actionColumn}
         rows={rowData}
         getRowId={(rowData) => rowData.gjiniaId}
-        columns={cols.concat(actionColumn)}
+        columns={cols.concat(...actionColumn)}
+        // columns={cols}
         arial-label="gjinia-table"
       />
     </div>

@@ -77,6 +77,10 @@ namespace Persistence
                 .WithMany(l => l.Lagjet)
                 .HasForeignKey(q => q.QytetiId);
 
+ modelBuilder.Entity<Rezervimi>()
+                .HasOne(s => s.AppUser)
+                .WithMany(q => q.Rezervimet)
+                .HasForeignKey(s => s.AppUserId);
 
             //---------------Stafi------------
 

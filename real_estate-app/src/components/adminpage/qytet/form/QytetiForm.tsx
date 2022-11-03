@@ -29,6 +29,9 @@ const CardStyles: CSS.Properties = {
   marginBottom: "20px",
   textAlign: "center",
 };
+const select: CSS.Properties = {
+  width: "20%",
+};
 export default observer(function QytetiForm() {
   const history = useHistory();
   const { qytetiStore, shtetiStore } = useStore();
@@ -128,14 +131,25 @@ export default observer(function QytetiForm() {
                             name="kodiPostar"
                             placeholder="KodiPostar"
                           />
-                          <MyTextInput name="shtetiId" placeholder="Shteti" />
-{/* 
-                          <MySelectInput
-                       
+                          {/* <MyTextInput name="shtetiId" placeholder="Shteti" /> */}
+
+                          <Field
+                            style={select}
+                            as="select"
                             name="shtetiId"
-                            placeholder="Shteti"
-                          
-                          /> */}
+                            className="Shteti"
+                          >
+                            <option placeholder="Zgjedh Shtetin "></option>
+
+                            {shtetet.map((shteti) => (
+                              <option
+                                key={shteti.shtetiId}
+                                value={shteti.shtetiId}
+                              >
+                                {shteti.emri}
+                              </option>
+                            ))}
+                          </Field>
 
                           <Button
                             disable={isSubmitting || !dirty || !isValid}

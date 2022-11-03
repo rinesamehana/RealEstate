@@ -16,7 +16,10 @@ import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar2";
 import { Lagjja } from "../../../../app/models/Lagjja";
 import CSS from "csstype";
-
+const select: CSS.Properties={
+ 
+    width: "20%",
+}
 const CardStyles: CSS.Properties = {
   width: "100%",
   display: "flex",
@@ -28,7 +31,9 @@ const CardStyles: CSS.Properties = {
 };
 export default observer(function LagjjaForm() {
   const history = useHistory();
-  const { lagjjaStore } = useStore();
+
+  const { lagjjaStore, qytetiStore } = useStore();
+  const { qytetet, loadQytetet } = qytetiStore;
   const {
     selectedLagje,
 
@@ -117,10 +122,18 @@ export default observer(function LagjjaForm() {
                             name="emri"
                             placeholder="Krijo Lagje..."
                           />
-                          <MyTextInput
+                            <Field  style={select} as="select" name="qytetiId"  className='Qyteti'>
+
+<option placeholder="Zgjedh Qytetin "></option>
+
+{qytetet.map(qyteti => (
+    <option key={qyteti.qytetiId}  value={qyteti.qytetiId}>{qyteti.emri}</option>
+))}
+</Field> 
+                          {/* <MyTextInput
                             name="qytetiId"
                             placeholder="Qyteti..."
-                          />
+                          /> */}
                           <Button
                             disable={isSubmitting || !dirty || !isValid}
                             loading={loading}

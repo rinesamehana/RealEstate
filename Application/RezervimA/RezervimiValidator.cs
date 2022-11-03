@@ -10,12 +10,11 @@ namespace Application.RezervimA
     {
         public RezervimiValidator()
         {
-            RuleFor(x => x.Emri).NotEmpty();
-            RuleFor(x => x.Mbiemri).NotEmpty();
-        
-            RuleFor(x => x.NrTelefonit).NotEmpty();
             RuleFor(x => x.Check_in).NotEmpty();
             RuleFor(x => x.Check_out).NotEmpty();
+            RuleFor(x => x.ShtepiaId).NotEmpty();
+            RuleFor(x => x.MenyraPagesesId).NotEmpty();
+            RuleFor(x => x.KontrataId).NotEmpty();
        
         }
     }

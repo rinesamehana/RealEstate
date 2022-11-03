@@ -18,10 +18,13 @@ import LlojiShtepiseStore from "./LlojiShtepiseStore";
 import RoliStore from "./RoliStore";
 import KafshetStore from "./KafshetStore";
 import StafiStore from "./StafiStore";
+import ShtepiaStore from "./ShtepiaStore";
+import RezervimiStore from "./RezervimiStore";
 
 interface Store {
   commonStore: commonStore;
   gjiniaStore: GjiniaStore;
+  shtepiaStore: ShtepiaStore
   shtetiStore: ShtetiStore;
   llojiUserStore: LlojiUserStore;
   userStore: UserStore;
@@ -33,6 +36,7 @@ interface Store {
   pamjaStore: PamjaStore;
   kontrataStore: KontrataStore;
   roliStore: RoliStore;
+  rezervimiStore: RezervimiStore;
   pajisjaStore: PajisjaStore;
   stafiStore: StafiStore;
   lagjjaStore: LagjjaStore;
@@ -48,11 +52,13 @@ export const store: Store = {
   llojiShtepiseStore: new LlojiShtepiseStore(),
   commonStore: new commonStore(),
   userStore: new UserStore(),
+  shtepiaStore: new ShtepiaStore(),
   menyraPagesesStore: new MenyraPagesesStore(),
   stafiStore: new StafiStore(),
   kafshetStore: new KafshetStore(),
   ambientiStore: new AmbientiStore(),
   kontrataStore: new KontrataStore(),
+  rezervimiStore: new RezervimiStore(),
   qytetiStore: new QytetiStore(),
   gjendjaStore: new GjendjaStore(),
   pamjaStore: new PamjaStore(),

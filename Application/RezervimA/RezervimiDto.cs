@@ -11,13 +11,6 @@ namespace Application.RezervimA
 
         public Guid RezervimiId { get; set; }
 
-        public String Emri { get; set; }
-
-        public String Mbiemri { get; set; }
-
-        public String NrTelefonit { get; set; }
-
-        public String email { get; set; }
 
         public DateTime Check_in { get; set; }
 
@@ -39,7 +32,7 @@ namespace Application.RezervimA
       public Guid? KontrataId{get;set;}
          [ForeignKey("KontrataId")]
       public Kontrata Kontrata{get;set;}
-        public string HostUsername {get; set;}
+      public string HostUsername {get; set;}
       public bool IsCancelled {get;set;}
 
     

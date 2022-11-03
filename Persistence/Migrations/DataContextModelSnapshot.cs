@@ -311,6 +311,9 @@ namespace Persistence.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("AppUserId1")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("Check_in")
                         .HasColumnType("TEXT");
 
@@ -344,6 +347,8 @@ namespace Persistence.Migrations
                     b.HasKey("RezervimiId");
 
                     b.HasIndex("AppUserId");
+
+                    b.HasIndex("AppUserId1");
 
                     b.HasIndex("KontrataId");
 
@@ -432,6 +437,9 @@ namespace Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("StafiId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Titulli")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ShtepiaId");
@@ -711,9 +719,13 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Rezervimi", b =>
                 {
+                    b.HasOne("Domain.AppUser", "AppUser")
+                        .WithMany("Rezervimet")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("Domain.AppUser", null)
                         .WithMany("Shtepite")
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("AppUserId1");
 
                     b.HasOne("Domain.Kontrata", "Kontrata")
                         .WithMany("Rezervimet")
@@ -726,6 +738,8 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Shtepia", "Shtepia")
                         .WithMany("Attendees")
                         .HasForeignKey("ShtepiaId");
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Kontrata");
 
@@ -934,6 +948,8 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.AppUser", b =>
                 {
                     b.Navigation("Photos");
+
+                    b.Navigation("Rezervimet");
 
                     b.Navigation("Rezervimi");
 

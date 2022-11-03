@@ -22,6 +22,8 @@ import { LlojiShtepise } from "../models/LlojiShtepise";
 import { Roli } from "../models/Roli";
 import { Kafshet } from "../models/Kafshet";
 import { Stafi } from "../models/Stafi";
+import { Shtepia } from "../models/Shtepia";
+import { Rezervimi } from "../models/Rezervimi";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
@@ -95,6 +97,17 @@ const Ambientet = {
     requests.put<void>(`/ambient/${ambienti.ambientiId}`, ambienti),
   delete: (ambientiId: string) =>
     requests.delete<void>(`/ambient/${ambientiId}`),
+};
+
+const Shtepiat = {
+  list: () => requests.get<Shtepia[]>("/shtepia"),
+  details: (shtepiaId: string) =>
+    requests.get<Shtepia>(`/shtepia/${shtepiaId}`),
+  create: (shtepia: Shtepia) => requests.post<void>(`/shtepia`, shtepia),
+  update: (shtepia: Shtepia) =>
+    requests.put<void>(`/shtepia/${shtepia.shtepiaId}`, shtepia),
+  delete: (shtepiaId: string) =>
+    requests.delete<void>(`/shtepia/${shtepiaId}`),
 };
 
 const Oraret = {
@@ -260,7 +273,20 @@ const LlojiShtepive = {
   delete: (llojiShtepiseId: string) =>
     requests.delete<void>(`/llojishtepise/${llojiShtepiseId}`),
 };
-
+const Rezervimet = {
+  list: () => requests.get<Rezervimi[]>("/rezervimi"),
+  details: (rezervimiId: string) =>
+    requests.get<Rezervimi>(`/rezervimi/${rezervimiId}`),
+  create: (rezervimi: Rezervimi) =>
+    requests.post<void>("/rezervimi", rezervimi),
+  update: (rezervimi: Rezervimi) =>
+    requests.put<void>(
+      `/rezervimi/${rezervimi.rezervimiId}`,
+      rezervimi
+    ),
+  delete: (rezervimiId: string) =>
+    requests.delete<void>(`/rezervimi/${rezervimiId}`),
+};
 const Account = {
   current: () => requests.get<User>("/account"),
   login: (user: UserFormValues) => requests.post<User>("/account/login", user),
@@ -282,6 +308,8 @@ const agent = {
   KohaPuneve,
   Stafii,
   Pamjet,
+  Shtepiat,
+  Rezervimet,
   Kontratat,
   Pajisjet,
   Lagjet,

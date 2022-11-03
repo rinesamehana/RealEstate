@@ -16,9 +16,10 @@ import Navbar from "../../navbar/Navbar2";
 import { Stafi } from "../../../../app/models/Stafi";
 import CSS from "csstype";
 
+
+
 const CardStyles: CSS.Properties = {
   width: "100%",
-
   display: "flex",
   flexWrap: "wrap",
   flexDirection: "row",
@@ -26,9 +27,13 @@ const CardStyles: CSS.Properties = {
   marginBottom: "20px",
   textAlign: "center",
 };
+const select: CSS.Properties = {
+  width: "20%",
+};
+
 export default observer(function StafiForm() {
   const history = useHistory();
-  const { stafiStore } = useStore();
+  const { stafiStore, roliStore, llojiUserStore, kohaPunesStore, gjiniaStore,qytetiStore } = useStore();
   const {
     selectedStafi,
 
@@ -38,6 +43,20 @@ export default observer(function StafiForm() {
     loadStafi,
     loadingInitial,
   } = stafiStore;
+  
+  const { rolet, loadRolet } = roliStore;
+  const { llojetUserit, loadLlojiUserit } = llojiUserStore;
+  const { kohetePunes, loadkohetePunes } = kohaPunesStore;
+  const { gjinite, loadGjinite } = gjiniaStore;
+  const { qytetet, loadQytetet } = qytetiStore;
+  useEffect(() => {
+    loadRolet();
+    loadLlojiUserit();
+    loadkohetePunes();
+    loadGjinite();
+    loadQytetet();
+
+  }, [loadRolet, loadLlojiUserit,loadkohetePunes,loadGjinite,loadQytetet]);
   const { stafiId } = useParams<{ stafiId: string }>();
 
   const [stafi, setStafi] = useState({
@@ -51,7 +70,7 @@ export default observer(function StafiForm() {
     kohaId: "",
     gjiniaId: "",
     qytetiId: "",
-    shtetiId: "",
+ 
     adresa: "",
   });
 
@@ -65,7 +84,7 @@ export default observer(function StafiForm() {
     kohaId: Yup.string().required("Place is required"),
     gjiniaId: Yup.string().required("Place is required"),
     qytetiId: Yup.string().required("Place is required"),
-    shtetiId: Yup.string().required("Place is required"),
+ 
     adresa: Yup.string().required("Place is required"),
   });
   useEffect(() => {
@@ -136,16 +155,93 @@ export default observer(function StafiForm() {
                             name="nrTelefonit"
                             placeholder="NrTelefonit"
                           />
-                          <MyTextInput name="roliId" placeholder="RoliId" />
-                          <MyTextInput
+                          <Field
+                            style={select}
+                            as="select"
+                            name="roliId"
+                            className="Roli"
+                          >
+                            <option placeholder="Zgjedh Rolin "></option>
+
+                            {rolet.map((roli) => (
+                              <option
+                                key={roli.roliId}
+                                value={roli.roliId}
+                              >
+                                {roli.roli}
+                              </option>
+                            ))}
+                          </Field>
+                          <Field
+                            style={select}
+                            as="select"
                             name="llojiUserId"
-                            placeholder="LlojiUserId"
-                          />
-                          <MyTextInput name="kohaId" placeholder="KohaId" />
-                          <MyTextInput name="gjiniaId" placeholder="GjiniaId" />
-                          <MyTextInput name="qytetiId" placeholder="QytetiId" />
-                          <MyTextInput name="shtetiId" placeholder="ShtetiId" />
+                            className="LlojiUserit"
+                          >
+                            <option placeholder="Zgjedh Llojin e Userit "></option>
+
+                            {llojetUserit.map((llojiUser) => (
+                              <option
+                                key={llojiUser.llojiUserId}
+                                value={llojiUser.llojiUserId}
+                              >
+                                {llojiUser.lloji}
+                              </option>
+                            ))}
+                          </Field>
+                          <Field
+                            style={select}
+                            as="select"
+                            name="kohaId"
+                            className="Koha"
+                          >
+                            <option placeholder="Zgjedh Orarin E Punes "></option>
+
+                            {kohetePunes.map((kohaePunes) => (
+                              <option
+                                key={kohaePunes.kohaId}
+                                value={kohaePunes.kohaId}
+                              >
+                                {kohaePunes.koha}
+                              </option>
+                            ))}
+                          </Field>
+                          <Field
+                            style={select}
+                            as="select"
+                            name="gjiniaId"
+                            className="Gjinia"
+                          >
+                            <option placeholder="Zgjedh Gjinine "></option>
+
+                            {gjinite.map((gjinia) => (
+                              <option
+                                key={gjinia.gjiniaId}
+                                value={gjinia.gjiniaId}
+                              >
+                                {gjinia.lloji}
+                              </option>
+                            ))}
+                          </Field>
+                          <Field
+                            style={select}
+                            as="select"
+                            name="qytetiId"
+                            className="Qyteti"
+                          >
+                            <option placeholder="Zgjedh Qytetin "></option>
+
+                            {qytetet.map((qyteti) => (
+                              <option
+                                key={qyteti.qytetiId}
+                                value={qyteti.qytetiId}
+                              >
+                                {qyteti.emri},{qyteti.kodiPostar}
+                              </option>
+                            ))}
+                          </Field>
                           <MyTextInput name="adresa" placeholder="Adresa" />
+                      
                           <Button
                             disable={isSubmitting || !dirty || !isValid}
                             loading={loading}

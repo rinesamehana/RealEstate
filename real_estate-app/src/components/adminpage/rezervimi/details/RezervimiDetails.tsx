@@ -8,13 +8,12 @@ import { useStore } from "../../../../app/stores/store";
 import CSS from "csstype";
 import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar2";
-
 const CardStyles: CSS.Properties = {
   marginLeft: "50px",
   width: "50%",
   display: "flex",
   flexWrap: "wrap",
-  flexDirection: "row",
+
   marginTop: "50px",
   textAlign: "center",
   border: "2px solid gray",
@@ -30,17 +29,21 @@ const CRdStyles: CSS.Properties = {
   textAlign: "center",
   width: "400px",
 };
-export default observer(function StafiDetails() {
-  const { stafiStore } = useStore();
+export default observer(function RezervimiDetails() {
+  const { rezervimiStore } = useStore();
 
-  const { selectedStafi: stafi, loadStafi, loadingInitial } = stafiStore;
-  const { stafiId } = useParams<{ stafiId: string }>();
+  const {
+    selectedRezervimi: rezervimi,
+    loadRezervimin,
+    loadingInitial,
+  } = rezervimiStore;
+  const { rezervimiId } = useParams<{ rezervimiId: string }>();
 
   useEffect(() => {
-    if (stafiId) loadStafi(stafiId);
-  }, [stafiId, loadStafi]);
+    if (rezervimiId) loadRezervimin(rezervimiId);
+  }, [rezervimiId, loadRezervimin]);
 
-  if (loadingInitial || !stafi) return <LoadingComponent />;
+  if (loadingInitial || !rezervimi) return <LoadingComponent />;
   return (
     <div className="new">
       <Sidebar />
@@ -52,49 +55,39 @@ export default observer(function StafiDetails() {
               <h1>Edit</h1>
             </div>
             <Card fluid style={CardStyles}>
-              <Card.Content style={CRStyles}>Emri: {stafi.emri}</Card.Content>
               <Card.Content style={CRStyles}>
-                Mbiemri: {stafi.mbiemri}
-              </Card.Content>
-              <Card.Content style={CRStyles}>Email: {stafi.email}</Card.Content>
-              <Card.Content style={CRStyles}>
-                Phone Number: {stafi.nrTelefonit}
-              </Card.Content>
-              <Card.Content style={CRStyles}>Role: {stafi.roliId}</Card.Content>
-              <Card.Content style={CRStyles}>
-                TypeUser: {stafi.llojiUserId}
+                CheckIn: {rezervimi.check_in}
               </Card.Content>
               <Card.Content style={CRStyles}>
-                Hours: {stafi.kohaId}
+                CheckOut: {rezervimi.check_out}
               </Card.Content>
               <Card.Content style={CRStyles}>
-                Gender: {stafi.gjiniaId}
+                Shtepia: {rezervimi.shtepiaId}
               </Card.Content>
               <Card.Content style={CRStyles}>
-                City: {stafi.qytetiId}
+                Pagesa: {rezervimi.menyraPagesesId}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Kontrata: {rezervimi.kontrataId}
               </Card.Content>
               {/* <Card.Content style={CRStyles}>
-                Country: {stafi.shtetiId}
+                User: {rezervimi.appUserId}
               </Card.Content> */}
-              <Card.Content style={CRStyles}>
-                Address: {stafi.adresa}
-              </Card.Content>
-              <Card.Content style={CRStyles}>
+              <Card.Content>
                 <Button.Group style={CRdStyles}>
                   <Button
                     inverted
                     class="ui inverted blue button"
                     as={Link}
-                    to={`/manageStafi/${stafi.stafiId}`}
+                    to={`/manageRezervimi/${rezervimi.rezervimiId}`}
                     color="blue"
                     content="Edit"
                   />
-
                   <Button
                     inverted
                     class="ui negative basic button"
                     as={Link}
-                    to={`/Stafi`}
+                    to={`/rezervimi`}
                     color="red"
                     content="Cancel"
                   />

@@ -23,8 +23,8 @@ export default observer(function GjiniaDashboard() {
   if (gjiniaStore.loadingInitial) return <LoadingComponent />;
   return (
     <Grid>
-      <Grid.Column width="10">
-        <GjiniaList />
+      <Grid.Column width="13">
+        <GjiniteTable />
       </Grid.Column>
     </Grid>
   );

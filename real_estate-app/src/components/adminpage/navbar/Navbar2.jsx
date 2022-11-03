@@ -1,11 +1,18 @@
 import React from "react";
 import "./Navbar2.scss";
+import { useStore } from "../../../app/stores/store";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import { Button, Menu, Image, Dropdown } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 const Navbar = () => {
+  const { userStore, modalStore } = useStore();
+  const {
+    userStore: { user, logout },
+  } = useStore();
   return (
     <div className="navbarr">
       <div className="wrapperr">
@@ -31,11 +38,30 @@ const Navbar = () => {
             <ListOutlinedIcon className="icon" />
           </div>
           <div className="itemm">
-            <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="profile"
-            />
+          <Dropdown pointing="top right" text={user?.displayName}>
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          position="center"
+                          as={Link}
+                          to={`profile/${user?.username}`}
+                          text="My Profile"
+                          icon="user"
+                          
+                        />
+                        <Dropdown.Item>
+                          <div className="header-button">
+                            <Link to={"/dashboard"}>
+                              <Button type="button" content="MY DASHBOARD" />
+                            </Link>
+                          </div>
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={logout}
+                          text="Logout"
+                          icon="power"
+                        />
+                      </Dropdown.Menu>
+                    </Dropdown>
           </div>
         </div>
       </div>

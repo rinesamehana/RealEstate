@@ -57,16 +57,16 @@ export default observer(function GjiniaDetails() {
               <Card.Content>
                 <Button.Group style={CRdStyles}>
                   <Button
-                    inverted={true}
-                    className="ui inverted blue button"
+                    inverted
+                    class="ui inverted blue button"
                     as={Link}
                     to={`/manage/${gjinia.gjiniaId}`}
                     color="blue"
                     content="Edit"
                   />
                   <Button
-                    inverted={true}
-                    className="ui negative basic button"
+                    inverted
+                    class="ui negative basic button"
                     as={Link}
                     to={`/gjinia`}
                     color="red"

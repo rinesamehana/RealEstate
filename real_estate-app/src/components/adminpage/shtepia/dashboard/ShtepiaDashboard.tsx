@@ -4,22 +4,23 @@ import { Grid } from "semantic-ui-react";
 import LoadingComponent from "../../../../app/axios/LoadingComponent";
 
 import { useStore } from "../../../../app/stores/store";
-import GjendjaList from "./GjendjaList";
+import ShtepiaList from "./ShtepiaList";
 
-export default observer(function GjendjaDashboard() {
-  const { gjendjaStore } = useStore();
-  const { loadGjendjet, gjendjaRegistry } = gjendjaStore;
+
+export default observer(function ShtepiaDashboard() {
+  const { shtepiaStore } = useStore();
+  const { loadShtepite, shtepiaRegistry } = shtepiaStore;
 
   useEffect(() => {
-    if (gjendjaRegistry.size <= 1) loadGjendjet();
-  }, [gjendjaRegistry.size, loadGjendjet]);
+    if (shtepiaRegistry.size <= 1) loadShtepite();
+  }, [shtepiaRegistry.size, loadShtepite]);
 
-  if (gjendjaStore.loadingInitial)
+  if (shtepiaStore.loadingInitial)
     return <LoadingComponent content="Loading..." />;
   return (
     <Grid>
-      <Grid.Column width="13">
-        <GjendjaList />
+      <Grid.Column width="16">
+        <ShtepiaList />
       </Grid.Column>
     </Grid>
   );

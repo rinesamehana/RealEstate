@@ -14,49 +14,63 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import MyTextInput from "../../../../app/common/form1/MyTextInput";
 import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar2";
-import { Gjinia } from "../../../../app/models/Gjinia";
+import { Rezervimi } from "../../../../app/models/Rezervimi";
 
-export default observer(function GjiniaForm() {
+
+export default observer(function RezervimiForm() {
   const history = useHistory();
-  const { gjiniaStore } = useStore();
+  const { rezervimiStore } = useStore();
   const {
-    selectedGjinia,
+    selectedRezervimi,
 
-    createGjini,
-    updateGjinia,
+    createRezervimin,
+    updateRezervimin,
     loading,
-    loadGjini,
+    loadRezervimin,
     loadingInitial,
-  } = gjiniaStore;
-  const { id } = useParams<{ id: string }>();
+  } = rezervimiStore;
+  const { rezervimiId } = useParams<{ rezervimiId: string }>();
 
-  const [gjinia, setGjinia] = useState({
-    gjiniaId: "",
-    lloji: "",
+  const [rezervimi, setRezervimin] = useState({
+    rezervimiId: "",
+    check_in: "",
+    check_out: "",
+    shtepiaId: "",
+    menyraPagesesId: "",
+    kontrataId: "",
+ 
   });
 
   const validationSchema = Yup.object({
-    lloji: Yup.string().required("Place is required"),
+    check_in: Yup.string().required("Place is required"),
+    check_out: Yup.string().required("Place is required"),
+    shtepiaId: Yup.string().required("Place is required"),
+    menyraPagesesId: Yup.string().required("Place is required"),
+    kontrataId: Yup.string().required("Place is required"),
+  
   });
   useEffect(() => {
-    if (id) loadGjini(id).then((gjinia) => setGjinia(gjinia!));
-  }, [id, loadGjini]);
+    if (rezervimiId)
+    loadRezervimin(rezervimiId).then((rezervimi) => setRezervimin(rezervimi!));
+  }, [rezervimiId, loadRezervimin]);
 
-  function handleFormSubmit(gjinia: Gjinia) {
-    if (gjinia.gjiniaId.length === 0) {
-      let newGjini = {
-        ...gjinia,
-        gjiniaId: uuid(),
+  function handleFormSubmit(rezervimi: Rezervimi) {
+    if (rezervimi.rezervimiId.length === 0) {
+      let newRezervim = {
+        ...rezervimi,
+        rezervimiId: uuid(),
       };
-      createGjini(newGjini).then(() =>
-        history.push(`gjinia/${newGjini.gjiniaId}`)
+      createRezervimin(newRezervim).then(() =>
+        history.push(`rezervimi/${newRezervim.rezervimiId}`)
       );
     } else {
-      updateGjinia(gjinia).then(() =>
-        history.push(`/gjinia/${gjinia.gjiniaId}`)
+      updateRezervimin(rezervimi).then(() =>
+        history.push(`/rezervimi/${rezervimi.rezervimiId}`)
       );
     }
   }
+
+
 
   if (loadingInitial) return <LoadingComponent content="Loading" />;
   return (
@@ -74,34 +88,54 @@ export default observer(function GjiniaForm() {
                 <div className="formInput">
                   <Segment clearing>
                     <Formik
-                      key={gjinia.gjiniaId}
                       validationSchema={validationSchema}
                       enableReinitialize
-                      initialValues={gjinia}
+                      initialValues={rezervimi}
                       onSubmit={(value) => handleFormSubmit(value)}
                     >
                       {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                         <Form
-                        key={gjinia.gjiniaId}
                           className="ui-form"
                           onSubmit={handleSubmit}
                           autoComplete="off"
                         >
-                          <MyTextInput name="lloji" placeholder="Gjinia" />
+                       
+                           <MyTextInput
+                            name="check_in"
+                            placeholder="CheckIn"
+                          />
+                           <MyTextInput
+                            name="check_out"
+                            placeholder="CheckOut"
+                          />
+                           <MyTextInput
+                            name="shtepiaId"
+                            placeholder="Shtepia"
+                          />
+                           <MyTextInput
+                            name="menyraPagesesId"
+                            placeholder="Pagesa"
+                          />
+                           <MyTextInput
+                            name="kontrataId"
+                            placeholder="Kontrata"
+                          />
+                           {/* <MyTextInput
+                            name="appUserId"
+                            placeholder="AppUser"
+                          /> */}
                           <Button
                             disable={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated="right"
                             positive
-                            inverted
                             type="submit"
                             content="Submit"
                           />
                           <Button
                             as={Link}
-                            to="/gjinia"
+                            to="/rezervimi"
                             floated="right"
-                      
                             type="button"
                             content="Cancel"
                           />
@@ -109,12 +143,12 @@ export default observer(function GjiniaForm() {
                       )}
                     </Formik>
                   </Segment>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 });

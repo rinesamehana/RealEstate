@@ -12,6 +12,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -22,6 +23,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Persistence;
+using Domain;
 
 namespace API
 {
@@ -36,18 +38,35 @@ namespace API
 
         // This method gets called by the runtime. Use this method to add services to the container.
 
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
-               services.AddControllers(opt =>
-             {
-             var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-             opt.Filters.Add(new AuthorizeFilter(policy));
-             }).AddFluentValidation(config =>
-            {
-                config.RegisterValidatorsFromAssemblyContaining<Create>();
-            });
-         
+
+
+
+            services.AddControllers(opt =>
+          {
+              var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+              opt.Filters.Add(new AuthorizeFilter(policy));
+          }).AddFluentValidation(config =>
+         {
+             config.RegisterValidatorsFromAssemblyContaining<Create>();
+         });
+
+            //           options.Password.RequireDigit = true;
+            // options.Password.RequireLowercase = true;
+            // options.Password.RequireNonAlphanumeric = true;
+            // options.Password.RequireUppercase = true;
+            // options.Password.RequiredLength = 6;
+            // options.Password.RequiredUniqueChars = 1;
+
+            // services.AddIdentity<AppUser, IdentityRole>(opt =>
+            // {
+            // opt.Password.RequireDigit = true;
+            // })
+            // .AddEntityFrameworkStores<DataContext>()
+            // .AddSignInManager<SignInManager<AppUser>>();
+
 
             services.AddControllers().AddFluentValidation(config =>
             {
@@ -80,14 +99,14 @@ namespace API
             app.UseStaticFiles();
 
             app.UseCors("CorsPolicy");
-            
+
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-             
+
             });
         }
     }
