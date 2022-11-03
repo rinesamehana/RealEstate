@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
-import { Button, Menu, Image, Dropdown } from "semantic-ui-react";
+import { Button, Menu, Image, Dropdown, Header } from "semantic-ui-react";
 import { useStore } from "../../app/stores/store";
 import LoginForm from "../users/LoginForm";
 import RegisterForm from "../users/RegisterForm";
-
+import HeaderButton from "./HeaderButton";
 import "./navbar.css";
 
 export default observer(function Navbar() {
@@ -24,13 +24,14 @@ export default observer(function Navbar() {
         <div className="header-container">
           <nav className="nav">
             <div className="header-top">
+            <HeaderButton></HeaderButton>
               <div className="info">
-                <p>200-444-2232</p>
-              </div>{" "}
+              </div>{""}
               <div className="header-button">
                 {userStore.isLoggedIn ? (
                   <Menu.Item position="left">
                     <Image
+                    
                       src={
                         user?.image ||
                         "https://image.shutterstock.com/image-vector/thin-line-user-icon-on-260nw-519039097.jpg"

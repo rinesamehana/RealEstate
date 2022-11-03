@@ -8,7 +8,6 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { faPerson } from "@fortawesome/free-solid-svg-icons";
 import { DateRange } from "react-date-range";
 import { useState } from "react";
-
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
@@ -50,7 +49,7 @@ export const Header = ({ type }) => {
       };
     });
   };
-
+ 
   const handleSearch = () => {
     history.push("/houses", { state: { destination, date, options } });
   };
