@@ -5,5 +5,4 @@ export interface Rezervimi {
     shtepiaId: string;
     menyraPagesesId: string;
     kontrataId: string;
-    
   }

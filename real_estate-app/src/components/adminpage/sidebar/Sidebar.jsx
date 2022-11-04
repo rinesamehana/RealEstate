@@ -64,7 +64,7 @@ const Sidebar = () => {
               <span>Houses</span>
             </li>
           </Link>
-          <Link to="/bookings" style={{ textDecoration: "none" }}>
+          <Link to="/rezervimi" style={{ textDecoration: "none" }}>
             <li>
               <EventAvailableIcon className="icon" />
               <span>Bookings</span>

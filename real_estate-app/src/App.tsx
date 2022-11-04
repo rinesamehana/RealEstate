@@ -56,6 +56,7 @@ import StafiForm from "./components/adminpage/stafi/form/StafiForm";
 import Home from "./pages/home/Home";
 import House from "./pages/house/House";
 import List from "./pages/list/List";
+
 import { useStore } from "./app/stores/store";
 import { useEffect } from "react";
 import LoadingComponent from "./app/axios/LoadingComponent";
@@ -91,6 +92,7 @@ import ShtepiaAPI from "./app/axios/ShtepiaAPI";
 import RezervimiAPI from "./app/axios/RezervimiAPI";
 import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
 import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
+import { Listt } from "./pages";
 
 function App() {
   const location = useLocation();
@@ -128,46 +130,46 @@ function App() {
   ];
   
 
-  useEffect(() => {
-    if (commonStore.token) {
-      userStore.getUser().finally(() => commonStore.setAppLoaded());
-    } else {
-      commonStore.setAppLoaded();
-    }
-  }, [commonStore, userStore]);
+  // useEffect(() => {
+  //   if (commonStore.token) {
+  //     userStore.getUser().finally(() => commonStore.setAppLoaded());
+  //   } else {
+  //     commonStore.setAppLoaded();
+  //   }
+  // }, [commonStore, userStore]);
 
 
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    setFavorites(data);
-  }, []);
+  // useEffect(() => {
+  //   setFavorites(data);
+  // }, []);
 
-  function handleFavorite(id) {
-    const newFavorites = favorites.map(item => {
-      return item.id === id ? { ...item, favorite: !item.favorite } : item;
-    });
+  // function handleFavorite(id) {
+  //   const newFavorites = favorites.map(item => {
+  //     return item.id === id ? { ...item, favorite: !item.favorite } : item;
+  //   });
 
-    setFavorites(newFavorites);
-  }
+  //   setFavorites(newFavorites);
+  // }
 
 
-  if (!commonStore.appLoaded) return <LoadingComponent content="Loading..." />;
+  // if (!commonStore.appLoaded) return <LoadingComponent content="Loading..." />;
 
   return (
     <>
       <ToastContainer position="bottom-right" />
 
       <Switch>
-        <Route path='/favorite'><HouseItem  favorites={favorites} handleFavorite={handleFavorite}/>  </Route>
+        {/* <Route path='/favorite'><HouseItem  favorites={favorites} handleFavorite={handleFavorite}/>  </Route> */}
         <Route exact path="/" component={Home} />
         <Route path="/houses/:id" component={House} />
-        <Route path="/houses" >
-          <List favorites={favorites} handleFavorite={handleFavorite} /> 
+        <Route path="/houses" component={Listt} >
+          {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
         </Route>
         <Route path="/dashboard" component={Dashboard} />
 
-        <Route path="/users" component={List} />
+        {/* <Route path="/users" component={List} /> */}
         <Route path="/login" component={LoginForm} />
         <Route path="/register" component={RegisterForm} />
         <Route

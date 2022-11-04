@@ -6,6 +6,12 @@ const List = () => {
   return (
     <div>
       <Navbar />
+
+      <div className="container-list">
+      <div className="search-box">
+        fdgfgd
+      </div>
+      
       <div className="lists1">
         <div className="list1">
           <div className="home1">
@@ -46,7 +52,7 @@ const List = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></div>
   );
 };
 

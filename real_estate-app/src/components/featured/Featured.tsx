@@ -9,27 +9,32 @@ const Featured = () => {
             <div className="heading">
               <h2>Who's Who in Real Estate</h2>
             </div>
+            </div>
             <div className="otherheading">
               <div className="item">
-                <h3>Number 4</h3>
-                <span>Portal for Luxury</span>
-                <span>Properties on the Web</span>
+                <h3>1,412</h3>
+                <span>Homes for sale</span>
+            
               </div>
               <div className="item">
-                <h3>130K+</h3>
-                <span>Collective</span>
-                <span>Professionals</span>
+                <h3>76</h3>
+                <span>Open houses</span>
+           
               </div>
               <div className="item">
-                <h3>$190B+</h3>
-                <span>Real-Estate</span>
-                <span>Sold Annually</span>
+                <h3>4193</h3>
+                <span>Recently sold</span>
+         
+              </div>
+              <div className="item">
+                <h3>276</h3>
+                <span>Price reduced</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 

@@ -5,6 +5,7 @@ import CSS from "csstype";
 const LabelStyle: CSS.Properties = {
   width: "310px",
   padding: "10px",
+marginBottom:"5px"
 };
 interface Props {
   placeholder: string;

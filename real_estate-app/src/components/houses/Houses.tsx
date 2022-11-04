@@ -43,6 +43,16 @@ const Houses = () => {
         title="Home"
         description="Baked Cod with Vegetables. 30 minute meal!"
       />
+      <Card
+        img="https://th.bing.com/th/id/OIP.uOkJALzfYQ2g0tOZZ-ASugHaFj?pid=ImgDet&rs=1"
+        title="Home"
+        description="Baked Cod with Vegetables. 30 minute meal!"
+      />
+      <Card
+        img="https://th.bing.com/th/id/OIP.uOkJALzfYQ2g0tOZZ-ASugHaFj?pid=ImgDet&rs=1"
+        title="Home"
+        description="Baked Cod with Vegetables. 30 minute meal!"
+      />
     
     </div>
   );
@@ -85,7 +95,7 @@ function Card(props: any) {
                   <br />
                 </div>
                 <div className="buttonn1">
-                  <Button type="submit" content="Book Now" />
+                  <Button type="submit" content="Book" />
                 </div>
               </div>
             </div>
