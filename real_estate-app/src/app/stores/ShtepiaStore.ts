@@ -25,6 +25,7 @@ export default class ShtepiaStore {
   setLoadingInitial = (state: boolean) => {
     this.loadingInitial = state;
   };
+  
   loadShtepite = async () => {
     this.loadingInitial = true;
     try {

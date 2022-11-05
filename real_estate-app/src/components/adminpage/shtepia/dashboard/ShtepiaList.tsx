@@ -9,12 +9,13 @@ import { observer } from "mobx-react-lite";
 import React, { SyntheticEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Item, Segment, Table } from "semantic-ui-react";
+import GjendjaStore from "../../../../app/stores/GjendjaStore";
 
 import { useStore } from "../../../../app/stores/store";
 
 export default observer(function ShtepiaList() {
   const [target, setTarget] = useState("");
-
+  
   function handleShtepiaDelete(
     e: SyntheticEvent<HTMLButtonElement>,
     shtepiaId: string
@@ -23,6 +24,8 @@ export default observer(function ShtepiaList() {
     deleteShtepi(shtepiaId);
   }
 
+  
+ 
   const { shtepiaStore } = useStore();
   const { deleteShtepi, shtepiat, loading } = shtepiaStore;
   return (
@@ -90,7 +93,7 @@ export default observer(function ShtepiaList() {
                  <TableCell className="tableCell">
                 {shtepia.lagjjaId}
               </TableCell>
-                 <TableCell className="tableCell">
+                 <TableCell className="tableCell" >
                 {shtepia.llojiShtepiseId}
               </TableCell>
                  <TableCell className="tableCell">

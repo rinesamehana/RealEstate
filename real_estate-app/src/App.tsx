@@ -92,7 +92,13 @@ import ShtepiaAPI from "./app/axios/ShtepiaAPI";
 import RezervimiAPI from "./app/axios/RezervimiAPI";
 import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
 import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
+// import { Listt } from "./pages";
+import housepage from "./pages/housespage/housepage";
 import { Listt } from "./pages";
+
+
+
+
 
 function App() {
   const location = useLocation();
@@ -165,6 +171,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/houses/:id" component={House} />
         <Route path="/houses" component={Listt} >
+          
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
         </Route>
         <Route path="/dashboard" component={Dashboard} />
