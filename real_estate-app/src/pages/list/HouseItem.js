@@ -1,6 +1,7 @@
 
 import List from "./List";
 import ButtonI from "./Button/Button";
+
 const HouseItem = (props) => {
   const {favorites, handleFavorite} = props;
     
@@ -29,6 +30,7 @@ const HouseItem = (props) => {
                <br /> {item.place}
              </div>
              <div className="buttonn1">
+               <ButtonI type="submit" content="Submit" onClick={() => {
              handleFavorite(item.id);
            }}  >{item.favorite === true ? "Remove" : "Add"}</ButtonI>
              </div>
