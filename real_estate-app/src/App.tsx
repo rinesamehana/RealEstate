@@ -95,6 +95,7 @@ import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
 // import { Listt } from "./pages";
 import housepage from "./pages/housespage/housepage";
 import { Listt } from "./pages";
+import  { neighborhood }  from "./pages";
 
 
 
@@ -170,10 +171,11 @@ function App() {
         {/* <Route path='/favorite'><HouseItem  favorites={favorites} handleFavorite={handleFavorite}/>  </Route> */}
         <Route exact path="/" component={Home} />
         <Route path="/houses/:id" component={House} />
-        <Route path="/houses" component={Listt} >
+        <Route path="/houses" component={Listt} />
+        <Route path="/neighborhood" component={neighborhood} />
           
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
-        </Route>
+        
         <Route path="/dashboard" component={Dashboard} />
 
         {/* <Route path="/users" component={List} /> */}

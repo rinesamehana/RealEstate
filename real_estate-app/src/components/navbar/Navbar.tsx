@@ -91,7 +91,9 @@ export default observer(function Navbar() {
               </Link>
 
               <li>CITIES</li>
+              <Link to="/neighborhood" className="link">
               <li>NEIGHBORHOODS</li>
+              </Link>
               <li>OUR TEAM</li>
             </ul>
           </nav>

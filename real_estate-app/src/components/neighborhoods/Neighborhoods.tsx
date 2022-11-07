@@ -1,5 +1,6 @@
 import React from "react";
 import "./neighborhoods.css";
+import { Link } from "react-router-dom";
 
 const neighborhoods = () => {
   return (
@@ -82,10 +83,11 @@ const neighborhoods = () => {
           </div>
         </div>
       </div>
+      <Link to= "/neighborhood">
       <div className="seemore">
       <p>See others</p>
       </div>
-        
+    </Link>
     </div>
   );
 };
