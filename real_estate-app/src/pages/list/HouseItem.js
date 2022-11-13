@@ -1,6 +1,7 @@
 
 import List from "./List";
 import ButtonI from "./Button/Button";
+
 const HouseItem = (props) => {
   const {favorites, handleFavorite} = props;
     

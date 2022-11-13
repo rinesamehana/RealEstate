@@ -7,7 +7,7 @@ import Widgets from "../../../components/adminpage/widgets/Widgets";
 import Featured from "../../../components/adminpage/featured/featured";
 import Chart from "../../../components/adminpage/chart/Chart";
 import Table from "../../../components/adminpage/tables/Table";
-const Home = () => {
+const Dashboard = () => {
   return (
     <div className="homee">
       <Sidebar />
@@ -32,4 +32,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

@@ -93,9 +93,12 @@ import RezervimiAPI from "./app/axios/RezervimiAPI";
 import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
 import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
 // import { Listt } from "./pages";
-
 import { Listt} from "./pages";
 import HouseId from "./pages/house/HouseId";
+import neighborhood from "./pages/neighborhood/neighborhood";
+import housepage from "./pages/housespage/housepage";
+
+
 
 
 
@@ -176,9 +179,11 @@ function App() {
         {/* <Route path="/search" component={Search} /> */}
         <Route path="/houses" component={Listt} >
   
+    
+        <Route path="/neighborhood" component={neighborhood} />
           
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
-        </Route>
+        
         <Route path="/dashboard" component={Dashboard} />
 
         {/* <Route path="/users" component={List} /> */}

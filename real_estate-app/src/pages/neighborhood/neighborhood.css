@@ -1,0 +1,53 @@
+.neighborhood {
+    width: 100%;
+    height: auto;
+    cursor: pointer; 
+    margin-top: 4px;
+  }
+
+  .neighborhood  .title {
+    margin-left: 37%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  .title h1{
+    font-size: 45px;
+    color: black;
+  }
+
+  .featured{
+    width: 90%;
+    margin-left: 70px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 2px 4px 10px 1px rgba(15, 15, 15, 0.47);
+    z-index: -1;
+  }
+
+  .featuredItem {
+    margin: 5px;
+    position: relative;
+    border-radius: 5px ;
+    overflow: hidden;
+    height: 300px;
+    flex: 1;
+  }
+ 
+  .featuredItem img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+  }
+
+  .featuredTitles {
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .featuredTitles p, h1{
+    font-size: 23px;
+    color: white;
+  }
