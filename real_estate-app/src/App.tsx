@@ -54,7 +54,7 @@ import StafiAPI from "./app/axios/StafiAPI";
 import StafiDetails from "./components/adminpage/stafi/details/StafiDetails";
 import StafiForm from "./components/adminpage/stafi/form/StafiForm";
 import Home from "./pages/home/Home";
-import House from "./pages/house/House";
+import House from "./pages/house/HouseId";
 import List from "./pages/list/List";
 
 import { useStore } from "./app/stores/store";
@@ -93,8 +93,10 @@ import RezervimiAPI from "./app/axios/RezervimiAPI";
 import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
 import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
 // import { Listt } from "./pages";
-import housepage from "./pages/housespage/housepage";
-import { Listt } from "./pages";
+
+import { Listt} from "./pages";
+import HouseId from "./pages/house/HouseId";
+
 
 
 
@@ -169,8 +171,11 @@ function App() {
       <Switch>
         {/* <Route path='/favorite'><HouseItem  favorites={favorites} handleFavorite={handleFavorite}/>  </Route> */}
         <Route exact path="/" component={Home} />
-        <Route path="/houses/:id" component={House} />
+        <Route path="/houses/:shtepiaId" component={HouseId} />
+      
+        {/* <Route path="/search" component={Search} /> */}
         <Route path="/houses" component={Listt} >
+  
           
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
         </Route>

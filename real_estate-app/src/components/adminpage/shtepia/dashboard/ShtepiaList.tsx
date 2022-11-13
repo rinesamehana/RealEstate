@@ -40,22 +40,25 @@ export default observer(function ShtepiaList() {
       </div>
       <Table sx={{ minWidth: 700 }} aria-label="simple table">
         <TableHead></TableHead>
-        <TableRow>
+        <TableRow style={{height:"40"}}>
           <TableCell className="tableCell">ID</TableCell>
-          <TableCell className="tableCell">Shtepia</TableCell>
           <TableCell className="tableCell">Photourl</TableCell>
-          <TableCell className="tableCell">cmimi</TableCell>
-          <TableCell className="tableCell">lokacioni</TableCell>
-          <TableCell className="tableCell">nrDhomave</TableCell>
-          <TableCell className="tableCell">nrBanjove</TableCell>
-          <TableCell className="tableCell">siperfaqja</TableCell>
-          <TableCell className="tableCell">pershkrimi</TableCell>
-          <TableCell className="tableCell">lagjjaId</TableCell>
-          <TableCell className="tableCell">llojiShtepiseId</TableCell>
-          <TableCell className="tableCell">gjendjaShtepiseId</TableCell>
-          <TableCell className="tableCell">pamjaId</TableCell>
-          <TableCell className="tableCell">kafshetId</TableCell>
-          <TableCell className="tableCell">stafiId</TableCell>
+          <TableCell className="tableCell">Photourl2</TableCell>
+          <TableCell className="tableCell">Photourl3</TableCell>
+          <TableCell className="tableCell">Photourl4</TableCell>
+          <TableCell className="tableCell">Shtepia</TableCell>
+          <TableCell className="tableCell">Cmimi</TableCell>
+          <TableCell className="tableCell">Lokacioni</TableCell>
+          <TableCell className="tableCell">NrDhomave</TableCell>
+          <TableCell className="tableCell">NrBanjove</TableCell>
+          <TableCell className="tableCell">Siperfaqja</TableCell>
+          <TableCell className="tableCell">Pershkrimi</TableCell>
+          <TableCell className="tableCell">LagjjaId</TableCell>
+          <TableCell className="tableCell">LlojiShtepiseId</TableCell>
+          <TableCell className="tableCell">GjendjaShtepiseId</TableCell>
+          <TableCell className="tableCell">PamjaId</TableCell>
+          <TableCell className="tableCell">KafshetId</TableCell>
+          <TableCell className="tableCell">StafiId</TableCell>
           
           <TableCell className="tableCell"></TableCell>
         </TableRow>
@@ -64,12 +67,20 @@ export default observer(function ShtepiaList() {
           {shtepiat.map((shtepia) => (
             <TableRow key={shtepia.shtepiaId}>
               <TableCell className="tableCell">{shtepia.shtepiaId}</TableCell>
-
               <TableCell className="tableCell">
-                {shtepia.titulli}
+                {shtepia.photo}
+              </TableCell>
+              <TableCell className="tableCell" style={{width:"100"}}>
+                {shtepia.photo2}
               </TableCell>
               <TableCell className="tableCell">
-                {shtepia.photourl}
+                {shtepia.photo3}
+              </TableCell>
+              <TableCell className="tableCell">
+                {shtepia.photo4}
+              </TableCell>
+              <TableCell className="tableCell">
+                {shtepia.titulli}
               </TableCell>
               <TableCell className="tableCell">
                 {shtepia.cmimi}
@@ -89,8 +100,7 @@ export default observer(function ShtepiaList() {
               <TableCell className="tableCell">
                 {shtepia.pershkrimi}
               </TableCell>
-
-                 <TableCell className="tableCell">
+              <TableCell className="tableCell">
                 {shtepia.lagjjaId}
               </TableCell>
                  <TableCell className="tableCell" >

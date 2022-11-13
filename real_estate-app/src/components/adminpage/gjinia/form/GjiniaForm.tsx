@@ -15,6 +15,8 @@ import MyTextInput from "../../../../app/common/form1/MyTextInput";
 import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar2";
 import { Gjinia } from "../../../../app/models/Gjinia";
+import MySelectInput from "../../../../app/common/form1/MySelectInput";
+import { categoryOptions } from "../../../../app/common/form1/options/CategoryOptions";
 
 export default observer(function GjiniaForm() {
   const history = useHistory();
@@ -88,6 +90,7 @@ export default observer(function GjiniaForm() {
                           autoComplete="off"
                         >
                           <MyTextInput name="lloji" placeholder="Gjinia" />
+                         
                           <Button
                             disable={isSubmitting || !dirty || !isValid}
                             loading={loading}

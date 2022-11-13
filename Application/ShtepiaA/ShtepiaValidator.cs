@@ -7,7 +7,7 @@ namespace Application.ShtepiaA
     {
         public ShtepiaValidator()
         {
-            RuleFor(x => x.PhotoUrl).NotEmpty();
+            // RuleFor(x => x.files).NotEmpty();
             RuleFor(x => x.Lokacioni).NotEmpty();
             RuleFor(x => x.Cmimi).NotEmpty();
             RuleFor(x => x.NrDhomave).NotEmpty();

@@ -64,6 +64,8 @@ namespace Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            
+
             //One to many(shteti dhe qyteti)
             base.OnModelCreating(modelBuilder);
 

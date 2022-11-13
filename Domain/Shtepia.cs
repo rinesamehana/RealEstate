@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Domain
 {
@@ -13,13 +14,16 @@ namespace Domain
     {
         [Key]
         public Guid ShtepiaId { get; set; }
-
-        public string PhotoUrl {get;set;}
-
-        public string Lokacioni { get; set; } = string.Empty;
+     
+        public string Photo {get;set;}
+         public string Photo2 {get;set;}
+         public string Photo3 {get;set;}
+         public string Photo4 {get;set;}
 
         public string Titulli {get;set;}
         public string Cmimi {get;set;}
+
+         public string Lokacioni { get; set; } = string.Empty;
 
         public string NrDhomave {get;set;}
 

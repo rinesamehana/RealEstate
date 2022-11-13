@@ -6,17 +6,35 @@ import { useHistory } from "react-router";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import { useFocusEffect } from "@react-navigation/native";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
 
 export default observer(function List() {
   const history = useHistory();
   const { shtepiaStore } = useStore();
   const { shtepiat, loadShtepite } = shtepiaStore;
+// function durationSlider(){
+//   var count=0;
+// setInterval(function(){
+//   count+=1;
+//   if(count>=20)
+//   count=0;
+// },50000);
+// }
+
+
+
+
 
   useEffect(() => {
-    loadShtepite();
-  }, [loadShtepite]);
 
+    loadShtepite();
+ 
+}, [loadShtepite]);
+      
+   
+ 
+ 
   return (
     <>
     <Navbar />
@@ -28,7 +46,9 @@ export default observer(function List() {
               <div className="list1">
                 <div className="home1">
                   <div className="image1">
-                    <img src="https://ap.rdcpix.com/cf7538d7dac381b193d098558847159al-m3899297336od-w480_h360_x2.webp" />
+                 <Link to={`/houses/${shtepia.shtepiaId}`}>
+                    <img src={shtepia.photo}/>
+                    </Link>
                     <div className="button_Add1">
                       <Button>
                         <BsHeart
@@ -50,12 +70,12 @@ export default observer(function List() {
                     </div>
                     <div className="details_3thd1">
                       {" "}
-                      <span>{shtepia.nrBanjove}</span> bed <span>1</span> bath <span>729</span>{" "}
+                      <span>{shtepia.nrDhomave}</span> bed <span>{shtepia.nrBanjove}</span> bath <span>{shtepia.siperfaqja}</span>{" "}
                       sqf
                     </div>
                     <div className="details_4rth1">
                     <div className="location1">
-                        {shtepia.lagjjaId}
+                        {/* {shtepia.lagjjaId} */}
                         323-329 Centre St Unit 201
                         <br /> Jamaica Plaim
                       </div>

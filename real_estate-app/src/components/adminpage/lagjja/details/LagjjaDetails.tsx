@@ -31,6 +31,8 @@ const CRdStyles: CSS.Properties = {
   width: "400px",
 };
 export default observer(function LagjjaDetails() {
+
+  
   const { lagjjaStore , qytetiStore} = useStore();
 
   const { selectedLagje: lagjja, loadLagje, loadingInitial } = lagjjaStore;
@@ -44,8 +46,12 @@ export default observer(function LagjjaDetails() {
   useEffect(()=>{
     loadQytetet();
   },[loadQytetet])
+
+
+
   if (loadingInitial || !lagjja) return <LoadingComponent />;
   return (
+    
     <div className="new">
       <Sidebar />
       <div className="newContainer">
@@ -80,6 +86,7 @@ export default observer(function LagjjaDetails() {
                     color="red"
                     content="Cancel"
                   />
+                  
                 </Button.Group>
               </Card.Content>
             </Card>

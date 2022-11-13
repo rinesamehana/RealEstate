@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
 import { ChangeEvent } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { Button, FormField, Item, Label, Segment } from "semantic-ui-react";
+import { Button, FormField, Input, Item, Label, Segment } from "semantic-ui-react";
 import LoadingComponent from "../../../../app/axios/LoadingComponent";
 import { useStore } from "../../../../app/stores/store";
 import { v4 as uuid } from "uuid";
@@ -15,6 +15,8 @@ import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar2";
 import { Shtepia } from "../../../../app/models/Shtepia";
 import CSS from "csstype";
+import { fileURLToPath } from "url";
+
 
 
 const CardStyles: CSS.Properties = {
@@ -55,7 +57,10 @@ export default observer(function ShtepiaForm() {
 
   const [shtepia, setShtepia] = useState({
     shtepiaId: "",
-    photourl: "",
+    photo: "",
+    photo2: "",
+    photo3: "",    
+    photo4: "",
     titulli: "",
     cmimi: "",
     lokacioni: "",
@@ -71,8 +76,12 @@ export default observer(function ShtepiaForm() {
     stafiId: "",
   });
 
+  
   const validationSchema = Yup.object({
-    photourl: Yup.string().required("Place is required"),
+    photo: Yup.string().required("Place is required"),
+    photo2: Yup.string().required("Place is required"),
+    photo3: Yup.string().required("Place is required"),
+    photo4: Yup.string().required("Place is required"),
     titulli: Yup.string().required("Place is required"),
     cmimi: Yup.string().required("Place is required"),
     lokacioni: Yup.string().required("Place is required"),
@@ -104,7 +113,9 @@ export default observer(function ShtepiaForm() {
       let newShtepi = {
         ...shtepia,
         shtepiaId: uuid(),
+       
       };
+      
       createShtepi(newShtepi).then(() =>
         history.push(`shtepia/${newShtepi.shtepiaId}`)
       );
@@ -113,8 +124,9 @@ export default observer(function ShtepiaForm() {
         history.push(`/shtepia/${shtepia.shtepiaId}`)
       );
     }
-  }
 
+  }
+ 
 
 
   if (loadingInitial) return <LoadingComponent content="Loading" />;
@@ -136,23 +148,50 @@ export default observer(function ShtepiaForm() {
                       validationSchema={validationSchema}
                       enableReinitialize
                       initialValues={shtepia}
-                      onSubmit={(value) => handleFormSubmit(value)}
+                      onSubmit={(value) => {
+                        handleFormSubmit(value)
+                      }}
                     >
-                      {({ handleSubmit, isValid, isSubmitting, dirty }) => (
+                      {({  handleSubmit, isValid, isSubmitting, dirty  }) => (
+                        
                         <Form
                           className="ui-form"
                           onSubmit={handleSubmit}
                           autoComplete="off"
                         >
-                         
+                    
+                        <MyTextInput
+                           type="string"
+                            name="photo"
+                            placeholder="photo"
+                          />
+                           <MyTextInput
+                           type="string"
+                            name="photo2"
+                            placeholder="photo"
+                          />
+                           <MyTextInput
+                           type="string"
+                            name="photo3"
+                            placeholder="photo"
+                          />
+                           <MyTextInput
+                           type="string"
+                            name="photo4"
+                            placeholder="photo"
+                          />
+                   
+                           
+
                            <MyTextInput
                             name="titulli"
-                            placeholder="Titulli"
-                          />
-                           <MyTextInput
+                            placeholder="titulli"
+                          /> 
+                          {/* <MyTextInput type="file" placeholder="photo" name="photo" /> */}
+                           {/* <MyTextInput
                             name="photourl"
                             placeholder="Photourl"
-                          />
+                          /> */}
                            <MyTextInput
                             name="cmimi"
                             placeholder="Cmimi"

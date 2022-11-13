@@ -320,28 +320,16 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("Check_out")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Emri")
-                        .HasColumnType("TEXT");
-
                     b.Property<bool>("IsCancelled")
                         .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("KontrataId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Mbiemri")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid?>("MenyraPagesesId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NrTelefonit")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid?>("ShtepiaId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("email")
                         .HasColumnType("TEXT");
 
                     b.HasKey("RezervimiId");
@@ -427,7 +415,16 @@ namespace Persistence.Migrations
                     b.Property<string>("Pershkrimi")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PhotoUrl")
+                    b.Property<string>("Photo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Photo2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Photo3")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Photo4")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("QytetiId")

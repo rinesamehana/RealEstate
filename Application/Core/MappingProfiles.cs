@@ -39,9 +39,10 @@ namespace Application.Core
                   .ForMember(e => e.HostUsername, o => o.MapFrom(s=> s.Attendees
                   .FirstOrDefault(x => x.IsHost).AppUser.UserName));
            
-            CreateMap<RezervimiAttendee, Profiles.Profile>()
+            CreateMap<RezervimiAttendee, AttendeeDto>()
                  .ForMember(e => e.DisplayName, o => o.MapFrom(s => s.AppUser.DisplayName))
-                 .ForMember(e => e.Username, o => o.MapFrom(s => s.AppUser.UserName));
+                 .ForMember(e => e.Username, o => o.MapFrom(s => s.AppUser.UserName))
+                .ForMember(d => d.Image, o => o.MapFrom(s => s.AppUser.Photos.FirstOrDefault(x => x.IsMain).Url));  
                 //   .ForMember(e => e.Bio, o => o.MapFrom(s => s.AppUser.Bio));
 
 
