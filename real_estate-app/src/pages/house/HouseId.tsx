@@ -66,7 +66,7 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial } = shtepiaStore;
       <div className="houseContainer">
         <div className="houseWrapper">
           <h1 className="houseTitle">Tower Street Apartments</h1>
-          <div className="details">
+          <div className="houseDetailsPrice">
           <h1>$100.000</h1>
         </div>
            <ul className="list">

@@ -177,7 +177,7 @@ function App() {
         <Route path="/houses/:shtepiaId" component={HouseId} />
       
         {/* <Route path="/search" component={Search} /> */}
-        <Route path="/houses" component={Listt} >
+        <Route path="/houses" component={Listt} />
   
     
         <Route path="/neighborhood" component={neighborhood} />

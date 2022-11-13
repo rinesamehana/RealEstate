@@ -1,5 +1,4 @@
-import { FileReadResult } from "fs/promises";
-import { UploadedFile } from "./UploadedFile";
+
 
 export interface Shtepia {
     shtepiaId: string;
