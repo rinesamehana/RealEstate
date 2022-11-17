@@ -14,13 +14,11 @@ import Partners from "../../components/partners/Partners";
 import PropertyList from "../../components/propertyList/PropertyList";
 import List from "../list/List";
 
-
 export default observer(function housepage() {
   return (
     <div>
       <Navbar />
-        <List />
-      </div>
- 
+      <List />
+    </div>
   );
 });

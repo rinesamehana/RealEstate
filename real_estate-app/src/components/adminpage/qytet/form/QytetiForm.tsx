@@ -52,6 +52,7 @@ export default observer(function QytetiForm() {
 
   const [qyteti, setQytet] = useState({
     qytetiId: "",
+    photo:"",
     emri: "",
     kodiPostar: "",
     shtetiId: "",
@@ -62,6 +63,7 @@ export default observer(function QytetiForm() {
 
 
   const validationSchema = Yup.object({
+    photo: Yup.string().required("Place is required"),
     emri: Yup.string().required("Place is required"),
     kodiPostar: Yup.string().required("Place is required"),
     shtetiId: Yup.string().required("Place is required"),
@@ -142,6 +144,7 @@ export default observer(function QytetiForm() {
                           onSubmit={handleSubmit}
                           autoComplete="off"
                         >
+                            <MyTextInput name="photo" placeholder="Photo" />
                           <MyTextInput name="emri" placeholder="Qyteti" />
                           <MyTextInput
                             name="kodiPostar"

@@ -51,6 +51,7 @@ export default observer(function QytetiDetails() {
               <h1>Edit</h1>
             </div>
             <Card fluid style={CardStyles}>
+            <Card.Content style={CRStyles}>Photo: {qyteti.photo}</Card.Content>
               <Card.Content style={CRStyles}>City: {qyteti.emri}</Card.Content>
               <Card.Content style={CRStyles}>
                 ZipCode: {qyteti.kodiPostar}

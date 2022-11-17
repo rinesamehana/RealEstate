@@ -55,6 +55,7 @@ export default observer(function QytetiList() {
           <TableCell style={TableCelll} className="tableCell">
             ID
           </TableCell>
+          <TableCell className="tableCell">Photo</TableCell>
           <TableCell className="tableCell">Emri</TableCell>
           <TableCell className="tableCell">KodiPostar</TableCell>
           <TableCell className="tableCell">Shteti</TableCell>
@@ -65,7 +66,7 @@ export default observer(function QytetiList() {
           {qytetet.map((qyteti) => (
             <TableRow key={qyteti.qytetiId}>
               <TableCell className="tableCell">{qyteti.qytetiId}</TableCell>
-
+              <TableCell className="tableCell">{qyteti.photo}</TableCell>
               <TableCell className="tableCell">{qyteti.emri}</TableCell>
               <TableCell className="tableCell">{qyteti.kodiPostar}</TableCell>
               <TableCell className="tableCell" >{qyteti.shtetiId}</TableCell>

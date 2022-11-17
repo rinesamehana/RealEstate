@@ -1,30 +1,22 @@
-import "./list.css";
+/* eslint-disable jsx-a11y/alt-text */
+import "./listhouse.css";
 import Navbar from "../../components/navbar/Navbar";
 import { Button } from "semantic-ui-react";
 import { BsHeart } from "react-icons/bs";
-import { useHistory } from "react-router";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
-import { useFocusEffect } from "@react-navigation/native";
-import { useEffect, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+
 
 export default observer(function List() {
-  const history = useHistory();
   const { shtepiaStore } = useStore();
   const { shtepiat, loadShtepite } = shtepiaStore;
-// function durationSlider(){
-//   var count=0;
-// setInterval(function(){
-//   count+=1;
-//   if(count>=20)
-//   count=0;
-// },50000);
-// }
 
+  const [query, setQuery]=useState(""); 
 
-
-
+  const keys=["cmimi","titulli", "lokacioni"];
 
   useEffect(() => {
 
@@ -33,14 +25,24 @@ export default observer(function List() {
 }, [loadShtepite]);
       
    
- 
+
  
   return (
     <>
     <Navbar />
-    <div className="wrapper1">
-      {shtepiat.map((shtepia) => {
+    <div className="searchhh">
+      <input placeholder="Search..." onChange={e=> setQuery(e.target.value)}/>
+      <SearchIcon style={{"marginLeft":"-25px",  cursor:"pointer"}}/>
+      </div> 
+      <div className="houses-title">
+      <h1>Listings - Homes for Rent</h1>
+      </div>
+     
+    <div className="wrapper-houses">
+   
+      {shtepiat.filter((shtepia:any)=> keys.some((key)=>shtepia[key].toLowerCase().includes(query))).map((shtepia) => {
         return (
+          
           <div key={shtepia.shtepiaId}>
             <div className="lists1">
               <div className="list1">
@@ -76,8 +78,9 @@ export default observer(function List() {
                     <div className="details_4rth1">
                     <div className="location1">
                         {/* {shtepia.lagjjaId} */}
-                        323-329 Centre St Unit 201
-                        <br /> Jamaica Plaim
+                        {shtepia.lokacioni}
+                        {/* 323-329 Centre St Unit 201
+                        <br /> Jamaica Plaim */}
                       </div>
                       <div className="buttonn1">
                         <Button type="submit" content="Book Now" />

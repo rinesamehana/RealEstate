@@ -28,7 +28,6 @@ import GjiniaForm from "./components/adminpage/gjinia/form/GjiniaForm";
 
 import { ToastContainer } from "react-toastify";
 
-import Login from "./pages/dashboardpages/login/Login";
 import AmbientiAPI from "./app/axios/AmbientiAPI";
 import AmbientiForm from "./components/adminpage/ambienti/form/AmbientiForm";
 import AmbientiDetails from "./components/adminpage/ambienti/details/AmbientiDetails";
@@ -95,7 +94,7 @@ import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
 // import { Listt } from "./pages";
 import { Listt} from "./pages";
 import HouseId from "./pages/house/HouseId";
-import neighborhood from "./pages/neighborhood/neighborhood";
+import neighborhood from "./pages/neighborhood/NeighborhoodPage";
 import housepage from "./pages/housespage/housepage";
 
 
@@ -180,7 +179,7 @@ function App() {
         <Route path="/houses" component={Listt} />
   
     
-        <Route path="/neighborhood" component={neighborhood} />
+        <Route path="/towns" component={neighborhood} />
           
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
         

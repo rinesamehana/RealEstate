@@ -1,32 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using API.Extensions;
 using API.Middleware;
-using Application.Core;
 using Application.LlojiUserA;
-using AutoMapper;
 using FluentValidation.AspNetCore;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Persistence;
 using Domain;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 
 namespace API
@@ -57,7 +42,7 @@ namespace API
 
               services.AddIdentity<AppUser, IdentityRole>(options =>
             {
-                  options.Password.RequireNonAlphanumeric = false;
+                  options.Password.RequireUppercase = true;
                 // opt.Password.RequireDigit = true;
             })
 
@@ -110,6 +95,7 @@ namespace API
       
             services.AddSwaggerGen();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

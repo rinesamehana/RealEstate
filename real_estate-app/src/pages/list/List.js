@@ -1,7 +1,8 @@
+import "./listhouse.css";
 import React, { useState, useEffect } from "react";
 import ButtonI from "./Button/Button";
 import Navbar from "../../components/navbar/Navbar";
-import './list.css';
+
 
 
 

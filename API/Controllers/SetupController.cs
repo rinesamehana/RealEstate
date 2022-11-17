@@ -1,11 +1,11 @@
+using System.Linq;
 using System.Threading.Tasks;
+using Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Domain;
 using Microsoft.EntityFrameworkCore;
-using Persistence;
 using Microsoft.Extensions.Logging;
-using System.Linq;
+using Persistence;
 
 namespace API.Controllers
 {

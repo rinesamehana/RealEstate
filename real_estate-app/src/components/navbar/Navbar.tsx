@@ -16,10 +16,12 @@ export default observer(function Navbar() {
     <div className="navbar">
       <div className="navContainer">
         <div className="header-logo">
+        <Link to="/" className="link" >
           <img
             src="https://www.bostonrealestate.com/media/bushari/images/common/logo.png"
             className="logo"
           />
+          </Link>
         </div>
         <div className="header-container">
           <nav className="nav">
@@ -86,15 +88,18 @@ export default observer(function Navbar() {
             </div>
 
             <ul>
-              <Link to="/houses" className="link">
+              <Link to="/houses" className="link" style={{"color":"black"}}>
                 <li>HOUSES</li>
               </Link>
-
-              <li>CITIES</li>
-              <Link to="/neighborhood" className="link">
-              <li>NEIGHBORHOODS</li>
+              <Link to="/towns" className="link" style={{"color":"black"}}>
+              <li>TOWNS</li>
               </Link>
+              <Link to="/teams" className="link" style={{"color":"black"}}>
               <li>OUR TEAM</li>
+              </Link>
+              <Link to="/contactus" className="link" style={{"color":"black"}}>
+              <li>CONTACT US</li>
+              </Link>
             </ul>
           </nav>
         </div>

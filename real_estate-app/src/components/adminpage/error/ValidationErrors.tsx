@@ -6,7 +6,8 @@ interface Props {
 }
 
 const sty: CSS.Properties = {
-  padding: "4px",
+  marginTop:"-15px",
+  padding: "2px",
   width: "172px",
   borderRadius: "4px",
   background: "rgba(214, 69, 65)",
@@ -16,7 +17,7 @@ export default function ValidationErrors({ errors }: Props) {
   return (
     <>
       {errors && (
-        <Alert style={sty} variant="danger" className="mt-5">
+        <Alert style={sty} variant="danger" className="mt-3">
           {errors.map((err: any, i: any) => (
             <p key={i}>{err}</p>
           ))}

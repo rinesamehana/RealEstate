@@ -5,7 +5,7 @@ const Partners = () => {
   return (
     <div className="partners">
       <div className="partners_title">
-        <h1>Our Partner</h1>
+        <h1>Our Partners</h1>
       </div>
       <div className="images_partners">
         <div className="image_partner">

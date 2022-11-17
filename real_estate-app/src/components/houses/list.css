@@ -1,4 +1,4 @@
-.wrapper1 {
+.wrapper-houses {
   margin-left: 60px;
   margin-bottom: 60px;
   display: grid;
@@ -8,7 +8,7 @@
   grid-template-rows: repeat(2, 1fr);
   gap: 0.2rem;
   justify-content: space-around;
-}
+} 
 .flex{
   display: flex;
     width: 340px;

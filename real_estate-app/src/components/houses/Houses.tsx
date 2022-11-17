@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { RiHeart3Fill } from "react-icons/ri";
 // import "./houses.scss";
 import { Button } from "semantic-ui-react";
-import "./list.css";
+import "./houses.scss";
 import Navbar from "../../components/navbar/Navbar";
 
 import { BsHeart } from "react-icons/bs";
