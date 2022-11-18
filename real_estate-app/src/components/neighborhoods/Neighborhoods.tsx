@@ -83,7 +83,7 @@ const neighborhoods = () => {
           </div>
         </div>
       </div>
-      <Link to= "/neighborhood">
+      <Link to= "/towns">
       <div className="seemore">
       <p>See others</p>
       </div>

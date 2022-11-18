@@ -10,7 +10,7 @@ import { BsHeart } from "react-icons/bs";
 const Houses = () => {
   const [isClick, setClick] = useState(false);
   return (
-    <div className="wrapper1">
+    <div className="wrapper1"> 
       <Card
         img="https://th.bing.com/th/id/OIP.uOkJALzfYQ2g0tOZZ-ASugHaFj?pid=ImgDet&rs=1"
         title="Home"
@@ -53,8 +53,7 @@ const Houses = () => {
         title="Home"
         description="Baked Cod with Vegetables. 30 minute meal!"
       />
-    
-    </div>
+    </div> 
   );
 };
 
@@ -102,19 +101,5 @@ function Card(props: any) {
         </div>
       </div>   </div>);
 }
-               
-    {/* <div className="card1">
-      <div className="card__body1">
-        <img src={props.img} className="card__image1" />
-        <h2 className="card__title1">{props.title}</h2>
-        <p className="card__description1">{props.description}</p>
-      </div>
-      <div className="card_buttons">
-        <button className="card__btnn">Add to favourites</button>
-        <button className="card__btn">Reserve</button>
-      </div>
-    </div> */}  {/*
-        <div className="list1"> */}
-
 
 export default Houses;
