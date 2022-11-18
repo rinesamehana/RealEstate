@@ -1,36 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using API.Extensions;
 using API.Middleware;
-using Application.Core;
 using Application.LlojiUserA;
-using AutoMapper;
 using FluentValidation.AspNetCore;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Persistence;
 using Domain;
+using Microsoft.AspNetCore.Identity;
 
 namespace API
 {
     public class Startup
     {
         private readonly IConfiguration _config;
-
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration config)
         {
             _config = config;
@@ -38,16 +27,48 @@ namespace API
 
         // This method gets called by the runtime. Use this method to add services to the container.
 
-
+   
         public void ConfigureServices(IServiceCollection services)
         {
-
 
 
             services.AddControllers(opt =>
           {
               var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
               opt.Filters.Add(new AuthorizeFilter(policy));
+
+
+      
+
+              services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                  options.Password.RequireUppercase = true;
+                // opt.Password.RequireDigit = true;
+            })
+
+            .AddEntityFrameworkStores<DataContext>()
+
+            .AddSignInManager<SignInManager<AppUser>>();
+            
+
+              // services.AddIdentity<AppUser, IdentityRole>()
+              //                 .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders()
+              //                 .AddSignInManager<SignInManager<AppUser>>();
+              //             services.Configure<IdentityOptions>(options =>
+              //             {
+              //                 options.Password.RequiredLength = 5;
+              //                 options.Password.RequiredUniqueChars = 1;
+              //                 options.Password.RequireDigit = false;
+              //                 options.Password.RequireLowercase = false;
+              //                 options.Password.RequireNonAlphanumeric = false;
+              //                 options.Password.RequireUppercase = false;
+
+              //                 options.SignIn.RequireConfirmedEmail = true;
+
+              // options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(20);
+              // options.Lockout.MaxFailedAccessAttempts = 3;
+              // });
+
           }).AddFluentValidation(config =>
          {
              config.RegisterValidatorsFromAssemblyContaining<Create>();
@@ -60,12 +81,8 @@ namespace API
             // options.Password.RequiredLength = 6;
             // options.Password.RequiredUniqueChars = 1;
 
-            // services.AddIdentity<AppUser, IdentityRole>(opt =>
-            // {
-            // opt.Password.RequireDigit = true;
-            // })
-            // .AddEntityFrameworkStores<DataContext>()
-            // .AddSignInManager<SignInManager<AppUser>>();
+
+
 
 
             services.AddControllers().AddFluentValidation(config =>
@@ -74,14 +91,17 @@ namespace API
             });
             services.AddApplicationServices(_config);
             services.AddIdentityServices(_config);
-
-
-
+     
+      
+            services.AddSwaggerGen();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+
 
 
             app.UseMiddleware<ExceptionMiddleware>();

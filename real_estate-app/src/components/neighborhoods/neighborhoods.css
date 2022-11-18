@@ -1,46 +1,68 @@
 .neighborhoods {
   background-color: black;
   color: white;
-  margin-bottom: 10px;
+  width: 100%;
+  cursor: pointer;
+ 
 }
 
 .neighborhoods .title {
   float: right;
   margin-right: 40px;
-  font-size: 45px;
+
   margin-top: 15px;
+
+}
+.title p{
+  font-size: 45px;
 }
 
 .featuredd {
-  width: 90%;
+  width: 100%;
   display: flex;
-  margin-left: 120px;
-  padding: 28px 0;
-  text-align: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: 8px;
   z-index: 1;
 }
 
 .featuredItemm {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 5px;
   position: relative;
-
   border-radius: 5px;
   overflow: hidden;
-  height: 250px;
+  height: 300px;
   flex: 1;
 }
 
-.featuredImgg {
-  width: 100%;
-  height: 100%;
+.featuredItemm img {
+  width: 505px;
+  height: 439px;
   object-fit: cover;
 }
 
 .featuredTitless {
+  padding: 15px;
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
 }
+.featuredTitless p{
+  font-size: 23px;
+}
+.seemore p{
+ display: flex;
+ justify-content: flex-end;
+  padding: 20px;
+  font-size: 25px;
+  margin-right: 14px;
+  
+}
+.seemore p:hover{
+  color: rgb(165, 199, 241);
+  display: flex;
+  justify-content: flex-end;
+   padding: 20px;
+   font-size: 25px;
+
+ }

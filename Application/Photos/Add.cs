@@ -42,7 +42,8 @@ namespace Application.Photos
                 var photo = new Photo
                 {
                     Url = photoUploadResult.Url,
-                    Id = photoUploadResult.PublicId
+                    Id = photoUploadResult.PublicId,
+              
                 };
 
                 if (!user.Photos.Any(x => x.IsMain)) photo.IsMain = true;

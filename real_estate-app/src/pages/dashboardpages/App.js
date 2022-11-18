@@ -1,7 +1,7 @@
 import Home from "./home/Home";
-import Login from "./login/Login";
-import List from "./list/List";
-import Single from "./single/Single";
+
+
+
 import New from "./new/New";
 import { Switch, Route } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
@@ -18,10 +18,10 @@ function App() {
         <Switch>
           <Route path="/">
             <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
+            {/* <Route path="login" element={<Login />} /> */}
             <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
+              {/* <Route index element={<List />} /> */}
+              {/* <Route path=":userId" element={<Single />} /> */}
             </Route>
           </Route>
         </Switch>

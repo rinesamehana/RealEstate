@@ -43,7 +43,7 @@ export default observer(function RezervimiList() {
           <TableCell className="tableCell">shtepiaId</TableCell>
           <TableCell className="tableCell">menyraPagesesId</TableCell>
           <TableCell className="tableCell">kontrataId</TableCell>
-          <TableCell className="tableCell">appUserId</TableCell>
+          {/* <TableCell className="tableCell">appUserId</TableCell> */}
 
           <TableCell className="tableCell"></TableCell>
         </TableRow>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./neighborhoods.css";
+import { Link } from "react-router-dom";
 
 const neighborhoods = () => {
   return (
@@ -11,13 +12,13 @@ const neighborhoods = () => {
       <div className="featuredd">
         <div className="featuredItemm">
           <img
-            src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
+            src="https://upload.terabitz.com/u/bushari/devlisting/0.407369001470669606.png"
             alt=""
             className="featuredImgg"
           />
           <div className="featuredTitless">
-            <h1>Dublin</h1>
-            <h2>123 properties</h2>
+          <h1>Reno</h1>
+            <p>533 properties</p>
           </div>
         </div>
 
@@ -29,19 +30,19 @@ const neighborhoods = () => {
           />
           <div className="featuredTitless">
             <h1>Reno</h1>
-            <h2>533 properties</h2>
+            <p>533 properties</p>
           </div>
         </div>
 
         <div className="featuredItemm">
           <img
-            src="https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="
+            src="https://upload.terabitz.com/u/bushari/devlisting/0.582430001485443021.png"
             alt=""
             className="featuredImgg"
           />
           <div className="featuredTitless">
-            <h1>Austin</h1>
-            <h2>532 properties</h2>
+          <h1>Reno</h1>
+            <p>533 properties</p>
           </div>
         </div>
       </div>
@@ -53,8 +54,8 @@ const neighborhoods = () => {
             className="featuredImgg"
           />
           <div className="featuredTitless">
-            <h1>Dublin</h1>
-            <h2>123 properties</h2>
+          <h1>Reno</h1>
+            <p>533 properties</p>
           </div>
         </div>
 
@@ -65,8 +66,8 @@ const neighborhoods = () => {
             className="featuredImgg"
           />
           <div className="featuredTitless">
-            <h1>Reno</h1>
-            <h2>533 properties</h2>
+          <h1>Reno</h1>
+            <p>533 properties</p>
           </div>
         </div>
 
@@ -77,11 +78,16 @@ const neighborhoods = () => {
             className="featuredImgg"
           />
           <div className="featuredTitless">
-            <h1>Austin</h1>
-            <h2>532 properties</h2>
+          <h1>Reno</h1>
+            <p>533 properties</p>
           </div>
         </div>
       </div>
+      <Link to= "/neighborhood">
+      <div className="seemore">
+      <p>See others</p>
+      </div>
+    </Link>
     </div>
   );
 };

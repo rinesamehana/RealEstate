@@ -35,6 +35,7 @@
 }
 .houseTitle {
   font-size: 24px;
+  color: black;
 }
 
 .houseAddress {
@@ -117,7 +118,8 @@ h1{
 
 .houseDetailsPrice {
   flex: 1;
-  background-color: #ebf3ff;
+
+  color:black;
   padding: 20px;
   display: flex;
   flex-direction: column;

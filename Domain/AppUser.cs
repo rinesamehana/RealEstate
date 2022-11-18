@@ -17,7 +17,7 @@ namespace Domain
 
          public ICollection<Rezervimi> Rezervimet { get; set; } = new List<Rezervimi>();
 
-         public ICollection<RezervimiAttendee>Rezervimi {get; set;}
+         public ICollection<RezervimiAttendee> Rezervimi {get; set;}
 
          public ICollection<Photo> Photos {get; set;}
     }

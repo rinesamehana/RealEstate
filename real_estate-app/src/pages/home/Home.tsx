@@ -24,6 +24,7 @@ export default observer(function Home() {
       <div className="homeContainer">
         <Featured />
         <Neighborhoods />
+        <PropertyList />
         <h1 className="homeTitle">Houses</h1>
         <Houses />
 

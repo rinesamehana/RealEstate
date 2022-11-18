@@ -19,8 +19,8 @@ function ShtepiaAPI() {
     shtepiaStore.loadShtepite();
   }, [shtepiaStore]);
 
-//   if (shtepiaStore.loadingInitial)
-//     return <LoadingComponent content="Loading..." />;
+  // if (shtepiaStore.loadingInitial)
+  //   return <LoadingComponent content="Loading..." />;
 
   return (
     <div className="new">

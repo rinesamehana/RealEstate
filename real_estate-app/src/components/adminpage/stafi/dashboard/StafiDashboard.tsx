@@ -18,7 +18,7 @@ export default observer(function StafiDashboard() {
     return <LoadingComponent content="Loading..." />;
   return (
     <Grid>
-      <Grid.Column width="16">
+      <Grid.Column width="14">
         <StafiList />
       </Grid.Column>
     </Grid>

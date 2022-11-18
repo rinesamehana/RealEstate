@@ -116,6 +116,10 @@ export default observer(function GjiniteTable() {
           ))}
         </TableBody>
       </Table>
+     
     </TableContainer>
+    
   );
+     
+ 
 });

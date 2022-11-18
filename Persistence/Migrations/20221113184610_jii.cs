@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class ii : Migration
+    public partial class jii : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -433,10 +433,13 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     ShtepiaId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    PhotoUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    Lokacioni = table.Column<string>(type: "TEXT", nullable: true),
+                    Photo = table.Column<string>(type: "TEXT", nullable: true),
+                    Photo2 = table.Column<string>(type: "TEXT", nullable: true),
+                    Photo3 = table.Column<string>(type: "TEXT", nullable: true),
+                    Photo4 = table.Column<string>(type: "TEXT", nullable: true),
                     Titulli = table.Column<string>(type: "TEXT", nullable: true),
                     Cmimi = table.Column<string>(type: "TEXT", nullable: true),
+                    Lokacioni = table.Column<string>(type: "TEXT", nullable: true),
                     NrDhomave = table.Column<string>(type: "TEXT", nullable: true),
                     NrBanjove = table.Column<string>(type: "TEXT", nullable: true),
                     Siperfaqja = table.Column<string>(type: "TEXT", nullable: true),
@@ -501,10 +504,6 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     RezervimiId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Emri = table.Column<string>(type: "TEXT", nullable: true),
-                    Mbiemri = table.Column<string>(type: "TEXT", nullable: true),
-                    NrTelefonit = table.Column<string>(type: "TEXT", nullable: true),
-                    email = table.Column<string>(type: "TEXT", nullable: true),
                     Check_in = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Check_out = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ShtepiaId = table.Column<Guid>(type: "TEXT", nullable: true),

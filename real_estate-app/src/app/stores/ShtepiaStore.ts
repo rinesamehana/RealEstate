@@ -16,6 +16,11 @@ export default class ShtepiaStore {
   get shtepiat() {
     return Array.from(this.shtepiaRegistry.values());
   }
+ 
+  get nrShtepiav(){
+return Array.from(this.shtepiaRegistry.values()).slice(-6);
+  }
+ 
   private setShtepia = (shtepia: Shtepia) => {
     this.shtepiaRegistry.set(shtepia.shtepiaId, shtepia);
   };
@@ -25,6 +30,7 @@ export default class ShtepiaStore {
   setLoadingInitial = (state: boolean) => {
     this.loadingInitial = state;
   };
+  
   loadShtepite = async () => {
     this.loadingInitial = true;
     try {

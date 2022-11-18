@@ -13,7 +13,6 @@ const CardStyles: CSS.Properties = {
   width: "50%",
   display: "flex",
   flexWrap: "wrap",
-
   marginTop: "50px",
   textAlign: "center",
   border: "2px solid gray",
@@ -59,7 +58,16 @@ export default observer(function ShtepiaDetails() {
                 Title: {shtepia.titulli}
               </Card.Content>
               <Card.Content style={CRStyles}>
-                Photo: {shtepia.photourl}
+                Photo: {shtepia.photo}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Photo: {shtepia.photo2}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Photo: {shtepia.photo3}
+              </Card.Content>
+              <Card.Content style={CRStyles}>
+                Photo: {shtepia.photo4}
               </Card.Content>
               <Card.Content style={CRStyles}>
                 Price: {shtepia.cmimi}

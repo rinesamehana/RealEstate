@@ -13,7 +13,8 @@ namespace Domain
     {
         [Key]
         public Guid QytetiId { get; set; }
-        public string Emri { get; set; } = string.Empty;
+          public string Photo { get; set; }
+        public string Emri { get; set; } 
 
         public string KodiPostar { get; set; }
 

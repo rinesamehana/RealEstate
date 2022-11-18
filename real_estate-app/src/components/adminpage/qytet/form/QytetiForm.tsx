@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
 import { ChangeEvent } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { Button, FormField, Item, Label, Segment } from "semantic-ui-react";
+import { Button, FormField, Item, Label, Segment, Select } from "semantic-ui-react";
 import LoadingComponent from "../../../../app/axios/LoadingComponent";
 
 import { useStore } from "../../../../app/stores/store";
@@ -12,13 +12,16 @@ import { v4 as uuid } from "uuid";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import MyTextInput from "../../../../app/common/form1/MyTextInput";
-import MySelectInput from "../../../../app/common/form1/MyTextInput";
+
 import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar2";
 import { Qyteti } from "../../../../app/models/Qyteti";
-import { categoryOptions } from "../../../../app/common/form1/options/CategoryOptions";
+
 import CSS from "csstype";
 import { values } from "mobx";
+import MySelectInput from "../../../../app/common/form1/MySelectInput";
+import { categoryOptions } from "../../../../app/common/form1/options/CategoryOptions";
+import { MyNewSelect } from "../../../../app/common/form1/MyNewSelect";
 
 const CardStyles: CSS.Properties = {
   width: "100%",
@@ -49,12 +52,18 @@ export default observer(function QytetiForm() {
 
   const [qyteti, setQytet] = useState({
     qytetiId: "",
+    photo:"",
     emri: "",
     kodiPostar: "",
     shtetiId: "",
   });
 
+
+
+
+
   const validationSchema = Yup.object({
+    photo: Yup.string().required("Place is required"),
     emri: Yup.string().required("Place is required"),
     kodiPostar: Yup.string().required("Place is required"),
     shtetiId: Yup.string().required("Place is required"),
@@ -66,6 +75,15 @@ export default observer(function QytetiForm() {
   useEffect(() => {
     loadShtetet();
   }, [loadShtetet]);
+
+
+  // const options=
+  // [
+  //   { value: value={shteti.shtetiId}, desc: "Algeria" },
+  //   { value: "Albania", desc: "Albania" },
+  // ]
+ 
+  
 
   function handleFormSubmit(qyteti: Qyteti) {
     if (qyteti.qytetiId.length === 0) {
@@ -126,6 +144,7 @@ export default observer(function QytetiForm() {
                           onSubmit={handleSubmit}
                           autoComplete="off"
                         >
+                            <MyTextInput name="photo" placeholder="Photo" />
                           <MyTextInput name="emri" placeholder="Qyteti" />
                           <MyTextInput
                             name="kodiPostar"
@@ -137,19 +156,33 @@ export default observer(function QytetiForm() {
                             style={select}
                             as="select"
                             name="shtetiId"
-                            className="Shteti"
-                          >
-                            <option placeholder="Zgjedh Shtetin "></option>
+                            className="Shteti" options={[]}                          >
+                            <option label="Zgjedh Shtetin"></option>
 
                             {shtetet.map((shteti) => (
                               <option
-                                key={shteti.shtetiId}
+                                key={shteti.emri}
                                 value={shteti.shtetiId}
                               >
                                 {shteti.emri}
                               </option>
                             ))}
-                          </Field>
+                          </Field> 
+                          {/* <MyNewSelect options={[shtetet]} label="shtetiId" name="shtetiId" /> */}
+                  
+              
+                 
+                    
+
+                          {/* <MySelectInput name="shtetiId" className="Shteti"  options={[...shtetet]}>
+                   <option>--Select Country--</option>
+                   {
+                     shtetet.map( (getcon)=>(
+                   <option key={getcon.shtetiId} value={getcon.shtetiId }> { getcon.emri}</option>
+                     ))
+                }
+                 
+                 </Select> */}
 
                           <Button
                             disable={isSubmitting || !dirty || !isValid}

@@ -11,7 +11,9 @@ namespace Domain
     {
         [Key]
         public Guid LagjjaId { get; set; }
-        public String Emri { get; set; } = string.Empty;
+
+      
+        public String Emri { get; set; }
 
         public Guid? QytetiId { get; set; }
         [ForeignKey("QytetiId")]
