@@ -93,6 +93,7 @@ h1{
    display: inline-flex;
    gap: 20px;
    font-size: 20px;
+   padding: 10px;
 }
 
 .Space{
@@ -120,7 +121,7 @@ h1{
   flex: 1;
 
   color:black;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -196,4 +197,6 @@ h1{
 .next{
   margin-top: 5px;
   font-size: 17px;
+  padding: 10px;
+
 }

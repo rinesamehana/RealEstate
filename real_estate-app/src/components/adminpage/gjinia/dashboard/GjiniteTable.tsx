@@ -71,7 +71,7 @@ export default observer(function GjiniteTable() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+      
           <Link to="/createGjini" className="link">
             Add New
           </Link>

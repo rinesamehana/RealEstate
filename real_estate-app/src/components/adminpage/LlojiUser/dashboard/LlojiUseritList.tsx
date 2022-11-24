@@ -29,7 +29,7 @@ export default observer(function LlojiUseritList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+         
           <Link to="/createLlojiUser" className="link">
             Add New
           </Link>

@@ -29,7 +29,7 @@ export default observer(function MenyraPagesesList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+          
           <Link to="/createMenyrePagese" className="link">
             Add New
           </Link>

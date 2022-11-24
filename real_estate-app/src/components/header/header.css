@@ -3,8 +3,9 @@
   color: white;
 
   display: flex;
-  justify-content: center;
+
   position: relative;
+  float: center;
   height: 70vh;
 }
 
@@ -14,18 +15,28 @@
   text-align: center;
 }
 .headerTitle {
-  color: white;
-  height: 70vh;
+  color: rgb(0, 0, 0);
+  display: flex;
+
 }
 .headerTitle p {
-  font-size: 44px;
+  font-size: 48px;
   font-weight: 600;
-  margin-top: 350px;
-  margin-right: 500px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+
 }
 
 .headerContainer.listMode {
   margin: 20px 0px 0px 0px;
+}
+.headerListt{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-left: 130px;
 }
 
 .postheader {
@@ -67,6 +78,7 @@
   width: 100%;
   max-width: 1024px;
   float: left;
+
 }
 
 .headerIcon {

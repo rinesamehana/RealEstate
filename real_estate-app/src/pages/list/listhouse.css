@@ -1,23 +1,26 @@
 
 .wrapper-houses{
-  margin-left: 60px;
+  margin-left: 40px;
   display: grid;
 
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr ;
   grid-template-rows: repeat(2, 1fr);
-  gap: 2rem;
-  justify-content: center;
+
+  justify-content: space-around;
+  margin-bottom: 15px;
   
 } 
 .lists1 {
   margin: 0px;
   padding: 20px 20px 0px 20px;
+
 }
 .list1 {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: flex-start;
+  
 }
 .list1 :hover {
   color: black;
@@ -29,12 +32,13 @@
   flex-direction: column;
   justify-content: flex-start;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  width: 300px;
+  border-radius: 4px;
+  width: 430px;
+
 }
 
 .image1 img {
-  width: 300px;
+  width: 430px;
   height: 250px;
   object-fit: cover;
   border-radius: 5px;

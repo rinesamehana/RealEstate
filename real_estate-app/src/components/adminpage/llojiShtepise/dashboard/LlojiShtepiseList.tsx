@@ -29,7 +29,7 @@ export default observer(function LlojiShtepiseList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+    
           <Link to="/createLlojShtepie" className="link">
             Add New
           </Link>

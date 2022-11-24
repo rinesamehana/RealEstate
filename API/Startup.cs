@@ -36,19 +36,29 @@ namespace API
           {
               var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
               opt.Filters.Add(new AuthorizeFilter(policy));
-
-
-      
-
-              services.AddIdentity<AppUser, IdentityRole>(options =>
+services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                   options.Password.RequireUppercase = true;
+                  options.Password.RequireNonAlphanumeric = true;
                 // opt.Password.RequireDigit = true;
             })
 
             .AddEntityFrameworkStores<DataContext>()
 
             .AddSignInManager<SignInManager<AppUser>>();
+
+    //   services.AddIdentity<AppUser, IdentityRole>(options =>
+    //         {
+    //               options.Password.RequireUppercase = true;
+    //               options.Password.RequireNonAlphanumeric = true;
+    //             // opt.Password.RequireDigit = true;
+    //         })
+
+    //         .AddEntityFrameworkStores<DataContext>()
+
+    //         .AddSignInManager<SignInManager<AppUser>>();
+
+        
             
 
               // services.AddIdentity<AppUser, IdentityRole>()
@@ -70,8 +80,13 @@ namespace API
               // });
 
           }).AddFluentValidation(config =>
+         
+    
          {
+            
              config.RegisterValidatorsFromAssemblyContaining<Create>();
+
+                  
          });
 
             //           options.Password.RequireDigit = true;
@@ -87,11 +102,14 @@ namespace API
 
             services.AddControllers().AddFluentValidation(config =>
             {
+                
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
+                      
+            
             });
             services.AddApplicationServices(_config);
             services.AddIdentityServices(_config);
-     
+ 
       
             services.AddSwaggerGen();
         }
@@ -101,7 +119,7 @@ namespace API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-
+      
 
 
             app.UseMiddleware<ExceptionMiddleware>();

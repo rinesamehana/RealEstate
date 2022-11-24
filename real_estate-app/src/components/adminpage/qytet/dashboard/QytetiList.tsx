@@ -43,7 +43,7 @@ export default observer(function QytetiList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+      
           <Link to="/createQytet" className="link">
             Add New
           </Link>

@@ -28,7 +28,7 @@ export default observer(function KafshetList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+      
           <Link to="/createKafshet" className="link">
             Add New
           </Link>

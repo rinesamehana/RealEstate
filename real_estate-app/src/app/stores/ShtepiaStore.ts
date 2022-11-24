@@ -17,9 +17,10 @@ export default class ShtepiaStore {
     return Array.from(this.shtepiaRegistry.values());
   }
  
-  get nrShtepiav(){
-return Array.from(this.shtepiaRegistry.values()).slice(-6);
+  get n6Shtepiav(){
+return Array.from(this.shtepiaRegistry.values()).slice(-6).reverse();
   }
+ 
  
   private setShtepia = (shtepia: Shtepia) => {
     this.shtepiaRegistry.set(shtepia.shtepiaId, shtepia);

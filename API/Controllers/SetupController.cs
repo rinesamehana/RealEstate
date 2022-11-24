@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Persistence;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
    [ApiController]
+   
     public class SetupController : BaseApiController
     {
        private readonly DataContext _context;

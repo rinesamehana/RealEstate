@@ -56,40 +56,21 @@ export const Header = ({ type }) => {
 
   return (
     <div className="headerr">
-      {/* <div
+       <div
         className={
           type === "list" ? "headerContainer listMode" : "headerContainer"
         }
-      > */}
-      {/* <div className="headerListt">
-          <div className="headerListItemm active">
-            <Link to="/dashboard" style={{ textDecoration: "none" }}>
-              <span>Stays</span>
-            </Link>
-          </div>
-          <div className="headerListItemm">
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Flights</span>
-          </div>
-          <div className="headerListItemm">
-            <FontAwesomeIcon icon={faCar} />
-            <span>Car Rentals</span>
-          </div>
-          <div className="headerListItemm">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Attractions</span>
-          </div>
-          <div className="headerListItemm">
-            <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport Taxis</span>
-          </div>
-        </div> */}
+      > 
+       <div className="headerListt">
+          
+       
 
       {type !== "list" && (
         <>
           <div className="headerTitle">
             <p>Luxury Homes For Rent</p>
-          </div>
+          {/* </div>
+          <div className="header-main-search"> */}
           <div className="headerSearch">
             <div className="headerSearchItem">
               <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -207,9 +188,11 @@ export const Header = ({ type }) => {
               </div>
             </div>
           </div>
+       
+          </div>
         </>
       )}
-    </div>
+    </div> </div> 
     // </div>
   );
 };

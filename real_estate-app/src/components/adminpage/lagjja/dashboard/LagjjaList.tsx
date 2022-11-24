@@ -29,7 +29,7 @@ export default observer(function LagjjaList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+  
           <Link to="/createLagje" className="link">
             Add New
           </Link>

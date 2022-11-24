@@ -2,7 +2,7 @@ import "./featured.css";
 
 const Featured = () => {
   return (
-    <div className="container">
+    <div className="container-feat">
       <div>
         <div className="description">
           <div className="items">

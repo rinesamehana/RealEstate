@@ -29,7 +29,7 @@ export default observer(function PamjaList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+      
           <Link to="/createPamja" className="link">
             Add New
           </Link>

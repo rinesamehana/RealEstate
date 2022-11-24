@@ -11,7 +11,7 @@ namespace Domain
     {
 
         public String DisplayName { get; set; }
-        
+       
 
          public ICollection<Rezervimi> Shtepite { get; set; }=new List<Rezervimi>();
 

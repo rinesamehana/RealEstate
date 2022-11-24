@@ -29,7 +29,7 @@ export default observer(function PajisjeList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+ 
           <Link to="/createPajisje" className="link">
             Add New
           </Link>

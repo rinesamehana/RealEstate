@@ -28,7 +28,7 @@ export default observer(function RoliList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New User
+ 
           <Link to="/createRole" className="link">
             Add New
           </Link>

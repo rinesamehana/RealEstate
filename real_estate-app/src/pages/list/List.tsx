@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 import "./listhouse.css";
 import Navbar from "../../components/navbar/Navbar";
-import { Button } from "semantic-ui-react";
+import { Button} from "semantic-ui-react";
 import { BsHeart } from "react-icons/bs";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
+import Footer from "../../components/footer/Footer";
 
 
 export default observer(function List() {
@@ -37,6 +38,10 @@ export default observer(function List() {
       <div className="houses-title">
       <h1>Listings - Homes for Rent</h1>
       </div>
+
+      <div>
+   
+</div>
      
     <div className="wrapper-houses">
    
@@ -93,6 +98,8 @@ export default observer(function List() {
           </div>
         );
       })}
-    </div></>
+    </div>
+    <Footer />
+    </>
   );
 });

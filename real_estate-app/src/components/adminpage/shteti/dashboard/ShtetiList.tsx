@@ -29,7 +29,7 @@ export default observer(function ShtetiList() {
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-          Add New Shtet
+       
           <Link to="/createShtet" className="link">
             Add New
           </Link>

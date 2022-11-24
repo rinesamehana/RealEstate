@@ -30,7 +30,7 @@ import {
       <TableContainer className="table">
         <div className="datatable">
           <div className="datatableTitle">
-            Add New User
+       
             <Link to="/createGjendje" className="link">
               Add New
             </Link>
