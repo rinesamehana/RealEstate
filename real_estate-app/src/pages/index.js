@@ -5,4 +5,5 @@ export { default as List } from "./list/List.js";
 export { default as Listt } from "./list/List.tsx";
 export { default as House } from "./house/HouseId";
 export { default as neighborhood } from "./neighborhood/NeighborhoodPage";
+export { default as Profile } from "./profiles/Profile";
 
