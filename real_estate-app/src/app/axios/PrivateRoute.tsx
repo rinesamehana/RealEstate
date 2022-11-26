@@ -4,12 +4,14 @@ interface Props extends RouteProps{
     component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
 }
 export default function PrivateRoute({component: Component, ...rest}: Props){
-    const {userStore:{isLoggedIn}}=useStore();
+    const {userStore:{isLoggedIn, isLoggedInAsAdmin}}=useStore();
 
     return (
         <Route {...rest} 
-        render={(props)=> isLoggedIn ? <Component{...props} /> : <Redirect to='/' />}
+        render={(props)=> isLoggedIn && isLoggedInAsAdmin ? <Component {...props}/> : <Redirect to='/' />}
         />
+
+       
     )
 
 }

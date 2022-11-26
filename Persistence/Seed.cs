@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
@@ -12,6 +15,7 @@ namespace Persistence
 
         public static async Task SeedData(DataContext context, UserManager<AppUser> userManager)
         {
+          
              if (!userManager.Users.Any())
             {
                  var users = new List<AppUser>
@@ -21,10 +25,15 @@ namespace Persistence
                      new AppUser{DisplayName="Jane", UserName="jane", Email="jane@test.com"},
                  };
                 foreach (var user in users)
-                 {
+                 {   
+        
                      await userManager.CreateAsync(user, "Pa$$w0rd");
+                     await userManager.AddToRoleAsync(user, "Member");
                  }
+                 
             }
+
+            
              
             if (context.Gjinite.Any()) return;
             {
@@ -108,11 +117,7 @@ namespace Persistence
             {
                 var rolet = new List<RoliUser>
             {
-                new RoliUser {
-
-                    Roli = "Admin"
-
-                },
+          
                 new RoliUser {
                     Roli = "Agjent"
                 },
@@ -342,6 +347,8 @@ namespace Persistence
 
 
             }
+            
+            
         // }
         // public static async Task SeedDataa(DataContext context)
         // {

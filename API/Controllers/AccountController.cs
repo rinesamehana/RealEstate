@@ -44,7 +44,7 @@ namespace API.Controllers
 
             if (result.Succeeded)
             {
-                return CreateUserObject(user);
+                return await CreateUserObjectAsync(user);
             }
             return Unauthorized();
         }
@@ -74,12 +74,13 @@ namespace API.Controllers
 
             if (result.Succeeded)
             {
-                return CreateUserObject(user);
+                await _userManager.AddToRoleAsync(user, "Member");
+                return await CreateUserObjectAsync(user);
             }
             return BadRequest("Problem registering user");
 
         }
-        [Authorize]
+        // [Authorize]
         [HttpGet]
         public async  Task<ActionResult<UserDto>> GetCurrentUser()
         {
@@ -88,16 +89,17 @@ namespace API.Controllers
            var user = await _userManager.Users.Include(p => p.Photos)
                 .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
 
-            return CreateUserObject(user);
+            return await CreateUserObjectAsync(user);
         }
-        private UserDto CreateUserObject(AppUser user)
+        private async Task<UserDto> CreateUserObjectAsync(AppUser user)
         {
             return  new UserDto
             {
                 DisplayName = user.DisplayName,
                 Image = user?.Photos?.FirstOrDefault(x=> x.IsMain)?.Url,
-                Token = _tokenService.CreateToken(user),
+                Token = await _tokenService.CreateToken(user),
                 Username = user.UserName,
+              
              
             };
         }

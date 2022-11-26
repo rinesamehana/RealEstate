@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class jii : Migration
+    public partial class migra : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,7 +23,7 @@ namespace Persistence.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
@@ -37,7 +37,7 @@ namespace Persistence.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     DisplayName = table.Column<string>(type: "TEXT", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -211,7 +211,7 @@ namespace Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false),
+                    RoleId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ClaimType = table.Column<string>(type: "TEXT", nullable: true),
                     ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
                 },
@@ -232,7 +232,7 @@ namespace Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ClaimType = table.Column<string>(type: "TEXT", nullable: true),
                     ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
                 },
@@ -254,7 +254,7 @@ namespace Persistence.Migrations
                     LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
                     ProviderKey = table.Column<string>(type: "TEXT", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false)
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -271,8 +271,10 @@ namespace Persistence.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false)
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    RoleId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserId1 = table.Column<Guid>(type: "TEXT", nullable: true),
+                    RoleId1 = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -284,18 +286,30 @@ namespace Persistence.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId1",
+                        column: x => x.RoleId1,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetUsers_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
                     LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Value = table.Column<string>(type: "TEXT", nullable: true)
@@ -318,7 +332,7 @@ namespace Persistence.Migrations
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Url = table.Column<string>(type: "TEXT", nullable: true),
                     IsMain = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AppUserId = table.Column<string>(type: "TEXT", nullable: true)
+                    AppUserId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -336,6 +350,7 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     QytetiId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Photo = table.Column<string>(type: "TEXT", nullable: true),
                     Emri = table.Column<string>(type: "TEXT", nullable: true),
                     KodiPostar = table.Column<string>(type: "TEXT", nullable: true),
                     ShtetiId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -510,8 +525,8 @@ namespace Persistence.Migrations
                     MenyraPagesesId = table.Column<Guid>(type: "TEXT", nullable: true),
                     KontrataId = table.Column<Guid>(type: "TEXT", nullable: true),
                     IsCancelled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AppUserId = table.Column<string>(type: "TEXT", nullable: true),
-                    AppUserId1 = table.Column<string>(type: "TEXT", nullable: true)
+                    AppUserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    AppUserId1 = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -521,7 +536,7 @@ namespace Persistence.Migrations
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rezervimi_AspNetUsers_AppUserId1",
                         column: x => x.AppUserId1,
@@ -600,7 +615,7 @@ namespace Persistence.Migrations
                 name: "RezervimiAttendees",
                 columns: table => new
                 {
-                    AppUserId = table.Column<string>(type: "TEXT", nullable: false),
+                    AppUserId = table.Column<Guid>(type: "TEXT", nullable: false),
                     RezervimiId = table.Column<Guid>(type: "TEXT", nullable: false),
                     IsHost = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
@@ -646,6 +661,16 @@ namespace Persistence.Migrations
                 name: "IX_AspNetUserRoles_RoleId",
                 table: "AspNetUserRoles",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_RoleId1",
+                table: "AspNetUserRoles",
+                column: "RoleId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_UserId1",
+                table: "AspNetUserRoles",
+                column: "UserId1");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",

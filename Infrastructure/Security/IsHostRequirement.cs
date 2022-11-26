@@ -38,7 +38,7 @@ namespace Infrastructure.Security
 
             var attendee=_dbcontext.RezervimiAttendees
             .AsNoTracking()
-            .SingleOrDefaultAsync(x=>x.AppUserId==userId && x.RezervimiId==RezervimiId).Result;
+            .SingleOrDefaultAsync(x=>x.AppUserId.Equals(userId) && x.RezervimiId==RezervimiId).Result;
 
             if(attendee==null) return Task.CompletedTask;
 

@@ -1,4 +1,5 @@
  using Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,14 +11,15 @@ using System.Threading.Tasks;
 
 namespace Persistence
 {
-    public class DataContext : IdentityDbContext<AppUser>
-    {
+    public class DataContext : IdentityDbContext<AppUser, AppRole,Guid, 
+        IdentityUserClaim<Guid>, AppUserRole, IdentityUserLogin<Guid>, 
+        IdentityRoleClaim<Guid>, IdentityUserToken<Guid>> {
         public DataContext(DbContextOptions options) : base(options)
         {
         }
 
          
-
+   public DbSet<AppUser> Users { get; set; }
         public DbSet<RezervimiAttendee> RezervimiAttendees{get; set;}
         public DbSet<Gjinia> Gjinite { get; set; }
         public DbSet<LlojiUser> LlojeteUserit { get; set; }
@@ -41,7 +43,7 @@ namespace Persistence
         public DbSet<MenyraPageses> MenyraPagesave { get; set; }
         public DbSet<Rezervimi> Rezervimi { get; set; }
         public DbSet<Shtepia> Shtepiat { get; set; }
-        public DbSet<AppUser> Attendees { get; set; }
+     
         public DbSet<ShtepiaAmbiente> ShtepiatAmbientet { get; set; }
         public DbSet<ShtepiaPajisjet> ShtepiaPajisjets { get; set; }
        
@@ -65,6 +67,17 @@ namespace Persistence
         {
 
             
+             modelBuilder.Entity<AppUser>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.User)
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired();
+
+            modelBuilder.Entity<AppRole>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.Role)
+                .HasForeignKey(ur => ur.RoleId)
+                .IsRequired();
 
             //One to many(shteti dhe qyteti)
             base.OnModelCreating(modelBuilder);
@@ -250,28 +263,6 @@ namespace Persistence
                 // .HasOne(u => u.Shtepia)
                 // .WithMany(q => q.Attendees)
                 // .HasForeignKey(aa => aa.RezervimiId);
-
-
-
-
-
-
-            
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
         }
 
 

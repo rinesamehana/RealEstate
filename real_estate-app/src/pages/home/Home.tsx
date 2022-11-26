@@ -26,7 +26,7 @@ export default observer(function Home() {
         <Neighborhoods />
         <PropertyList />
         <h1 className="homeTitle">Latest   Houses</h1>
-        <Houses />
+        {/* <Houses /> */}
 
         <Partners />
         <Footer />

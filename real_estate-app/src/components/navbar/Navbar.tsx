@@ -12,6 +12,10 @@ export default observer(function Navbar() {
   const {
     userStore: { user, logout },
   } = useStore();
+  
+
+
+  
   return (
     <div className="navbar">
       <div className="navContainer">
@@ -44,27 +48,33 @@ export default observer(function Navbar() {
                     <Dropdown pointing="top right" text={user?.displayName}>
                       <Dropdown.Menu>
                         <Dropdown.Item
-                          position="bottom"
+                          position="top"
                           as={Link}
                           to={`profile/${user?.username}`}
                           text="My Profile"
-                          icon="user"
+                         
                         />
-                        <Dropdown.Item>
-                          <div className="header-button">
+                      
+                      {userStore.isLoggedInAsAdmin ?(
+                        <Dropdown.Item >
+                          <div className="header-button" >
+                         
                             <Link to={"/dashboard"}>
                               <Button type="button" content="MY DASHBOARD" />
                             </Link>
+
                           </div>
-                        </Dropdown.Item>
+                        </Dropdown.Item>): ""}
                         <Dropdown.Item
                           onClick={logout}
                           text="Logout"
-                          icon="power"
+                     
                         />
                       </Dropdown.Menu>
                     </Dropdown>
+                    
                   </Menu.Item>
+                  
                 ) : (
                   <>
                     <Link to={"/login"}>
@@ -94,15 +104,17 @@ export default observer(function Navbar() {
               <Link to="/towns" className="link" style={{"color":"black"}}>
               <li>TOWNS</li>
               </Link>
-              <Link to="/teams" className="link" style={{"color":"black"}}>
-              <li>OUR TEAM</li>
+              <Link to="/about-us" className="link" style={{"color":"black"}}>
+              <li>ABOUT US</li>
               </Link>
               <Link to="/contactus" className="link" style={{"color":"black"}}>
               <li>CONTACT US</li>
               </Link>
+          
             </ul>
           </nav>
         </div>
+        
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ namespace Domain
     public class RezervimiAttendee
     {
 
-        public string AppUserId {get; set;}
+        public Guid AppUserId {get; set;}
 
         public AppUser AppUser {get; set;}
         [ForeignKey("RezervimiId")]

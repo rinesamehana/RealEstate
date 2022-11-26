@@ -30,9 +30,37 @@ namespace Persistence.Migrations
                     b.ToTable("Ambientet");
                 });
 
+            modelBuilder.Entity("Domain.AppRole", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles");
+                });
+
             modelBuilder.Entity("Domain.AppUser", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("AccessFailedCount")
@@ -95,6 +123,31 @@ namespace Persistence.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Domain.AppUserRole", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("RoleId1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("UserId1")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("RoleId1");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("AspNetUserRoles");
                 });
 
             modelBuilder.Entity("Domain.GjendjaShtepise", b =>
@@ -264,7 +317,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AppUserId")
+                    b.Property<Guid?>("AppUserId")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsMain")
@@ -311,10 +364,10 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AppUserId")
+                    b.Property<Guid>("AppUserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AppUserId1")
+                    b.Property<Guid?>("AppUserId1")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Check_in")
@@ -352,7 +405,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.RezervimiAttendee", b =>
                 {
-                    b.Property<string>("AppUserId")
+                    b.Property<Guid>("AppUserId")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("RezervimiId")
@@ -564,33 +617,7 @@ namespace Persistence.Migrations
                     b.ToTable("Stafii");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex");
-
-                    b.ToTable("AspNetRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -602,8 +629,7 @@ namespace Persistence.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
+                    b.Property<Guid>("RoleId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -613,7 +639,7 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -625,8 +651,7 @@ namespace Persistence.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
+                    b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -636,7 +661,7 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("TEXT");
@@ -647,8 +672,7 @@ namespace Persistence.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
+                    b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("LoginProvider", "ProviderKey");
@@ -658,24 +682,9 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
@@ -690,6 +699,33 @@ namespace Persistence.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Domain.AppUserRole", b =>
+                {
+                    b.HasOne("Domain.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.AppRole", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId1");
+
+                    b.HasOne("Domain.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Lagjja", b =>
@@ -721,7 +757,9 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.AppUser", "AppUser")
                         .WithMany("Rezervimet")
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.AppUser", null)
                         .WithMany("Shtepite")
@@ -889,16 +927,16 @@ namespace Persistence.Migrations
                     b.Navigation("Shteti");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Domain.AppRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
                     b.HasOne("Domain.AppUser", null)
                         .WithMany()
@@ -907,7 +945,7 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
                     b.HasOne("Domain.AppUser", null)
                         .WithMany()
@@ -916,22 +954,7 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
                     b.HasOne("Domain.AppUser", null)
                         .WithMany()
@@ -945,6 +968,11 @@ namespace Persistence.Migrations
                     b.Navigation("Shtepite");
                 });
 
+            modelBuilder.Entity("Domain.AppRole", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
             modelBuilder.Entity("Domain.AppUser", b =>
                 {
                     b.Navigation("Photos");
@@ -954,6 +982,8 @@ namespace Persistence.Migrations
                     b.Navigation("Rezervimi");
 
                     b.Navigation("Shtepite");
+
+                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("Domain.GjendjaShtepise", b =>

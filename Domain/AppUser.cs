@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Identity;
 
 namespace Domain
 {
-    public class AppUser : IdentityUser
+    public class AppUser : IdentityUser<Guid>
     {
 
         public String DisplayName { get; set; }
@@ -20,5 +21,7 @@ namespace Domain
          public ICollection<RezervimiAttendee> Rezervimi {get; set;}
 
          public ICollection<Photo> Photos {get; set;}
+          
+        public ICollection<AppUserRole> UserRoles { get; set; }
     }
 }

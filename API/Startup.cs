@@ -36,69 +36,18 @@ namespace API
           {
               var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
               opt.Filters.Add(new AuthorizeFilter(policy));
-services.AddIdentity<AppUser, IdentityRole>(options =>
-            {
-                  options.Password.RequireUppercase = true;
-                  options.Password.RequireNonAlphanumeric = true;
-                // opt.Password.RequireDigit = true;
-            })
 
-            .AddEntityFrameworkStores<DataContext>()
 
-            .AddSignInManager<SignInManager<AppUser>>();
-
-    //   services.AddIdentity<AppUser, IdentityRole>(options =>
-    //         {
-    //               options.Password.RequireUppercase = true;
-    //               options.Password.RequireNonAlphanumeric = true;
-    //             // opt.Password.RequireDigit = true;
-    //         })
-
-    //         .AddEntityFrameworkStores<DataContext>()
-
-    //         .AddSignInManager<SignInManager<AppUser>>();
-
-        
-            
-
-              // services.AddIdentity<AppUser, IdentityRole>()
-              //                 .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders()
-              //                 .AddSignInManager<SignInManager<AppUser>>();
-              //             services.Configure<IdentityOptions>(options =>
-              //             {
-              //                 options.Password.RequiredLength = 5;
-              //                 options.Password.RequiredUniqueChars = 1;
-              //                 options.Password.RequireDigit = false;
-              //                 options.Password.RequireLowercase = false;
-              //                 options.Password.RequireNonAlphanumeric = false;
-              //                 options.Password.RequireUppercase = false;
-
-              //                 options.SignIn.RequireConfirmedEmail = true;
-
-              // options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(20);
-              // options.Lockout.MaxFailedAccessAttempts = 3;
-              // });
 
           }).AddFluentValidation(config =>
          
     
          {
-            
+           
              config.RegisterValidatorsFromAssemblyContaining<Create>();
 
                   
          });
-
-            //           options.Password.RequireDigit = true;
-            // options.Password.RequireLowercase = true;
-            // options.Password.RequireNonAlphanumeric = true;
-            // options.Password.RequireUppercase = true;
-            // options.Password.RequiredLength = 6;
-            // options.Password.RequiredUniqueChars = 1;
-
-
-
-
 
             services.AddControllers().AddFluentValidation(config =>
             {

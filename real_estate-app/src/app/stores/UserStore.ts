@@ -13,6 +13,11 @@ export default class UserStore {
   get isLoggedIn() {
     return !!this.user;
   }
+  get isLoggedInAsAdmin() {
+    return !!this.user?.username.includes("Admin12");
+  }
+
+ 
 
   login = async (creds: UserFormValues) => {
     try {
