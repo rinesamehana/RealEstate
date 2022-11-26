@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Persistence;
 using MediatR;
 using Application.QytetiA;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -15,6 +16,7 @@ namespace API.Controllers
     {
 
         [HttpGet]
+         [AllowAnonymous]
         public async Task<IActionResult> GetQytetet()
         {
             return HandleResult(await Mediator.Send(new List.Query()));
@@ -24,6 +26,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+         [AllowAnonymous]
         public async Task<IActionResult> GetQytetet(Guid id)
         {
 
@@ -32,6 +35,7 @@ namespace API.Controllers
 
 
         [HttpPost]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> CreateQyteti(Qyteti qyteti)
         {
             return HandleResult(await Mediator.Send(new Create.Command { Qyteti = qyteti }));
@@ -40,6 +44,7 @@ namespace API.Controllers
 
 
         [HttpPut("{id}")]
+         [Authorize(Roles ="Moderator")]
 
         public async Task<IActionResult> EditQyteti(Guid id, Qyteti qyteti)
         {
@@ -49,6 +54,7 @@ namespace API.Controllers
 
 
         [HttpDelete("{id}")]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> DeleteQyteti(Guid id)
         {
             return HandleResult(await Mediator.Send(new Delete.Command { QytetiId = id }));

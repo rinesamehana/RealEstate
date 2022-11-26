@@ -14,6 +14,7 @@ namespace API.Controllers
     public class MenyraPagesesController : BaseApiController
     {
         [HttpGet]
+        
         public async Task<IActionResult> GetMenyraPagesave()
         {
             return HandleResult(await Mediator.Send(new List.Query()));

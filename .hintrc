@@ -26,6 +26,7 @@
       {
         "aria-roles": "off"
       }
-    ]
+    ],
+    "disown-opener": "off"
   }
 }

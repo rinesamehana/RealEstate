@@ -17,6 +17,7 @@ namespace API.Controllers
 
 
         [HttpGet]
+        
         public async Task<IActionResult> GetRezervimet()
         {
             return HandleResult(await Mediator.Send(new List.Query()));
