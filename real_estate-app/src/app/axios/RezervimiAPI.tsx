@@ -12,15 +12,15 @@ import Sidebar from "../../components/adminpage/sidebar/Sidebar";
 import Navbar from "../../components/adminpage/navbar/Navbar2";
 import RezervimiDashboard from "../../components/adminpage/rezervimi/dashboard/RezervimiDashboard";
 
-function PamjaAPI() {
-  const { pamjaStore } = useStore();
+function RezervimiAPI() {
+  const { rezervimiStore } = useStore();
 
   useEffect(() => {
-    pamjaStore.loadPamjet();
-  }, [pamjaStore]);
+    rezervimiStore.loadRezervimet();
+  }, [rezervimiStore]);
 
-  if (pamjaStore.loadingInitial)
-    return <LoadingComponent content="Loading..." />;
+  // if (pamjaStore.loadingInitial)
+  //   return <LoadingComponent content="Loading..." />;
     
   return (
     <div className="new">
@@ -34,5 +34,5 @@ function PamjaAPI() {
     </div>
   );
 }
-export default observer(PamjaAPI);
+export default observer(RezervimiAPI);
 

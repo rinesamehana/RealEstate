@@ -5,4 +5,6 @@ export interface Rezervimi {
     shtepiaId: string;
     menyraPagesesId: string;
     kontrataId: string;
+    IsCancelled?:boolean;
+    AppUserId?:string;
   }

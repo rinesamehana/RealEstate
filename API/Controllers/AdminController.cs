@@ -22,6 +22,8 @@ namespace API.Controllers
         public async Task<ActionResult> GetUsersWithRoles()
         {
             var users = await _userManager.Users
+            .   Include(r=>r.UserRoles)
+            .ThenInclude(r=>r.Role)
                 .OrderBy(u => u.UserName)
                 .Select(u => new
                 {

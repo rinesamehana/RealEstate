@@ -23,7 +23,7 @@ namespace API.Services
             _userManager = userManager;
         }
 
-        public async Task<String> CreateToken(AppUser user)
+        public async Task<string> CreateToken(AppUser user)
         {
             var claims = new List<Claim>{
                 new Claim (ClaimTypes.Name, user.UserName),
@@ -35,6 +35,7 @@ namespace API.Services
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var roles=await _userManager.GetRolesAsync(user);
+            
             claims.AddRange(roles.Select(role=>new Claim(ClaimTypes.Role, role)));
 
             

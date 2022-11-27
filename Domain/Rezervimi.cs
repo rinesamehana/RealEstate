@@ -38,7 +38,7 @@ namespace Domain
       public bool IsCancelled{get;set;}
        
        public Guid AppUserId { get; set; } 
-        public AppUser AppUser { get; set; }
+        public AppUser? AppUser { get; set; }
        public ICollection<RezervimiAttendee> Attendees{get; set;}=new List<RezervimiAttendee>();
      
     }

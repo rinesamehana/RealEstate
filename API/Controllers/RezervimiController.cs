@@ -15,14 +15,14 @@ namespace API.Controllers
     public class RezervimiController : BaseApiController
     {
 
-
+  [AllowAnonymous]
         [HttpGet]
         
         public async Task<IActionResult> GetRezervimet()
         {
             return HandleResult(await Mediator.Send(new List.Query()));
         }
-
+  [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRezervim(Guid id)
         {
@@ -33,19 +33,19 @@ namespace API.Controllers
         }
         [HttpPost]
 
-        
+         [AllowAnonymous]
         public async Task<IActionResult> Create(Rezervimi rezervimi)
         {
             return HandleResult(await Mediator.Send(new Create.Command { Rezervimi = rezervimi }));
         }
-        [Authorize(Policy ="IsRezervimiHost")]
+      [AllowAnonymous]
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(Guid id, Rezervimi rezervimi)
         {
             rezervimi.RezervimiId = id;
             return HandleResult(await Mediator.Send(new Edit.Command { Rezervimi = rezervimi }));
         }
-        [Authorize(Policy ="IsRezervimiHost")]
+       [AllowAnonymous]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

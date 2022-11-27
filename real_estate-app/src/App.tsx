@@ -227,7 +227,7 @@ function App() {
             <Switch>
               <PrivateRoute exact path="/rezervimi" component={RezervimiAPI} />
               <PrivateRoute path="/rezervimi/:rezervimiId" component={RezervimiDetails} />
-              <PrivateRoute
+              <Route
                 key={location.key}
                 path={["/manageRezervimi/:rezervimiId", "/createRezervim"]}
                 component={RezervimiForm}

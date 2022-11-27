@@ -70,6 +70,9 @@ export default observer(function RezervimiDetails() {
               <Card.Content style={CRStyles}>
                 Kontrata: {rezervimi.kontrataId}
               </Card.Content>
+              <Card.Content style={CRStyles}>
+                Kontrata: {rezervimi.AppUserId}
+              </Card.Content>
               {/* <Card.Content style={CRStyles}>
                 User: {rezervimi.appUserId}
               </Card.Content> */}

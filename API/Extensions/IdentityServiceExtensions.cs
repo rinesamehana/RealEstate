@@ -58,19 +58,12 @@ namespace API.Extensions
             services
                 .AddAuthorization(opt =>
                 {
-                    opt
-                        .AddPolicy("IsRezervimiHost",
-                        policy =>
-                        {
-                            policy.Requirements.Add(new IsHostRequirement());
-                        }
-                        );
-                      
+                    opt.AddPolicy("IsRezervimiHost", policy => policy.RequireRole("Member"));
                 });
                 services.AddAuthorization(opt => 
             {
                 opt.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Moderator"));
-                opt.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "Moderator"));
+                 opt.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "Moderator"));
             });
             services
                 .AddTransient<IAuthorizationHandler, IsHostRequirementHandler>(

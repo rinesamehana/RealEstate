@@ -61,6 +61,7 @@ export default observer(function RezervimiForm() {
     shtepiaId: "",
     menyraPagesesId: "",
     kontrataId: "",
+
  
   });
 
@@ -70,6 +71,7 @@ export default observer(function RezervimiForm() {
     shtepiaId: Yup.string().required("Place is required"),
     menyraPagesesId: Yup.string().required("Place is required"),
     kontrataId: Yup.string().required("Place is required"),
+   
   
   });
   useEffect(() => {
@@ -126,10 +128,10 @@ useEffect(()=>{
                           onSubmit={handleSubmit}
                           autoComplete="off"
                         ><span>Check_In: </span>
-                          <Field type='date' style={CardStyles1} name="check_in" className='form-control' />
+                          <Field type='date' style={CardStyles1} name="check_in" className='check_in' />
                           <br/>   
                           <span >Check_Out: </span>
-                          <Field type='date' style={CardStyles2} name="check_out" className='form-control2' />
+                          <Field type='date' style={CardStyles2} name="check_out" className='check_out' />
                            {/* <MyTextInput
                             name="check_in"
                             placeholder="CheckIn"
@@ -162,7 +164,7 @@ useEffect(()=>{
                             name="menyraPagesesId"
                             className="MenyraPageses"
                           >
-                            <option placeholder="Zgjedh Menyren e Pagses "></option>
+                            <option placeholder="Zgjedh Menyren e Pageses "></option>
 
                             {menyratPageses.map((menyraPageses) => (
                               <option
@@ -179,7 +181,7 @@ useEffect(()=>{
                             name="kontrataId"
                             className="Kontrata"
                           >
-                            <option placeholder="Zgjedh Lagjen "></option>
+                            <option placeholder="Zgjedh Kontraten "></option>
 
                             {kontratat.map((kontrata) => (
                               <option

@@ -22,8 +22,10 @@ export default observer(function RezervimiList() {
     deleteRezervimin(rezervimiId);
   }
 
-  const { rezervimiStore } = useStore();
+  const { rezervimiStore, userStore } = useStore();
   const { deleteRezervimin, rezervimet, loading } = rezervimiStore;
+
+  const {user}=userStore;
   return (
     <TableContainer className="table">
       <div className="datatable">
@@ -38,11 +40,12 @@ export default observer(function RezervimiList() {
         <TableHead></TableHead>
         <TableRow>
           <TableCell className="tableCell">ID</TableCell>
-          <TableCell className="tableCell">check_in</TableCell>
-          <TableCell className="tableCell">check_out</TableCell>
-          <TableCell className="tableCell">shtepiaId</TableCell>
-          <TableCell className="tableCell">menyraPagesesId</TableCell>
-          <TableCell className="tableCell">kontrataId</TableCell>
+          <TableCell className="tableCell">Check_in</TableCell>
+          <TableCell className="tableCell">Check_out</TableCell>
+          <TableCell className="tableCell">ShtepiaId</TableCell>
+          <TableCell className="tableCell">MenyraPagesesId</TableCell>
+          <TableCell className="tableCell">KontrataId</TableCell>
+          <TableCell className="tableCell">Emri</TableCell>
           {/* <TableCell className="tableCell">appUserId</TableCell> */}
 
           <TableCell className="tableCell"></TableCell>
@@ -68,6 +71,9 @@ export default observer(function RezervimiList() {
               </TableCell>
               <TableCell className="tableCell">
                 {rezervimi.kontrataId}
+              </TableCell>
+              <TableCell className="tableCell">
+              <td>{rezervimi.AppUserId}</td>
               </TableCell>
               {/* <TableCell className="tableCell">
                 {rezervimi.appUserId}
