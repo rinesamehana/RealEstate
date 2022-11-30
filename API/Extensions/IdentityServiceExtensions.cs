@@ -14,41 +14,61 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Persistence;
 
+
+
+
+
 namespace API.Extensions
-{
+{  
     public static class IdentityServiceExtensions
     {
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection
+        AddIdentityServices(
+            this IServiceCollection services,
+            IConfiguration config
+        )
         {
-            services.AddIdentityCore<AppUser>(opt =>
+           services.AddIdentityCore<AppUser>(opt =>
             {
                 opt.Password.RequireNonAlphanumeric = false;
             })
-            .AddEntityFrameworkStores<DataContext>()
-            .AddSignInManager<SignInManager<AppUser>>();
+                .AddRoles<AppRole>()
+                .AddRoleManager<RoleManager<AppRole>>()
+                .AddSignInManager<SignInManager<AppUser>>()
+                .AddRoleValidator<RoleValidator<AppRole>>()
+                .AddEntityFrameworkStores<DataContext>();
+                
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(opt =>
+            var key =
+                new SymmetricSecurityKey(Encoding
+                        .UTF8
+                        .GetBytes(config["TokenKey"]));
+            services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opt =>
                 {
-                    opt.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = key,
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-
-                    };
+                    opt.TokenValidationParameters =
+                        new TokenValidationParameters {
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = key,
+                            ValidateIssuer = false,
+                            ValidateAudience = false
+                        };
                 });
-                services.AddAuthorization(opt=>{
-                    opt.AddPolicy("IsRezervimiHost", policy =>{
-                        policy.Requirements.Add(new IsHostRequirement());
-
-                    });
+            services
+                .AddAuthorization(opt =>
+                {
+                    opt.AddPolicy("IsRezervimiHost", policy => policy.RequireRole("Member"));
                 });
-            services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
+                services.AddAuthorization(opt => 
+            {
+                opt.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Moderator"));
+                 opt.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "Moderator"));
+            });
+            services
+                .AddTransient<IAuthorizationHandler, IsHostRequirementHandler>(
+                );
             services.AddScoped<TokenService>();
- 
 
             return services;
         }

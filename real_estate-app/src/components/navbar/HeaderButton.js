@@ -2,7 +2,7 @@ import CartIcon from "./CartIcon";
 import classes from './HeaderButton.module.css';
 import {useState} from  'react';
 import { Link } from "react-router-dom";
-import HouseItem from "../../pages/list/HouseItem";
+import HouseItem from "../../pages/neighborhood/HouseItem";
 
 const HeaderButton = props => {
     const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);

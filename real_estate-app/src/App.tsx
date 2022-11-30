@@ -88,9 +88,7 @@ import PrivateRoute from "./app/axios/PrivateRoute";
 import ShtepiaForm from "./components/adminpage/shtepia/form/ShtepiaForm";
 import ShtepiaDetails from "./components/adminpage/shtepia/details/ShtepiaDetails";
 import ShtepiaAPI from "./app/axios/ShtepiaAPI";
-import RezervimiAPI from "./app/axios/RezervimiAPI";
-import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
-import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
+
 // import { Listt } from "./pages";
 import { Listt, ProfilePage} from "./pages";
 import HouseId from "./pages/house/HouseId";
@@ -99,6 +97,13 @@ import housepage from "./pages/housespage/housepage";
 import Contact from "./components/contact/contact";
 import OurTeam from "./components/ourteam/OurTeam";
 // import ProfilePage from "./pages/profiles/ProfilePage";
+import Rezervimiii from "./pages/rezervim/RezervimiForm";
+import RezervimiAPI from "./app/axios/RezervimiAPI";
+
+import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
+import RezervimiForm from "./pages/rezervim/RezervimiForm";
+import RezervimiInfo from "./pages/rezervim/RezervimiInfo";
+
 
 
 
@@ -181,6 +186,9 @@ function App() {
         {/* <Route path="/search" component={Search} /> */}
         <Route path="/houses" component={Listt} />
   
+        <Route
+          path='/reservations' component={RezervimiInfo}
+        />
     
         <Route path="/towns" component={neighborhood} />
         {/* <Route path="/profile" component={Profile} />  */}
@@ -192,6 +200,9 @@ function App() {
         <Route path="/teams" component={OurTeam}/>
 
 
+       
+   
+          
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
         
         <Route path="/dashboard" component={Dashboard} />
@@ -237,7 +248,7 @@ function App() {
             <Switch>
               <PrivateRoute exact path="/rezervimi" component={RezervimiAPI} />
               <PrivateRoute path="/rezervimi/:rezervimiId" component={RezervimiDetails} />
-              <PrivateRoute
+              <Route
                 key={location.key}
                 path={["/manageRezervimi/:rezervimiId", "/createRezervim"]}
                 component={RezervimiForm}
@@ -246,7 +257,7 @@ function App() {
               <Route path="/server-error" component={ServerError} />
             </Switch>
           )}
-        />
+        /> 
         <Route
           path={"/(kontrata|manageKontrata|createKontrata|errors|server-error)"}
           render={() => (

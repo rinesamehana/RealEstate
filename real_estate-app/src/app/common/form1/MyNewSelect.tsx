@@ -1,5 +1,13 @@
 import { ErrorMessage, useField } from "formik"
+import CSS from "csstype";
+const LabelStyle: CSS.Properties = {
+  width: "310px",
+  padding: "10px",
+marginBottom:"15px",
 
+height:"50px",
+
+};
 interface Props {
     options: Opt[]
     label: string;
@@ -14,12 +22,12 @@ export const MyNewSelect = ({ label,options, ...props }: Props) => {
 
     return (
         <>
-            <div>
+            <div >
                 <label htmlFor={props.name || props.id}> {label} </label>
 
-                <select {...field} {...props} >
+                <select style={LabelStyle} {...field} {...props} >
 
-                    <option value="">--- Select ---</option>
+                    <option value="" >Select</option>
 
                     {
                         options.map(({ desc, value }) => (

@@ -14,8 +14,8 @@ namespace API.DTOs
         public string Username { get; set; }
 
         public string Image { get; set; }
-     
+       public ICollection<string> Roli { get; set; }
 
-        public ICollection<string> Roli { get; set; }
+    
     }
 }

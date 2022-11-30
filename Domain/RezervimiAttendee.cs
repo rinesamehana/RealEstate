@@ -5,7 +5,8 @@ namespace Domain
     public class RezervimiAttendee
     {
 
-        public string AppUserId {get; set;}
+        public Guid Id { get; set; }
+        public Guid AppUserId {get; set;}
 
         public AppUser AppUser {get; set;}
         [ForeignKey("RezervimiId")]
@@ -13,6 +14,7 @@ namespace Domain
         
         public Rezervimi Rezervimi {get; set;}
 
+        public decimal Cmimi { get; set; }
         public bool IsHost {get; set;}
     }
 }

@@ -88,7 +88,8 @@ export default observer(function List() {
                         <br /> Jamaica Plaim */}
                       </div>
                       <div className="buttonn1">
-                        <Button type="submit" content="Book Now" />
+                        <Button type="submit" content="Book Now" as={Link}
+                            to="/createRezervim" />
                       </div>
                     </div>
                   </div>

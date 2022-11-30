@@ -12,6 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 export default observer(function Houses() {
   const { shtepiaStore } = useStore();
+  const { userStore, modalStore } = useStore();
   const { n6Shtepiav, loadShtepite } = shtepiaStore;
 
   const [query, setQuery]=useState(""); 

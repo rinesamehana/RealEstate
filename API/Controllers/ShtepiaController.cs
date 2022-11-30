@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.ShtepiaA;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -14,13 +15,13 @@ namespace API.Controllers
     public class ShtepiaController : BaseApiController
     {
 
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetShtepiat()
         {
             return HandleResult(await Mediator.Send(new List.Query()));
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetShtepin(Guid id)
         {
@@ -30,11 +31,13 @@ namespace API.Controllers
 
         }
         [HttpPost]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> Create(Shtepia shtepia)
         {
             return HandleResult(await Mediator.Send(new Create.Command { Shtepia = shtepia }));
         }
         [HttpPut("{id}")]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> Edit(Guid id, Shtepia shtepia)
         {
             shtepia.ShtepiaId = id;
@@ -42,6 +45,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> Delete(Guid id)
         {
             return HandleResult(await Mediator.Send(new Delete.Command { ShtepiaId = id }));

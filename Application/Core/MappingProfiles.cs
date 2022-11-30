@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Application.ShtepiaA;
 using Application.RezervimA;
 using Application.StafiA;
+using Application.QytetiA;
 
 namespace Application.Core
 {
@@ -29,26 +30,33 @@ namespace Application.Core
             CreateMap <Kafshet , Kafshet>();
             CreateMap <Kontrata , Kontrata>();
             CreateMap <Pajisja , Pajisja>();
+            CreateMap<Qyteti, QytetiDto>();
             CreateMap <LlojiShtepise , LlojiShtepise>();
             CreateMap <MenyraPageses, MenyraPageses>();
             CreateMap <Shtepia, Shtepia>();
             
            
-             CreateMap <Rezervimi, Rezervimi>();
-             CreateMap<Rezervimi, RezervimiDto>()
-                  .ForMember(e => e.HostUsername, o => o.MapFrom(s=> s.Attendees
-                  .FirstOrDefault(x => x.IsHost).AppUser.UserName));
+            //  CreateMap <Rezervimi, Rezervimi>();
+            //  CreateMap<Rezervimi, RezervimiDto>()
+            //       .ForMember(e => e.HostUsername, o => o.MapFrom(s=> s.Attendees
+            //       .FirstOrDefault(x => x.IsHost).AppUser.UserName));
            
-            CreateMap<RezervimiAttendee, AttendeeDto>()
-                 .ForMember(e => e.DisplayName, o => o.MapFrom(s => s.AppUser.DisplayName))
-                 .ForMember(e => e.Username, o => o.MapFrom(s => s.AppUser.UserName))
-                .ForMember(d => d.Image, o => o.MapFrom(s => s.AppUser.Photos.FirstOrDefault(x => x.IsMain).Url));  
-                //   .ForMember(e => e.Bio, o => o.MapFrom(s => s.AppUser.Bio));
+            // CreateMap<RezervimiAttendee, AttendeeDto>()
+            //      .ForMember(e => e.DisplayName, o => o.MapFrom(s => s.AppUser.DisplayName))
+            //      .ForMember(e => e.Username, o => o.MapFrom(s => s.AppUser.UserName))
+            //     .ForMember(d => d.Image, o => o.MapFrom(s => s.AppUser.Photos.FirstOrDefault(x => x.IsMain).Url));  
+            //     //   .ForMember(e => e.Bio, o => o.MapFrom(s => s.AppUser.Bio));
 
 
 
-               CreateMap<AppUser, Profiles.Profile>()
-                .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));  
+            //    CreateMap<AppUser, Profiles.Profile>()
+            //     .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));  
+CreateMap<Rezervimi, RezervimiDto>()
+                .ForMember(d => d.User, o => o.MapFrom(s => s.AppUser));
+            CreateMap<AppUser, Profiles.Profile>()
+                .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.DisplayName))
+                .ForMember(d => d.Username, o => o.MapFrom(s => s.UserName));
+               
         }
     }
 }

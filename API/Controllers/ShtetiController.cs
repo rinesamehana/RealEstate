@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.ShtetiA;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -16,6 +17,7 @@ namespace API.Controllers
 
 
         [HttpGet]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> GetShtetet()
         {
             return HandleResult(await Mediator.Send(new List.Query()));
@@ -23,6 +25,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> GetShteti(Guid id)
         {
             return HandleResult(await Mediator.Send(new Details.Query { ShtetiId = id }));
@@ -30,12 +33,14 @@ namespace API.Controllers
 
 
         [HttpPost]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> CreateShteti(Shteti shteti)
         {
             return HandleResult(await Mediator.Send(new Create.Command { Shteti = shteti }));
         }
 
         [HttpPut("{id}")]
+         [Authorize(Roles ="Moderator")]
 
         public async Task<IActionResult> EditShteti(Guid id, Shteti shteti)
         {
@@ -44,6 +49,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+         [Authorize(Roles ="Moderator")]
         public async Task<IActionResult> DeleteShteti(Guid id)
         {
             return HandleResult(await Mediator.Send(new Delete.Command { ShtetiId = id }));

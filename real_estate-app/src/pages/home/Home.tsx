@@ -15,6 +15,7 @@ import PropertyList from "../../components/propertyList/PropertyList";
 import "./home.css";
 
 export default observer(function Home() {
+  const { userStore, modalStore } = useStore();
   return (
     <div>
       <Navbar />
@@ -26,8 +27,9 @@ export default observer(function Home() {
         <Neighborhoods />
         <PropertyList />
         <h1 className="homeTitle">Latest   Houses</h1>
+        {userStore.isLoggedIn || !(userStore.isLoggedIn)}{
         <Houses />
-
+        }
         <Partners />
         <Footer />
       </div>

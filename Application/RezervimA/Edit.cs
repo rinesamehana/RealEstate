@@ -38,10 +38,18 @@ namespace Application.RezervimA
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var rezervimi = await _context.Rezervimi.FindAsync(request.Rezervimi.RezervimiId);
+                var rezervimi = await _context.Rezervimet.FindAsync(request.Rezervimi.RezervimiId);
                 if (rezervimi == null)
                     return null;
-                _mapper.Map(request.Rezervimi, rezervimi);
+
+                rezervimi.RezervimiId = request.Rezervimi.RezervimiId;
+                rezervimi.Check_in = request.Rezervimi.Check_in;
+                rezervimi.Check_out = request.Rezervimi.Check_out;
+                rezervimi.nrPersonave = request.Rezervimi.nrPersonave;
+                rezervimi.Pagesa = request.Rezervimi.Pagesa;
+                rezervimi.AppUserId = rezervimi.AppUserId;
+
+                // _mapper.Map(request.Rezervimi, rezervimi);
                 var result = await _context.SaveChangesAsync() > 0;
 
                 if (!result) return Result<Unit>.Failure("Failure to update rezervimi");

@@ -1,7 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
-
 import { Rezervimi } from "../models/Rezervimi";
+
+
 
 export default class RezervimiStore {
   selectedRezervimi: Rezervimi | undefined = undefined;
@@ -9,30 +10,20 @@ export default class RezervimiStore {
   editMode = false;
   loading = false;
   loadingInitial = false;
-  static loadingInitial: any;
 
   constructor() {
     makeAutoObservable(this);
   }
-  private setRezervim = (rezervim: Rezervimi) => {
-    this.rezervimiRegistry.set(rezervim.rezervimiId, rezervim);
-  };
-  private getRezervim = (rezervimiId: string) => {
-    return this.rezervimiRegistry.get(rezervimiId);
-  };
-  setLoadingInitial = (state: boolean) => {
-    this.loadingInitial = state;
-  };
   get rezervimet() {
     return Array.from(this.rezervimiRegistry.values());
   }
-  loadRezervimet = async () => {
+  loadRezervimet= async () => {
     this.loadingInitial = true;
     try {
       const rezervimet = await agent.Rezervimet.list();
 
-      rezervimet.forEach((rezervim) => {
-        this.setRezervim(rezervim);
+      rezervimet.forEach((rezervimi) => {
+        this.setRezervimin(rezervimi);
       });
       this.setLoadingInitial(false);
     } catch (error) {
@@ -43,37 +34,45 @@ export default class RezervimiStore {
   };
 
   loadRezervimin = async (rezervimiId: string) => {
-    let rezervim = this.getRezervim(rezervimiId);
-    if (rezervim) {
-      this.selectedRezervimi = rezervim;
-      return rezervim;
+    let rezervimi = this.getRezervimin(rezervimiId);
+    if (rezervimi) {
+      this.selectedRezervimi = rezervimi;
+      return rezervimi;
     } else {
       this.loadingInitial = true;
       try {
-        rezervim = await agent.Rezervimet.details(rezervimiId);
-        this.setRezervim(rezervim);
+        rezervimi = await agent.Rezervimet.details(rezervimiId);
+        this.setRezervimin(rezervimi);
         runInAction(() => {
-          this.selectedRezervimi = rezervim;
+          this.selectedRezervimi = rezervimi;
         });
 
         this.setLoadingInitial(false);
-        return rezervim;
+        return rezervimi;
       } catch (error) {
         console.log(error);
         this.setLoadingInitial(false);
       }
     }
   };
+  private setRezervimin = (rezervimi: Rezervimi) => {
+    this.rezervimiRegistry.set(rezervimi.rezervimiId, rezervimi);
+  };
+  private getRezervimin = (rezervimiId: string) => {
+    return this.rezervimiRegistry.get(rezervimiId);
+  };
+  setLoadingInitial = (state: boolean) => {
+    this.loadingInitial = state;
+  };
 
-
-  createRezervimin = async (rezervim: Rezervimi) => {
+  createRezervimin = async (rezervimi: Rezervimi) => {
     this.loading = true;
 
     try {
-      await agent.Rezervimet.create(rezervim);
+      await agent.Rezervimet.create(rezervimi);
       runInAction(() => {
-        this.rezervimiRegistry.set(rezervim.rezervimiId, rezervim);
-        this.selectedRezervimi = rezervim;
+        this.rezervimiRegistry.set(rezervimi.rezervimiId, rezervimi);
+        this.selectedRezervimi = rezervimi;
         this.editMode = false;
         this.loading = false;
       });
@@ -85,13 +84,13 @@ export default class RezervimiStore {
     }
   };
 
-  updateRezervimin = async (rezervim: Rezervimi) => {
+  updateRezervimin = async (rezervimi: Rezervimi) => {
     this.loading = true;
     try {
-      await agent.Rezervimet.update(rezervim);
+      await agent.Rezervimet.update(rezervimi);
       runInAction(() => {
-        this.rezervimiRegistry.set(rezervim.rezervimiId, rezervim);
-        this.selectedRezervimi = rezervim;
+        this.rezervimiRegistry.set(rezervimi.rezervimiId, rezervimi);
+        this.selectedRezervimi = rezervimi;
         this.editMode = false;
         this.loading = false;
       });

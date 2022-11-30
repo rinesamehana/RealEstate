@@ -1,4 +1,5 @@
  using Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,15 +11,16 @@ using System.Threading.Tasks;
 
 namespace Persistence
 {
-    public class DataContext : IdentityDbContext<AppUser>
-    {
+    public class DataContext : IdentityDbContext<AppUser, AppRole,Guid, 
+        IdentityUserClaim<Guid>, AppUserRole, IdentityUserLogin<Guid>, 
+        IdentityRoleClaim<Guid>, IdentityUserToken<Guid>> {
         public DataContext(DbContextOptions options) : base(options)
         {
         }
 
          
-
-        public DbSet<RezervimiAttendee> RezervimiAttendees{get; set;}
+//    public DbSet<AppUser> Users { get; set; }
+        // public DbSet<RezervimiAttendee> Attendees{get; set;}
         public DbSet<Gjinia> Gjinite { get; set; }
         public DbSet<LlojiUser> LlojeteUserit { get; set; }
         public DbSet<Qyteti> Qytetet { get; set; }
@@ -39,9 +41,9 @@ namespace Persistence
         public DbSet<LlojiShtepise> LlojiShtepive { get; set; }
 
         public DbSet<MenyraPageses> MenyraPagesave { get; set; }
-        public DbSet<Rezervimi> Rezervimi { get; set; }
+        public DbSet<Rezervimi> Rezervimet { get; set; }
         public DbSet<Shtepia> Shtepiat { get; set; }
-        public DbSet<AppUser> Attendees { get; set; }
+     
         public DbSet<ShtepiaAmbiente> ShtepiatAmbientet { get; set; }
         public DbSet<ShtepiaPajisjet> ShtepiaPajisjets { get; set; }
        
@@ -65,6 +67,17 @@ namespace Persistence
         {
 
             
+             modelBuilder.Entity<AppUser>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.User)
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired();
+
+            modelBuilder.Entity<AppRole>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.Role)
+                .HasForeignKey(ur => ur.RoleId)
+                .IsRequired();
 
             //One to many(shteti dhe qyteti)
             base.OnModelCreating(modelBuilder);
@@ -83,6 +96,9 @@ namespace Persistence
                 .HasOne(s => s.AppUser)
                 .WithMany(q => q.Rezervimet)
                 .HasForeignKey(s => s.AppUserId);
+
+
+            
 
             //---------------Stafi------------
 
@@ -205,15 +221,15 @@ namespace Persistence
 
 
             //Rezervimi
-            modelBuilder.Entity<Rezervimi>()
-                .HasOne(s => s.MenyraPageses)
-                .WithMany(q => q.Rezervimet)
-                .HasForeignKey(s => s.MenyraPagesesId);
+            // modelBuilder.Entity<Rezervimi>()
+            //     .HasOne(s => s.MenyraPageses)
+            //     .WithMany(q => q.Rezervimet)
+            //     .HasForeignKey(s => s.MenyraPagesesId);
 
-                modelBuilder.Entity<Rezervimi>()
-                .HasOne(s => s.Kontrata)
-                .WithMany(q => q.Rezervimet)
-                .HasForeignKey(s => s.KontrataId);
+            //     modelBuilder.Entity<Rezervimi>()
+            //     .HasOne(s => s.Kontrata)
+            //     .WithMany(q => q.Rezervimet)
+            //     .HasForeignKey(s => s.KontrataId);
      
 
 //------------------------------------------------
@@ -235,43 +251,26 @@ namespace Persistence
 // -------------------------------- Rezervimi dhe AppUser
 
 
-                modelBuilder.Entity<RezervimiAttendee>(x=>x.HasKey(aa=>new {aa.AppUserId, aa.RezervimiId}));
-                modelBuilder.Entity<RezervimiAttendee>()
-                .HasOne(u => u.AppUser)
-                .WithMany(a => a.Rezervimi)
-                .HasForeignKey(s => s.AppUserId);
+                // modelBuilder.Entity<RezervimiAttendee>(x=>x.HasKey(aa=>new {aa.AppUserId, aa.RezervimiId}));
+                // modelBuilder.Entity<RezervimiAttendee>()
+                // .HasOne(u => u.AppUser)
+                // .WithMany(a => a.Rezervimi)
+                // .HasForeignKey(s => s.AppUserId);
 
-                 modelBuilder.Entity<RezervimiAttendee>()
-                .HasOne(u => u.Rezervimi)
-                .WithMany(a => a.Attendees)
-                .HasForeignKey(s => s.RezervimiId);
+                //  modelBuilder.Entity<RezervimiAttendee>()
+                // .HasOne(u => u.Rezervimi)
+                // .WithMany(a => a.Attendees)
+                // .HasForeignKey(s => s.RezervimiId);
 
                 //  modelBuilder.Entity<Rezervimi>()
                 // .HasOne(u => u.Shtepia)
                 // .WithMany(q => q.Attendees)
                 // .HasForeignKey(aa => aa.RezervimiId);
 
-
-
-
-
-
-            
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
+                     modelBuilder.Entity<Rezervimi>()
+                .HasOne(s => s.AppUser)
+                .WithMany(q => q.Rezervimet)
+                .HasForeignKey(s => s.AppUserId);
         }
 
 

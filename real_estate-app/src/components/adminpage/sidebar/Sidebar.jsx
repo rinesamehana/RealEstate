@@ -15,7 +15,7 @@ import { DarkModeContext } from "../../../context/darkModeContext";
 import { AiOutlineStop } from "react-icons/ai";
 import { GiWashingMachine, GiModernCity, GiField } from "react-icons/gi";
 import { BiBuildingHouse } from "react-icons/bi";
-import { MdGppGood } from "react-icons/md";
+import { MdGppGood,MdOutlinePayment } from "react-icons/md";
 import { FaFileContract, FaSwimmingPool, FaCity } from "react-icons/fa";
 import { TiBusinessCard } from "react-icons/ti";
 import { TbUserCheck, TbLiveView } from "react-icons/tb";
@@ -122,6 +122,7 @@ const Sidebar = () => {
               <span>Type of house</span>
             </li>
           </Link>
+          
           <Link to="/Pajisja" style={{ textDecoration: "none" }}>
             <li>
               <GiWashingMachine className="icon" />
@@ -132,6 +133,12 @@ const Sidebar = () => {
             <li>
               <FaSwimmingPool className="icon" />
               <span>Outside Features</span>
+            </li>
+          </Link>
+          <Link to="/MenyraPageses" style={{ textDecoration: "none" }}>
+            <li>
+              <MdOutlinePayment className="icon" />
+              <span>Payment Method</span>
             </li>
           </Link>
           <Link to="/kafshet" style={{ textDecoration: "none" }}>
