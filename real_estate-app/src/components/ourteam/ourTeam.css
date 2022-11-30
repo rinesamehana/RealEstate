@@ -134,7 +134,7 @@ img{
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    background-color: #bcb0ab;
+    background-color: #ddd;
 }
 .section-title{
     flex: 0 0 100%;
@@ -170,6 +170,7 @@ img{
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
+    
 }
 .column{
     position: relative;
@@ -178,6 +179,7 @@ img{
     padding-left: 15px;
     flex: 0 0 100%;
     max-width: 100%;
+    
 }
 .team{
     margin-bottom:30px ;
