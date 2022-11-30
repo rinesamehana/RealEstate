@@ -197,7 +197,7 @@ function App() {
         
         <Route path="/contactus" component={Contact}/>
 
-        <Route path="/teams" component={OurTeam}/>
+        <Route path="/about-us" component={OurTeam}/>
 
 
        

@@ -8,11 +8,36 @@ const OurTeam = () => {
         <div>
             <Navbar/>
 
+            <div class="section">
+		<div class="container2">
+			<div class="content-section">
+				<div class="title">
+					<h1>About Us</h1>
+				</div>
+				<div class="content">
+					<h3>Your Window to The World's Finest Real Estate</h3>
+					<p>The Agency is a global, boutique real estate brokerage representing a portfolio of properties across the world's prime markets and celebrated destinations. Our clients and agents benefit 
+                        from the shared resources of our international team, including in-house, cutting-edge creative, public relations and tech divisions. <br/>
+Wherever you're going, we can take you there!</p>
+					<div class="button">
+						<a href="">Contact Us</a>
+					</div>
+				</div>
+				<div class="social">
+					<a href=""><i class="fab fa-facebook-f"></i></a>
+					<a href=""><i class="fab fa-twitter"></i></a>
+					<a href=""><i class="fab fa-instagram"></i></a>
+				</div>
+			</div>
+			<div class="image-section">
+				<img src="https://www.iamexpat.nl/sites/default/files/styles/ogimage_thumb/public/rental-housing-agencies-netherlands.jpg"/>
+			</div>
+		</div>
+	</div>
 
-
-        <div class="container">
+    <div class="container">
         <div class="section-title">
-            <h1>Our Team Page</h1>
+            <h1>Our Team</h1>
         </div>
 
         <div class="row">
@@ -109,8 +134,7 @@ const OurTeam = () => {
 
 
 
-     
-   
+
 
         </div>
     );
@@ -119,3 +143,7 @@ const OurTeam = () => {
 
 
 export default OurTeam;
+
+
+
+
