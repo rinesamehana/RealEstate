@@ -25,7 +25,7 @@ namespace Application.RezervimA
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var rezervimi = await _context.Rezervimi.FindAsync(request.RezervimiId);
+                var rezervimi = await _context.Rezervimet.FindAsync(request.RezervimiId);
 
           
                 _context.Remove(rezervimi);

@@ -5,11 +5,14 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Services;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Persistence;
 
 namespace API.Controllers
 {
@@ -23,10 +26,14 @@ namespace API.Controllers
 
         private readonly SignInManager<AppUser> _signInManager;
         private readonly TokenService _tokenService;
+        private readonly IMapper _mapper;
+        private readonly DataContext _context;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, TokenService tokenService)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, TokenService tokenService, IMapper mapper, DataContext context)
         {
             _tokenService = tokenService;
+            _mapper = mapper;
+            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
         }
@@ -82,14 +89,15 @@ namespace API.Controllers
         }
         // [Authorize]
         [HttpGet]
-        public async  Task<ActionResult<UserDto>> GetCurrentUser()
+      public async Task<ActionResult<GetUserDto>> GetCurrentUser()
         {
-           // var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
+            var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
 
-           var user = await _userManager.Users.Include(p => p.Photos)
-                .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
-
-            return await CreateUserObjectAsync(user);
+            var userR = await _context.Users.ProjectTo<GetUserDto>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync(x => x.Id == user.Id);
+            userR.Token = await _tokenService.CreateToken(user);
+            userR.Roli = await _userManager.GetRolesAsync(user);
+            return userR;
         }
         private async Task<UserDto> CreateUserObjectAsync(AppUser user)
         {
@@ -99,8 +107,6 @@ namespace API.Controllers
                 Image = user?.Photos?.FirstOrDefault(x=> x.IsMain)?.Url,
                 Token = await _tokenService.CreateToken(user),
                 Username = user.UserName,
-              
-             
             };
         }
     }

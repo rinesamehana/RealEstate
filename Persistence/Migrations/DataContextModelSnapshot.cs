@@ -367,17 +367,11 @@ namespace Persistence.Migrations
                     b.Property<Guid>("AppUserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("AppUserId1")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("Check_in")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Check_out")
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsCancelled")
-                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("KontrataId")
                         .HasColumnType("TEXT");
@@ -385,40 +379,21 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("MenyraPagesesId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ShtepiaId")
+                    b.Property<string>("Pagesa")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("nrPersonave")
                         .HasColumnType("TEXT");
 
                     b.HasKey("RezervimiId");
 
                     b.HasIndex("AppUserId");
 
-                    b.HasIndex("AppUserId1");
-
                     b.HasIndex("KontrataId");
 
                     b.HasIndex("MenyraPagesesId");
 
-                    b.HasIndex("ShtepiaId");
-
-                    b.ToTable("Rezervimi");
-                });
-
-            modelBuilder.Entity("Domain.RezervimiAttendee", b =>
-                {
-                    b.Property<Guid>("AppUserId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("RezervimiId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsHost")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("AppUserId", "RezervimiId");
-
-                    b.HasIndex("RezervimiId");
-
-                    b.ToTable("RezervimiAttendees");
+                    b.ToTable("Rezervimet");
                 });
 
             modelBuilder.Entity("Domain.RoliUser", b =>
@@ -761,48 +736,15 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany("Shtepite")
-                        .HasForeignKey("AppUserId1");
-
-                    b.HasOne("Domain.Kontrata", "Kontrata")
+                    b.HasOne("Domain.Kontrata", null)
                         .WithMany("Rezervimet")
                         .HasForeignKey("KontrataId");
 
-                    b.HasOne("Domain.MenyraPageses", "MenyraPageses")
+                    b.HasOne("Domain.MenyraPageses", null)
                         .WithMany("Rezervimet")
                         .HasForeignKey("MenyraPagesesId");
 
-                    b.HasOne("Domain.Shtepia", "Shtepia")
-                        .WithMany("Attendees")
-                        .HasForeignKey("ShtepiaId");
-
                     b.Navigation("AppUser");
-
-                    b.Navigation("Kontrata");
-
-                    b.Navigation("MenyraPageses");
-
-                    b.Navigation("Shtepia");
-                });
-
-            modelBuilder.Entity("Domain.RezervimiAttendee", b =>
-                {
-                    b.HasOne("Domain.AppUser", "AppUser")
-                        .WithMany("Rezervimi")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Rezervimi", "Rezervimi")
-                        .WithMany("Attendees")
-                        .HasForeignKey("RezervimiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Rezervimi");
                 });
 
             modelBuilder.Entity("Domain.Shtepia", b =>
@@ -979,10 +921,6 @@ namespace Persistence.Migrations
 
                     b.Navigation("Rezervimet");
 
-                    b.Navigation("Rezervimi");
-
-                    b.Navigation("Shtepite");
-
                     b.Navigation("UserRoles");
                 });
 
@@ -1050,11 +988,6 @@ namespace Persistence.Migrations
                     b.Navigation("Stafii");
                 });
 
-            modelBuilder.Entity("Domain.Rezervimi", b =>
-                {
-                    b.Navigation("Attendees");
-                });
-
             modelBuilder.Entity("Domain.RoliUser", b =>
                 {
                     b.Navigation("Stafii");
@@ -1063,8 +996,6 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Shtepia", b =>
                 {
                     b.Navigation("Ambientet");
-
-                    b.Navigation("Attendees");
 
                     b.Navigation("Pajisjet");
                 });

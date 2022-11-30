@@ -42,27 +42,16 @@ namespace Application.RezervimA
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
 
-                  var user = await _context.Users.FirstOrDefaultAsync(x => 
-                  x.UserName == _userAccessor.GetUsername());
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
 
-                 var attendee = new RezervimiAttendee {
-                        
-                        AppUser = user,
-                        Rezervimi = request.Rezervimi,
-                        IsHost = true
+                request.Rezervimi.AppUser = user;
 
-                 };
-
-                  request.Rezervimi.Attendees.Add(attendee);
-
-                _context.Rezervimi.Add(request.Rezervimi);
-
+                _context.Rezervimet.Add(request.Rezervimi);
                 var result = await _context.SaveChangesAsync() > 0;
 
-                if (!result) return Result<Unit>.Failure("Failed to create Rezervim");
+                if (!result) return Result<Unit>.Failure("Failed to create rezervimi");
 
                 return Result<Unit>.Success(Unit.Value);
-            }
         }
     }
-}
+}}

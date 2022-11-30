@@ -36,13 +36,13 @@ namespace Infrastructure.Security
             .Request.RouteValues.SingleOrDefault(x=>x.Key=="id").Value?.ToString());
 
 
-            var attendee=_dbcontext.RezervimiAttendees
-            .AsNoTracking()
-            .SingleOrDefaultAsync(x=>x.AppUserId.Equals(userId) && x.RezervimiId==RezervimiId).Result;
+            // var attendee=_dbcontext.Attendees
+            // .AsNoTracking()
+            // .SingleOrDefaultAsync(x=>x.AppUserId.Equals(userId) && x.RezervimiId==RezervimiId).Result;
 
-            if(attendee==null) return Task.CompletedTask;
+            // if(attendee==null) return Task.CompletedTask;
 
-            if(attendee.IsHost) context.Succeed(requirement);
+            // if(attendee.IsHost) context.Succeed(requirement);
 
             return Task.CompletedTask;
         }

@@ -61,7 +61,7 @@ export default observer(function RezervimiDetails() {
               <Card.Content style={CRStyles}>
                 CheckOut: {rezervimi.check_out}
               </Card.Content>
-              <Card.Content style={CRStyles}>
+              {/* <Card.Content style={CRStyles}>
                 Shtepia: {rezervimi.shtepiaId}
               </Card.Content>
               <Card.Content style={CRStyles}>
@@ -69,9 +69,12 @@ export default observer(function RezervimiDetails() {
               </Card.Content>
               <Card.Content style={CRStyles}>
                 Kontrata: {rezervimi.kontrataId}
+              </Card.Content> */}
+              <Card.Content style={CRStyles}>
+                Kontrata: {rezervimi.nrPersonave}
               </Card.Content>
               <Card.Content style={CRStyles}>
-                Kontrata: {rezervimi.AppUserId}
+                Kontrata: {rezervimi.pagesa}
               </Card.Content>
               {/* <Card.Content style={CRStyles}>
                 User: {rezervimi.appUserId}

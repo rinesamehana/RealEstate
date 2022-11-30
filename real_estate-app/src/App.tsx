@@ -88,14 +88,19 @@ import PrivateRoute from "./app/axios/PrivateRoute";
 import ShtepiaForm from "./components/adminpage/shtepia/form/ShtepiaForm";
 import ShtepiaDetails from "./components/adminpage/shtepia/details/ShtepiaDetails";
 import ShtepiaAPI from "./app/axios/ShtepiaAPI";
-import RezervimiAPI from "./app/axios/RezervimiAPI";
-import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
-import RezervimiForm from "./components/adminpage/rezervimi/form/RezervimiForm";
+
 // import { Listt } from "./pages";
 import { Listt, Profile} from "./pages";
 import HouseId from "./pages/house/HouseId";
 import neighborhood from "./pages/neighborhood/NeighborhoodPage";
 import housepage from "./pages/housespage/housepage";
+import Rezervimiii from "./pages/rezervim/RezervimiForm";
+import RezervimiAPI from "./app/axios/RezervimiAPI";
+
+import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
+import RezervimiForm from "./pages/rezervim/RezervimiForm";
+import RezervimiInfo from "./pages/rezervim/RezervimiInfo";
+
 
 
 
@@ -178,9 +183,13 @@ function App() {
         {/* <Route path="/search" component={Search} /> */}
         <Route path="/houses" component={Listt} />
   
+        <Route
+          path='/reservations' component={RezervimiInfo}
+        />
     
         <Route path="/towns" component={neighborhood} />
         <Route path="/profile" component={Profile} />
+   
           
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
         
@@ -236,7 +245,7 @@ function App() {
               <Route path="/server-error" component={ServerError} />
             </Switch>
           )}
-        />
+        /> 
         <Route
           path={"/(kontrata|manageKontrata|createKontrata|errors|server-error)"}
           render={() => (

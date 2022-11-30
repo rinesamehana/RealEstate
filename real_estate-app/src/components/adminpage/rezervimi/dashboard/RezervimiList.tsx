@@ -9,12 +9,15 @@ import { observer } from "mobx-react-lite";
 import React, { SyntheticEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Item, Segment, Table } from "semantic-ui-react";
+import { Pamja } from "../../../../app/models/Pamja";
 import { useStore } from "../../../../app/stores/store";
 
-export default observer(function RezervimiList() {
+export default observer(function PamjaList() {
   const [target, setTarget] = useState("");
+  const { rezervimiStore } = useStore();
+  const { deleteRezervimin, rezervimet, loading } = rezervimiStore;
 
-  function handleRezervimDelete(
+  function handlePamjaDelete(
     e: SyntheticEvent<HTMLButtonElement>,
     rezervimiId: string
   ) {
@@ -22,15 +25,12 @@ export default observer(function RezervimiList() {
     deleteRezervimin(rezervimiId);
   }
 
-  const { rezervimiStore, userStore } = useStore();
-  const { deleteRezervimin, rezervimet, loading } = rezervimiStore;
 
-  const {user}=userStore;
   return (
     <TableContainer className="table">
       <div className="datatable">
         <div className="datatableTitle">
-   
+      
           <Link to="/createRezervim" className="link">
             Add New
           </Link>
@@ -39,45 +39,25 @@ export default observer(function RezervimiList() {
       <Table sx={{ minWidth: 500 }} aria-label="simple table">
         <TableHead></TableHead>
         <TableRow>
-          <TableCell className="tableCell">ID</TableCell>
+    
+          <TableCell className="tableCell">Emri</TableCell>
+          <TableCell className="tableCell">username</TableCell>
           <TableCell className="tableCell">Check_in</TableCell>
           <TableCell className="tableCell">Check_out</TableCell>
-          <TableCell className="tableCell">ShtepiaId</TableCell>
-          <TableCell className="tableCell">MenyraPagesesId</TableCell>
-          <TableCell className="tableCell">KontrataId</TableCell>
-          <TableCell className="tableCell">Emri</TableCell>
-          {/* <TableCell className="tableCell">appUserId</TableCell> */}
-
+          <TableCell className="tableCell">NrPersonave</TableCell>
+          <TableCell className="tableCell">Pagesa</TableCell>
           <TableCell className="tableCell"></TableCell>
         </TableRow>
 
         <TableBody>
           {rezervimet.map((rezervimi) => (
             <TableRow key={rezervimi.rezervimiId}>
-              <TableCell className="tableCell">{rezervimi.rezervimiId}</TableCell>
-
-              <TableCell className="tableCell">
-                {rezervimi.check_in}
-              </TableCell>
-              <TableCell className="tableCell">
-                {rezervimi.check_out}
-              </TableCell>
-  
-              <TableCell className="tableCell">
-                {rezervimi.shtepiaId}
-              </TableCell>
-              <TableCell className="tableCell">
-                {rezervimi.menyraPagesesId}
-              </TableCell>
-              <TableCell className="tableCell">
-                {rezervimi.kontrataId}
-              </TableCell>
-              <TableCell className="tableCell">
-              <td>{rezervimi.AppUserId}</td>
-              </TableCell>
-              {/* <TableCell className="tableCell">
-                {rezervimi.appUserId}
-              </TableCell> */}
+              <TableCell className="tableCell">{rezervimi.user?.displayName}</TableCell>
+              <TableCell className="tableCell">{rezervimi.user?.username}</TableCell>
+              <TableCell className="tableCell">{rezervimi.check_in}</TableCell>
+              <TableCell className="tableCell">{rezervimi.check_out}</TableCell>
+              <TableCell className="tableCell">{rezervimi.nrPersonave}</TableCell>
+              <TableCell className="tableCell">{rezervimi.pagesa}</TableCell>
               <Table.Cell>
                 <Button
                   // onClick={() => gjiniaStore.selectGjini(gjinia.gjiniaId)}

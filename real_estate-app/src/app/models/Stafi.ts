@@ -1,3 +1,5 @@
+import { Qyteti } from "./Qyteti";
+
 export interface Stafi {
   stafiId: string;
   emri: string;
@@ -9,5 +11,6 @@ export interface Stafi {
   kohaId: string;
   gjiniaId: string;
   qytetiId: string;
+  qyteti?: Qyteti;
   adresa: string;
 }

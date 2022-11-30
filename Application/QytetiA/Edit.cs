@@ -41,7 +41,10 @@ namespace Application.QytetiA
                 var qyteti = await _context.Qytetet.FindAsync(request.Qyteti.QytetiId);
                 if (qyteti == null)
                     return null;
-                _mapper.Map(request.Qyteti, qyteti);
+                qyteti.Emri = request.Qyteti.Emri;
+                 qyteti.Photo = request.Qyteti.Photo;
+                  qyteti.KodiPostar = request.Qyteti.KodiPostar;
+                qyteti.ShtetiId = request.Qyteti.ShtetiId;
                 var result = await _context.SaveChangesAsync() > 0;
 
                 if (!result) return Result<Unit>.Failure("Failure to update Qytet");

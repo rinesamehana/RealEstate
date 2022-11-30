@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class migra : Migration
+    public partial class fina : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -346,6 +346,42 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Rezervimet",
+                columns: table => new
+                {
+                    RezervimiId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Check_in = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Check_out = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    nrPersonave = table.Column<string>(type: "TEXT", nullable: true),
+                    Pagesa = table.Column<string>(type: "TEXT", nullable: true),
+                    AppUserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    KontrataId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MenyraPagesesId = table.Column<Guid>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rezervimet", x => x.RezervimiId);
+                    table.ForeignKey(
+                        name: "FK_Rezervimet_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Rezervimet_Kontratat_KontrataId",
+                        column: x => x.KontrataId,
+                        principalTable: "Kontratat",
+                        principalColumn: "KontrataId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Rezervimet_MenyraPagesave_MenyraPagesesId",
+                        column: x => x.MenyraPagesesId,
+                        principalTable: "MenyraPagesave",
+                        principalColumn: "MenyraPagesesId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Qytetet",
                 columns: table => new
                 {
@@ -515,55 +551,6 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rezervimi",
-                columns: table => new
-                {
-                    RezervimiId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Check_in = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Check_out = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ShtepiaId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    MenyraPagesesId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    KontrataId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    IsCancelled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AppUserId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    AppUserId1 = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Rezervimi", x => x.RezervimiId);
-                    table.ForeignKey(
-                        name: "FK_Rezervimi_AspNetUsers_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Rezervimi_AspNetUsers_AppUserId1",
-                        column: x => x.AppUserId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Rezervimi_Kontratat_KontrataId",
-                        column: x => x.KontrataId,
-                        principalTable: "Kontratat",
-                        principalColumn: "KontrataId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Rezervimi_MenyraPagesave_MenyraPagesesId",
-                        column: x => x.MenyraPagesesId,
-                        principalTable: "MenyraPagesave",
-                        principalColumn: "MenyraPagesesId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Rezervimi_Shtepiat_ShtepiaId",
-                        column: x => x.ShtepiaId,
-                        principalTable: "Shtepiat",
-                        principalColumn: "ShtepiaId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ShtepiaPajisjets",
                 columns: table => new
                 {
@@ -608,31 +595,6 @@ namespace Persistence.Migrations
                         column: x => x.ShtepiaId,
                         principalTable: "Shtepiat",
                         principalColumn: "ShtepiaId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RezervimiAttendees",
-                columns: table => new
-                {
-                    AppUserId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    RezervimiId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    IsHost = table.Column<bool>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RezervimiAttendees", x => new { x.AppUserId, x.RezervimiId });
-                    table.ForeignKey(
-                        name: "FK_RezervimiAttendees_AspNetUsers_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_RezervimiAttendees_Rezervimi_RezervimiId",
-                        column: x => x.RezervimiId,
-                        principalTable: "Rezervimi",
-                        principalColumn: "RezervimiId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -699,34 +661,19 @@ namespace Persistence.Migrations
                 column: "ShtetiId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rezervimi_AppUserId",
-                table: "Rezervimi",
+                name: "IX_Rezervimet_AppUserId",
+                table: "Rezervimet",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rezervimi_AppUserId1",
-                table: "Rezervimi",
-                column: "AppUserId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Rezervimi_KontrataId",
-                table: "Rezervimi",
+                name: "IX_Rezervimet_KontrataId",
+                table: "Rezervimet",
                 column: "KontrataId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rezervimi_MenyraPagesesId",
-                table: "Rezervimi",
+                name: "IX_Rezervimet_MenyraPagesesId",
+                table: "Rezervimet",
                 column: "MenyraPagesesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Rezervimi_ShtepiaId",
-                table: "Rezervimi",
-                column: "ShtepiaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RezervimiAttendees_RezervimiId",
-                table: "RezervimiAttendees",
-                column: "RezervimiId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShtepiaPajisjets_ShtepiaId",
@@ -825,7 +772,7 @@ namespace Persistence.Migrations
                 name: "Photos");
 
             migrationBuilder.DropTable(
-                name: "RezervimiAttendees");
+                name: "Rezervimet");
 
             migrationBuilder.DropTable(
                 name: "ShtepiaPajisjets");
@@ -837,15 +784,6 @@ namespace Persistence.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Rezervimi");
-
-            migrationBuilder.DropTable(
-                name: "Pajisjet");
-
-            migrationBuilder.DropTable(
-                name: "Ambientet");
-
-            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
@@ -853,6 +791,12 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "MenyraPagesave");
+
+            migrationBuilder.DropTable(
+                name: "Pajisjet");
+
+            migrationBuilder.DropTable(
+                name: "Ambientet");
 
             migrationBuilder.DropTable(
                 name: "Shtepiat");

@@ -47,6 +47,7 @@ export default observer(function Navbar() {
                     />
                     <Dropdown pointing="top right" text={user?.displayName}>
                       <Dropdown.Menu>
+                        
                         <Dropdown.Item
                           position="top"
                           as={Link}
@@ -54,6 +55,7 @@ export default observer(function Navbar() {
                           text="My Profile"
                          
                         />
+                      
                       
                       {userStore.isLoggedInAsAdmin ?(
                         <Dropdown.Item >
@@ -64,7 +66,14 @@ export default observer(function Navbar() {
                             </Link>
 
                           </div>
-                        </Dropdown.Item>): ""}
+                        </Dropdown.Item>):   
+                        <Dropdown.Item
+                          position="top"
+                          as={Link}
+                          to={`reservations/${user?.username}`}
+                          content="Reservations"
+                         
+                        />}
                         <Dropdown.Item
                           onClick={logout}
                           text="Logout"

@@ -19,5 +19,6 @@ export interface Shtepia {
     pamjaId: string;
     kafshetId: string;
     stafiId: string;
+    type?: 'Shtepia';
   }
   

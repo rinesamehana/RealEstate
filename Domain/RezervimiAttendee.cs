@@ -5,6 +5,7 @@ namespace Domain
     public class RezervimiAttendee
     {
 
+        public Guid Id { get; set; }
         public Guid AppUserId {get; set;}
 
         public AppUser AppUser {get; set;}
@@ -13,6 +14,7 @@ namespace Domain
         
         public Rezervimi Rezervimi {get; set;}
 
+        public decimal Cmimi { get; set; }
         public bool IsHost {get; set;}
     }
 }

@@ -81,7 +81,7 @@ namespace Domain
 
         public ICollection<ShtepiaPajisjet> Pajisjet { get; set; }
 
-        public ICollection<Rezervimi> Attendees { get; set; }=new List<Rezervimi>();
+        // public ICollection<Rezervimi> Attendees { get; set; }=new List<Rezervimi>();
 
 
     }

@@ -38,7 +38,7 @@ namespace Application.RezervimA
 
             public async Task<Result<RezervimiDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var rezervimi = await _context.Rezervimi
+                var rezervimi = await _context.Rezervimet
                 .ProjectTo<RezervimiDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync(x => x.RezervimiId == request.RezervimiId);
 
