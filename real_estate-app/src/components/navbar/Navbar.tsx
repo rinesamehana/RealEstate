@@ -51,7 +51,7 @@ export default observer(function Navbar() {
                         <Dropdown.Item
                           position="top"
                           as={Link}
-                          to={`profile/${user?.username}`}
+                          to={`profiles/${user?.username}`}
                           text="My Profile"
                          
                         />

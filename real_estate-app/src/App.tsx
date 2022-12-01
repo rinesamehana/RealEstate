@@ -90,10 +90,13 @@ import ShtepiaDetails from "./components/adminpage/shtepia/details/ShtepiaDetail
 import ShtepiaAPI from "./app/axios/ShtepiaAPI";
 
 // import { Listt } from "./pages";
-import { Listt, Profile} from "./pages";
+import { Listt, ProfilePage} from "./pages";
 import HouseId from "./pages/house/HouseId";
 import neighborhood from "./pages/neighborhood/NeighborhoodPage";
 import housepage from "./pages/housespage/housepage";
+import Contact from "./components/contact/contact";
+import OurTeam from "./components/ourteam/OurTeam";
+// import ProfilePage from "./pages/profiles/ProfilePage";
 import Rezervimiii from "./pages/rezervim/RezervimiForm";
 import RezervimiAPI from "./app/axios/RezervimiAPI";
 
@@ -190,7 +193,16 @@ function App() {
         />
     
         <Route path="/towns" component={neighborhood} />
-        <Route path="/profile" component={Profile} />
+        {/* <Route path="/profile" component={Profile} />  */}
+
+        <Route path="/profiles/:username" component={ProfilePage} /> 
+        
+        <Route path="/contactus" component={Contact}/>
+
+        <Route path="/about-us" component={OurTeam}/>
+
+
+       
    
           
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
