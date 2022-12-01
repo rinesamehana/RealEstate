@@ -105,6 +105,7 @@ import RezervimiForm from "./pages/rezervim/RezervimiForm";
 import RezervimiInfo from "./pages/rezervim/RezervimiClient";
 import React from "react";
 import ShtepiaIdTest from "./pages/house/ShtepiaIdTest";
+import HouseIdFinal from "./pages/house/HouseIdFinal";
 
 
 
@@ -183,7 +184,7 @@ function App() {
       <Switch>
         {/* <Route path='/favorite'><HouseItem  favorites={favorites} handleFavorite={handleFavorite}/>  </Route> */}
         <Route exact path="/" component={Home} />
-        <Route path="/houses/:shtepiaId" component={HouseId} />
+        <Route path="/houses/:shtepiaId" component={HouseIdFinal} />
       
         {/* <Route path="/search" component={Search} /> */}
         <Route path="/houses" component={Listt} />

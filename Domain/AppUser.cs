@@ -11,6 +11,7 @@ namespace Domain
     public class AppUser : IdentityUser<Guid>
     {
 
+  public String UserName { get; set; }
         public String DisplayName { get; set; }
          public ICollection<Rezervimi> Rezervimet { get; set; } = new List<Rezervimi>();
         public Photo? Photo { get; set; }

@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 
 import Footer from "../../components/footer/Footer";
 
-import { useEffect, useMemo, useState } from "react";
+import  { useEffect, useMemo, useState } from "react";
 
 import SimpleImageSlider from "react-simple-image-slider";
 import { useStore } from "../../app/stores/store";
@@ -26,7 +26,7 @@ export default observer(function HouseId() {
 const{shtepiaStore}=useStore();
 const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = shtepiaStore;
   const { shtepiaId } = useParams<{ shtepiaId: string }>();
-
+  
   useEffect(() => {
    
     if (shtepiaId) loadShtepi(shtepiaId);
@@ -46,8 +46,13 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
     
     <div>
       <Navbar />
+     
       <div className="Space1">
+     
       <div className="Space">
+      <div className="afternavbar">
+        <p>{shtepia.titulli}</p>
+      </div>
       <div className="Slider1">
       <SimpleImageSlider
         width={700}
@@ -81,11 +86,14 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
           <p><ImLocation/> 6818 S Benton Ave, Kansas City, MO 64132</p>
       </div>
        </div>
+      
+
+      </div> 
       </div>
+     
       </div>
-      </div>
-{/* <ShtepiaIdTest shtepiaId={shtepiaId}/> */}
-      <Footer />
+
+    
     </div>
   );
 })

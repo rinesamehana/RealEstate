@@ -1,20 +1,35 @@
 /* eslint-disable jsx-a11y/alt-text */
-import "./listhouse.css";
+
 import Navbar from "../../components/navbar/Navbar";
-import { Button} from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { BsHeart } from "react-icons/bs";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import Footer from "../../components/footer/Footer";
 import React from "react";
+import CSS from "csstype";
 
+  const CardStyles: CSS.Properties = {
+    marginLeft: "60px",
+    display: "grid",
+    gridTemplateColumns:"1fr 1fr 1fr 1fr ",
+    gridTemplateRows:"repeat(1, 1fr)",
+    gap:"2rem",
+    justifyContent:"center",
+    marginBottom:"45px",
+  
+  };
+  const CardStyles2: CSS.Properties = {
+   width:"300px",
+  
+  };
 
-export default observer(function List() {
+export default observer(function Houses() {
   const { shtepiaStore } = useStore();
-  const { shtepiat, loadShtepite } = shtepiaStore;
+  const { userStore, modalStore } = useStore();
+  const { n3Shtepiav, loadShtepite } = shtepiaStore;
 
   const [query, setQuery]=useState(""); 
 
@@ -31,31 +46,22 @@ export default observer(function List() {
  
   return (
     <>
-    <Navbar />
-    <div className="searchhh">
-      <input placeholder="Search..." onChange={e=> setQuery(e.target.value)}/>
-      <SearchIcon style={{"marginLeft":"-25px",  cursor:"pointer"}}/>
-      </div> 
-      <div className="houses-title">
-      <h1>Listings - Homes for Rent</h1>
-      </div>
+ 
+  
 
-      <div>
-   
-</div>
      
-    <div className="wrapper-houses">
+    <div className="wrapper-houses" style={CardStyles}>
    
-      {shtepiat.filter((shtepia:any)=> keys.some((key)=>shtepia[key].toLowerCase().includes(query))).map((shtepia) => {
+      {n3Shtepiav.map((shtepia) => {
         return (
           
           <div key={shtepia.shtepiaId}>
             <div className="lists1">
               <div className="list1">
-                <div className="home1">
+                <div className="home1" style={CardStyles2}>
                   <div className="image1">
                  <Link to={`/houses/${shtepia.shtepiaId}`}>
-                    <img src={shtepia.photo}/>
+                    <img src={shtepia.photo} style={CardStyles2}/>
                     </Link>
                     <div className="button_Add1">
                       <Button>
@@ -63,6 +69,7 @@ export default observer(function List() {
                           style={{
                             color: "rgb(53, 51, 51)",
                             fontSize: "40px",
+
                           }}
                         />
                       </Button>
@@ -89,8 +96,7 @@ export default observer(function List() {
                         <br /> Jamaica Plaim */}
                       </div>
                       <div className="buttonn1">
-                        <Button type="submit" content="Book Now" as={Link}
-                            to="/createRezervim" />
+                        <Button type="submit" content="Book Now" />
                       </div>
                     </div>
                   </div>
@@ -100,8 +106,6 @@ export default observer(function List() {
           </div>
         );
       })}
-    </div>
-    <Footer />
-    </>
+    </div></>
   );
 });
