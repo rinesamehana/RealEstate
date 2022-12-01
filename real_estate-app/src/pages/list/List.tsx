@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import Footer from "../../components/footer/Footer";
+import React from "react";
 
 
 export default observer(function List() {
