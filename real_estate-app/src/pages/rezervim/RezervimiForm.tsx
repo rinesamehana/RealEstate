@@ -16,6 +16,8 @@ import MyTextInput from "../../app/common/form1/MyTextInput";
 import { Rezervimi } from "../../app/models/Rezervimi";
 import { MyNewSelect } from "../../app/common/form1/MyNewSelect";
 import CSS from "csstype";
+import ShtepiaIdTest from "../house/ShtepiaIdTest";
+import "./RezervimiForm.css";
 const LabelStyle: CSS.Properties = {
   width: "310px",
   padding: "10px",
@@ -78,14 +80,32 @@ export default observer(function RezrvimiForm() {
       {value:"Crypto", desc:"Crypto"},
 
     ]
+
+    const [modal , setModal] = useState(false);
+
+
+    const togglePopup = () =>{
+        setModal(!modal)
+    }
+    if(modal){
+      document.body.classList.add("active")
+    }else{
+      document.body.classList.remove("active")
+    }
   
 
 
   return (
-
-
-      <div className="newContainer">
-        <Navbar />      
+      
+      <>
+      <Navbar />
+      <button onClick={togglePopup} className="btn-modal">
+        Open
+      </button>
+      {modal && ( <div className="modal">
+       <div onClick={togglePopup} className="overlay"></div>
+      <div className="newContainer  modal-content">
+      <button className="close-modal" onClick={togglePopup}>&times;</button>      
         <div className="new">
           <div className="newContainer">
             <div className="top">
@@ -142,6 +162,8 @@ export default observer(function RezrvimiForm() {
            </div>
          </div>
        </div>
-
+   </div>
+   )}  
+   </>
   );
 });
