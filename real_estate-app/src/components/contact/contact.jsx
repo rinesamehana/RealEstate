@@ -48,17 +48,17 @@ const Contact = () => {
 
 
      {/* <StyledContactForm>  */}
-     <div class="contact-section">
+     <div class="contact-section-c">
      
      <h1>CONTACT US</h1>
      <div class="border"></div>
-      <form class="contact-form" ref={form} onSubmit={sendEmail}>
+      <form class="contact-form-c" ref={form} onSubmit={sendEmail}>
         <label>Name</label>
-        <input type="text" name="user_name" class="contact-form-text"/>
+        <input type="text" name="user_name" class="contact-form-text-c"/>
         <label>Email</label>
-        <input type="email" name="user_email" class="contact-form-text"/>
+        <input type="email" name="user_email" class="contact-form-text-c"/>
         <label>Message</label>
-        <textarea name="message" class="contact-form-text"/>
+        <textarea name="message" class="contact-form-text-c"/>
         <input type="submit" value="Send" class="contact-form-btn"/> 
        
       </form>

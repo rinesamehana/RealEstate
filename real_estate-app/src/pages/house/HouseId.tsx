@@ -84,7 +84,7 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
       </div>
       </div>
       </div>
-<ShtepiaIdTest shtepiaId={shtepiaId}/>
+{/* <ShtepiaIdTest shtepiaId={shtepiaId}/> */}
       <Footer />
     </div>
   );

@@ -1,9 +1,9 @@
-.contact-section{
-    background-color: #bcc1c7;
+.contact-section-c{
+    background-color: white;
     background-size: cover;
     padding: 40px 0;
   }
-  .contact-section h1{
+  .contact-section-c h1{
     text-align: center;
     color: rgb(0, 0, 0);
     font-size: 40px;
@@ -15,14 +15,14 @@
     margin: 40px auto;
   }
   
-  .contact-form{
+  .contact-form-c{
     max-width: 600px;
     margin: auto;
     padding: 0 10px;
     overflow: hidden;
   }
   
-  .contact-form-text{
+  .contact-form-text-c{
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -34,10 +34,10 @@
     color: rgb(2, 1, 1);
     transition: 0.5s;
   }
-  .contact-form-text:focus{
+  .contact-form-text-c:focus{
     box-shadow: 0 0 10px 4px #1a1b34;
   }
-  textarea.contact-form-text{
+  textarea.contact-form-text-c{
     resize: none;
     height: 120px;
   }

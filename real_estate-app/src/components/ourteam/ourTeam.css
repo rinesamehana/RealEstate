@@ -1,7 +1,7 @@
-.section{
+.section-contact{
 	width: 100%;
 	min-height: 100vh;
-	background-color: #ddd;
+	background-color: white;
 }
 .container2{
 	width: 80%;
@@ -63,7 +63,7 @@
 	color:#3d3d3d;
 }
 @media screen and (max-width: 768px){
-	.container{
+	.container-conc{
 	width: 80%;
 	display: block;
 	margin:auto;
@@ -128,7 +128,7 @@ img{
     width: 100%;
     height: auto;
 }
-.container{
+.container-conc{
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -136,14 +136,14 @@ img{
     margin-left: auto;
     background-color: #ddd;
 }
-.section-title{
+.section-title-contact{
     flex: 0 0 100%;
     max-width: 100%;
     margin-bottom: 80px;
     margin-top: 40px;
     text-align: center;
 }
-.section-title h1{
+.section-title-contact h1{
     display: inline-block;
     font-size: 35px;
     text-transform: uppercase;
@@ -152,7 +152,7 @@ img{
     margin: 0 0 5px;
     position: relative;
 }
-.section-title h1::before{
+.section-title-contact h1::before{
     content: '';
     left: 0;
     position: absolute;
@@ -162,17 +162,17 @@ img{
     bottom: -5px;
 
 }
-.container .section-title h1::before{
+.container-conc .section-title-contact h1::before{
     left: 30%;
 }
-.row{
+.row-conc{
     display: flex;
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
     
 }
-.column{
+.column-conc{
     position: relative;
     width: 100%;
     padding-right: 15px;
@@ -181,51 +181,51 @@ img{
     max-width: 100%;
     
 }
-.team{
+.team-conc{
     margin-bottom:30px ;
 }
-.team .team-img{
+.team-conc .team-img{
     
     position: relative;
     font-size: 0;
     text-align: center;
 }
-.team .team-img img{
+.team-conc .team-img img{
     width: 160px;
     height: auto;
     border-radius: 100%;
     border: 20px solid #f3f4fa;
 }
 
-.team .team-content{
+.team-conc .team-content{
     padding: 80px 20px 20px 20px;
     margin-top: -80px;
     text-align: center;
     background: #f3f4fa;
     border-radius: 10px;
 }
-.team .team-content h2{
+.team-conc .team-content h2{
 font-size: 25px;
 font-weight: 400;
 letter-spacing: 2px;
 }
-.team .team-content h3{
+.team-conc .team-content h3{
     font-size: 16px;
     font-weight: 300;
 }
-.team .team-content h4{
+.team-conc .team-content h4{
     font-size: 16px;
 font-weight: 300;
 letter-spacing: 1px;
 font-style: italic;
 margin-bottom: 0;
 }
-.team .team-content p{
+.team-conc .team-content p{
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
 }
-.team .team-social{
+.team-conc .team-social{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -241,10 +241,10 @@ margin-bottom: 0;
     z-index: 1;
     opacity: 0;
 }
-.team:hover .team-social{
+.team-conc:hover .team-social{
     opacity: 1;
 }
-.team .team-social a{
+.team-conc .team-social a{
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -259,28 +259,28 @@ margin-bottom: 0;
     transition: all .3s;
     margin-top: 50px;
 }
-.team .team-social a.social-tw{
+.team-conc .team-social a.social-tw{
     background: #00acee;
 }
-.team .team-social a.social-fb{
+.team-conc .team-social a.social-fb{
     background: #3b5998;
 }
-.team .team-social a.social-li{
+.team-conc .team-social a.social-li{
     background: #0e76a8;
 }
-.team .team-social a.social-in{
+.team-conc .team-social a.social-in{
     background: #3f729b;
 }
-.team .team-social a.social-yt{
+.team-conc .team-social a.social-yt{
     background: #c4302b;
 }
-.team .team-social a:last-child{
+.team-conc .team-social a:last-child{
     margin-right: 0;
 }
-.team:hover .team-social a{
+.team-conc:hover .team-social a{
     margin-top: 0;
 }
-.team .team-social a:hover{
+.team-conc .team-social a:hover{
     background: #222222;
 }
 
@@ -288,31 +288,31 @@ margin-bottom: 0;
 /* Mobile Responsive */
 
 @media (min-width: 576px){
-    .container{
+    .container-conc{
         max-width: 540px;
     }
-    .column{
+    .column-conc{
         max-width: 50%;
     }
 }
 @media (min-width: 768px){
-    .container{
+    .container-conc{
         max-width: 720px;
     }
-    .column{
+    .column-conc{
         max-width: 33.333333%;
     }
 }
 @media (min-width: 992px){
-    .container{
+    .container-conc{
         max-width: 960px;
     }
-    .column{
+    .column-conc{
         max-width: 25%;
     }
 }
 @media (min-width: 1200px){
-    .container{
+    .container-conc{
         max-width: 1140px;
     }
    

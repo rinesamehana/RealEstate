@@ -8,7 +8,7 @@ const OurTeam = () => {
         <div>
             <Navbar/>
 
-            <div class="section">
+            <div class="section-contact">
 		<div class="container2">
 			<div class="content-section">
 				<div class="title">
@@ -35,16 +35,16 @@ Wherever you're going, we can take you there!</p>
 		</div>
 	</div>
 
-    <div class="container">
-        <div class="section-title">
+    <div class="container-conc">
+        <div class="section-title-contact">
             <h1>Our Team</h1>
         </div>
 
-        <div class="row">
+        <div class="row-conc">
 
 
-            <div class="column">
-                <div class="team">
+            <div class="column-conc">
+                <div class="team-conc">
                     <div class="team-img">
                         <img src="https://images.squarespace-cdn.com/content/v1/5cf0d08d5fc69d000172462a/1622920319069-Z4F95L48OSY72TJM9RJY/Ollie+Business+LinkedIn+Headshot+Photo.jpg" alt="Team Image"/>
                     </div>
@@ -64,8 +64,8 @@ Wherever you're going, we can take you there!</p>
                 </div>
             </div>
 
-            <div class="column">
-                <div class="team">
+            <div class="column-conc">
+                <div class="team-conc">
                     <div class="team-img">
                         <img src="https://images.squarespace-cdn.com/content/v1/5aee389b3c3a531e6245ae76/1531792846005-MYGZAOI0L93I3YJWHB6W/D75_5697-Edit.jpg" alt="Team Image"/>
                     </div>
@@ -85,8 +85,8 @@ Wherever you're going, we can take you there!</p>
                 </div>
             </div>
 
-            <div class="column">
-                <div class="team">
+            <div class="column-conc">
+                <div class="team-conc">
                     <div class="team-img">
                         <img src="https://wemeancareer.com/wp-content/uploads/2020/04/Professional-LinkedIn-Headshot.png" alt="Team Image"/>
                     </div>
@@ -106,8 +106,8 @@ Wherever you're going, we can take you there!</p>
                 </div>
             </div>
 
-            <div class="column">
-                <div class="team">
+            <div class="column-conc">
+                <div class="team-conc">
                     <div class="team-img">
                         <img src="https://images.squarespace-cdn.com/content/v1/5cf0d08d5fc69d000172462a/1636100249135-ABVJ94OJXTMFLTJVCMXD/Tom+LinkedIn+Headshot.jpg" alt="Team Image"/>
                     </div>
