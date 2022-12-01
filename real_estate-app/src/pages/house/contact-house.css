@@ -1,0 +1,88 @@
+.contact-section-c{
+    background-color: #fafafa;
+    background-size: cover;
+box-shadow: 0 13px 16px rgb(0 0 0 / 16%);
+    padding: 40px 0;
+    width:400px;
+  }
+  .contact-section-c h3{
+    text-align: center;
+    color: rgb(0, 0, 0);
+
+  }
+  .border{
+    width: 100px;
+    height: 2px;
+    background: black;
+    margin: 20px auto;
+
+  }
+
+  .contact-form-c{
+    max-width: 600px;
+    margin: auto;
+    padding: 0 10px;
+    overflow: hidden;
+  }
+
+  .contact-form-text-c{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 16px 0;
+    border:1px solid gray;
+    border-radius: 15px;
+    background: white;
+    padding: 20px 20px;
+    outline: none;
+    color: rgb(2, 1, 1);
+    transition: 0.5s;
+  }
+  .name-email{
+    display:flex;
+    justify-content: space-around;
+
+  }
+  .reviews-contact{
+display: flex;
+    border-top:2px solid black;
+    justify-content: space-around;
+    margin-top: 25px;
+    gap:5px;
+
+  }
+
+
+  .name-email input{
+    display: block;
+    width: 47%;
+    box-sizing: border-box;
+    margin: 16px 0;
+    border:1px solid gray;
+    border-radius: 15px;
+    background: white;
+    padding: 20px 20px;
+    outline: none;
+    color: rgb(2, 1, 1);
+    transition: 0.5s;
+  }
+  .contact-form-text-c:focus{
+    box-shadow: 0 0 10px 4px #1a1b34;
+  }
+  textarea.contact-form-text-c{
+    resize: none;
+    height: 120px;
+  }
+  .contact-form-btn{
+    float: right;
+    border: 0;
+    background: #3d4855;
+    color: rgb(255, 255, 255);
+    padding: 12px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .contact-form-btn:hover{
+    background: #081e2c;
+  }

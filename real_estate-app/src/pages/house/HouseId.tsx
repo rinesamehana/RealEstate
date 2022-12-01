@@ -46,8 +46,13 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
     
     <div>
       <Navbar />
+      
       <div className="Space1">
+
       <div className="Space">
+      <div className="afternavbar">
+        <p>{shtepia.titulli}</p>
+      </div>
       <div className="Slider1">
       <SimpleImageSlider
         width={700}

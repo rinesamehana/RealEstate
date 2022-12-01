@@ -101,10 +101,16 @@ h1{
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  margin-top: 10px;
+
+  margin-top: 15px;
   margin-bottom: 10px;
 }
+.latest-houses{
+  margin-top: 15px;
+  border-top:2px solid black;
 
+  margin-bottom: 20px;
+}
 .Space1{
   display: flex;
   justify-content: center;
@@ -146,13 +152,30 @@ h1{
   cursor: pointer;
   border-radius: 5px;
 }
+.homeTitle-id{
+  border-top:2px solid  #131313;
+  margin-bottom:15px;
+  font-size: 30px;
+}
+.afternavbar{
 
+  border-radius: 10px;
+background-color: #eaeaea;
+padding:12px;
+margin:14px;
+width:720px;
+box-shadow: 0 1px 10px rgb(0, 0, 0);
+}
+
+.afternavbar p{
+  font-size: 26px;
+}
 .slider {
   position: sticky;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   background-color: rgba(0, 0, 0, 0.613);
   z-index: 999;
   display: flex;
