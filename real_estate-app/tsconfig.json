@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    
     "lib": [
       "dom",
       "dom.iterable",
@@ -18,9 +19,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "rootDir": "source",
     "jsx": "react-jsx"
   },
+  // "include": [
+  //   "src"
+  // ],
   "include": [
-    "src"
-  ]
+		"source/**/*.ts"
+	],
+  "types": ["signalr"],
 }

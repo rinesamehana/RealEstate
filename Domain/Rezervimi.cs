@@ -54,8 +54,10 @@ namespace Domain
         public DateTime Check_out { get; set; }
         public string nrPersonave { get; set; }
         public string Pagesa { get; set; }
-        public Guid AppUserId { get; set; } 
-        public AppUser AppUser { get; set; }
+
+
+        public Guid? AppUserId { get; set; } 
+        public AppUser? AppUser { get; set; }
 
         
     }

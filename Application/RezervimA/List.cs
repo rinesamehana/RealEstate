@@ -32,8 +32,10 @@ namespace Application.RezervimA
             public async Task<Result<List<RezervimiDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var rezervimi = await _context.Rezervimet
+              
                 .ProjectTo<RezervimiDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
+
 
                 // var rezervimetToReturn=_mapper.Map<List<RezervimiDto>>(rezervimi);
 

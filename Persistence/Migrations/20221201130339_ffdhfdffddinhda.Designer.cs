@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221201130339_ffdhfdffddinhda")]
+    partial class ffdhfdffddinhda
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,19 +140,9 @@ namespace Persistence.Migrations
                     b.Property<Guid>("RoleId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("RoleId1")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("UserId1")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("RoleId1");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("AspNetUserRoles");
                 });
@@ -380,7 +372,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ShtetiId")
+                    b.Property<Guid?>("ShtetiId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("QytetiId");
@@ -719,25 +711,17 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.AppUserRole", b =>
                 {
-                    b.HasOne("Domain.AppRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Domain.AppRole", "Role")
                         .WithMany("UserRoles")
-                        .HasForeignKey("RoleId1");
-
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.AppUser", "User")
                         .WithMany("UserRoles")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Role");
 
@@ -752,8 +736,7 @@ namespace Persistence.Migrations
 
                     b.HasOne("Domain.Shtepia", "Shtepia")
                         .WithMany("Comments")
-                        .HasForeignKey("ShtepiaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ShtepiaId");
 
                     b.Navigation("Author");
 
@@ -780,9 +763,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Shteti", "Shteti")
                         .WithMany("Qytetet")
-                        .HasForeignKey("ShtetiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShtetiId");
 
                     b.Navigation("Shteti");
                 });

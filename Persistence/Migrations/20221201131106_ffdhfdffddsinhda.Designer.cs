@@ -9,8 +9,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221129184357_fina")]
-    partial class fina
+    [Migration("20221201131106_ffdhfdffddsinhda")]
+    partial class ffdhfdffddsinhda
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -105,6 +105,9 @@ namespace Persistence.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("PhotoId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
@@ -124,6 +127,8 @@ namespace Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
+                    b.HasIndex("PhotoId");
+
                     b.ToTable("AspNetUsers");
                 });
 
@@ -135,21 +140,38 @@ namespace Persistence.Migrations
                     b.Property<Guid>("RoleId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("RoleId1")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("UserId1")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("RoleId1");
-
-                    b.HasIndex("UserId1");
-
                     b.ToTable("AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("Domain.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("AuthorId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("ShtepiaId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("ShtepiaId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Domain.GjendjaShtepise", b =>
@@ -350,7 +372,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ShtetiId")
+                    b.Property<Guid>("ShtetiId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("QytetiId");
@@ -366,7 +388,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("AppUserId")
+                    b.Property<Guid?>("AppUserId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Check_in")
@@ -678,31 +700,47 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Domain.AppUser", b =>
+                {
+                    b.HasOne("Domain.Photo", "Photo")
+                        .WithMany()
+                        .HasForeignKey("PhotoId");
+
+                    b.Navigation("Photo");
+                });
+
             modelBuilder.Entity("Domain.AppUserRole", b =>
                 {
-                    b.HasOne("Domain.AppRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Domain.AppRole", "Role")
                         .WithMany("UserRoles")
-                        .HasForeignKey("RoleId1");
-
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.AppUser", "User")
                         .WithMany("UserRoles")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Role");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Comment", b =>
+                {
+                    b.HasOne("Domain.AppUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("Domain.Shtepia", "Shtepia")
+                        .WithMany("Comments")
+                        .HasForeignKey("ShtepiaId");
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Shtepia");
                 });
 
             modelBuilder.Entity("Domain.Lagjja", b =>
@@ -725,7 +763,9 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Shteti", "Shteti")
                         .WithMany("Qytetet")
-                        .HasForeignKey("ShtetiId");
+                        .HasForeignKey("ShtetiId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Shteti");
                 });
@@ -734,9 +774,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.AppUser", "AppUser")
                         .WithMany("Rezervimet")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AppUserId");
 
                     b.HasOne("Domain.Kontrata", null)
                         .WithMany("Rezervimet")
@@ -998,6 +1036,8 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Shtepia", b =>
                 {
                     b.Navigation("Ambientet");
+
+                    b.Navigation("Comments");
 
                     b.Navigation("Pajisjet");
                 });

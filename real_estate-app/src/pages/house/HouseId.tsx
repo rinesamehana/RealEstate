@@ -16,6 +16,8 @@ import { FaBath } from "react-icons/fa";
 import { BiBed } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import { RiPriceTag3Line } from "react-icons/ri";
+import React from "react";
+import ShtepiaIdTest from "./ShtepiaIdTest";
 
 
 
@@ -82,7 +84,7 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
       </div>
       </div>
       </div>
-
+<ShtepiaIdTest shtepiaId={shtepiaId}/>
       <Footer />
     </div>
   );

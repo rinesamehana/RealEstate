@@ -54,7 +54,14 @@ namespace Application.RezervimA
         public string nrPersonave { get; set; }
         public string Pagesa { get; set; }
 
+       public  string HostName{get;set;}
+
+        // public ICollection<Profile> Profiles {get;set;}
         public Guid AppUserId { get; set; } 
-        public Profile User { get; set; }
+           public Profile User { get; set; }
+
+
+           public string Username{get;set;}
+           public string DisplayName{get;set;}
     }
 }

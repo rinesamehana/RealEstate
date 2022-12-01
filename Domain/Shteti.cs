@@ -18,7 +18,7 @@ namespace Domain
 
         public string Shkurtesa { get; set; } = string.Empty;
 
-        public ICollection<Qyteti> Qytetet { get; set; }
+        public ICollection<Qyteti> Qytetet { get; set; }= new List<Qyteti>();
         public ICollection<Stafi> Stafii { get; set; }
 
 

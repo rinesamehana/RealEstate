@@ -18,8 +18,9 @@ namespace Domain
 
         public string KodiPostar { get; set; }
 
-        public Guid? ShtetiId { get; set; }
-        [ForeignKey("ShtetiId")]
+
+
+        public Guid ShtetiId { get; set; }
 
         public Shteti Shteti { get; set; }
 

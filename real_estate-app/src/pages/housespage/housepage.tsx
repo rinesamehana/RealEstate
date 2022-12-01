@@ -1,4 +1,5 @@
 import { observer } from "mobx-react-lite";
+import React from "react";
 import { useStore } from "../../app/stores/store";
 import Featured from "../../components/featured/Featured";
 import Footer from "../../components/footer/Footer";

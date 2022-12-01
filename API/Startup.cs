@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Persistence;
 using Domain;
 using Microsoft.AspNetCore.Identity;
+using API.SignalR;
 
 namespace API
 {
@@ -84,7 +85,7 @@ namespace API
             app.UseRouting();
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
+           
             app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
@@ -93,6 +94,8 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chat");
+            
 
             });
         }

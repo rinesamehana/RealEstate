@@ -12,7 +12,7 @@ import { Button, Item, Segment, Table } from "semantic-ui-react";
 import { useStore } from "../../app/stores/store";
 
 
-export default observer(function RezervimiInfo() {
+export default observer(function RezervimiClient() {
   const [target, setTarget] = useState("");
   const { rezervimiStore, userStore } = useStore();
   const { deleteRezervimin, rezervimet, loading } = rezervimiStore;

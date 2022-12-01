@@ -21,6 +21,7 @@ import StafiStore from "./StafiStore";
 import ShtepiaStore from "./ShtepiaStore";
 import RezervimiStore from "./RezervimiStore";
 import ProfileStore from "./profileStore";
+import CommentStore from "./commentStore";
 
 interface Store {
   commonStore: commonStore;
@@ -44,6 +45,7 @@ interface Store {
   kafshetStore: KafshetStore;
   kohaPunesStore: KohaPunesStore;
   profileStore:ProfileStore;
+  commentStore:CommentStore;
 
   modalStore: ModalStore;
 }
@@ -58,6 +60,7 @@ export const store: Store = {
   menyraPagesesStore: new MenyraPagesesStore(),
   stafiStore: new StafiStore(),
   kafshetStore: new KafshetStore(),
+  commentStore:new CommentStore(),
   ambientiStore: new AmbientiStore(),
   kontrataStore: new KontrataStore(),
   rezervimiStore: new RezervimiStore(),

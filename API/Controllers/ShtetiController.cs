@@ -45,6 +45,7 @@ namespace API.Controllers
         public async Task<IActionResult> EditShteti(Guid id, Shteti shteti)
         {
             shteti.ShtetiId = id;
+
             return HandleResult(await Mediator.Send(new Edit.Command { Shteti = shteti }));
         }
 

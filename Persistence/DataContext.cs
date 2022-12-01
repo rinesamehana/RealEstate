@@ -44,7 +44,8 @@ namespace Persistence
         public DbSet<Rezervimi> Rezervimet { get; set; }
         public DbSet<Shtepia> Shtepiat { get; set; }
      
-        public DbSet<ShtepiaAmbiente> ShtepiatAmbientet { get; set; }
+    public DbSet<Comment> Comments{get;set;}
+            public DbSet<ShtepiaAmbiente> ShtepiatAmbientet { get; set; }
         public DbSet<ShtepiaPajisjet> ShtepiaPajisjets { get; set; }
        
        
@@ -169,7 +170,10 @@ namespace Persistence
             .HasOne(u => u.Shtepia)
             .WithMany(a => a.Pajisjet)
             .HasForeignKey(aa => aa.ShtepiaId);
-
+     modelBuilder.Entity<Comment>()
+            .HasOne(a=>a.Shtepia)
+            .WithMany(c=>c.Comments)
+            .OnDelete(DeleteBehavior.Cascade);
 
             //---------------------
             

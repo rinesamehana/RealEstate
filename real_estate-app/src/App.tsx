@@ -99,7 +99,9 @@ import RezervimiAPI from "./app/axios/RezervimiAPI";
 
 import RezervimiDetails from "./components/adminpage/rezervimi/details/RezervimiDetails";
 import RezervimiForm from "./pages/rezervim/RezervimiForm";
-import RezervimiInfo from "./pages/rezervim/RezervimiInfo";
+import RezervimiInfo from "./pages/rezervim/RezervimiClient";
+import React from "react";
+import ShtepiaIdTest from "./pages/house/ShtepiaIdTest";
 
 
 
@@ -194,7 +196,7 @@ function App() {
           {/* <List favorites={favorites} handleFavorite={handleFavorite} />  */}
         
         <Route path="/dashboard" component={Dashboard} />
-
+        <Route path="/shtepiatest" component={ShtepiaIdTest} />
         {/* <Route path="/users" component={List} /> */}
         <Route path="/login" component={LoginForm} />
         <Route path="/register" component={RegisterForm} />

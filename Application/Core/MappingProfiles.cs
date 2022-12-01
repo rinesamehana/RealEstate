@@ -9,6 +9,7 @@ using Application.ShtepiaA;
 using Application.RezervimA;
 using Application.StafiA;
 using Application.QytetiA;
+using Application.Comments;
 
 namespace Application.Core
 {
@@ -31,6 +32,7 @@ namespace Application.Core
             CreateMap <Kontrata , Kontrata>();
             CreateMap <Pajisja , Pajisja>();
             CreateMap<Qyteti, QytetiDto>();
+        
             CreateMap <LlojiShtepise , LlojiShtepise>();
             CreateMap <MenyraPageses, MenyraPageses>();
             CreateMap <Shtepia, Shtepia>();
@@ -51,11 +53,22 @@ namespace Application.Core
 
             //    CreateMap<AppUser, Profiles.Profile>()
             //     .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));  
-CreateMap<Rezervimi, RezervimiDto>()
-                .ForMember(d => d.User, o => o.MapFrom(s => s.AppUser));
+                CreateMap<Rezervimi, Rezervimi>();
+            CreateMap<Rezervimi, RezervimiDto>()
+                .ForMember(d => d.HostName, o=>o.MapFrom(s=>s.AppUser.UserName))
+                 .ForMember(d => d.User, o => o.MapFrom(s => s.AppUser))
+                 .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.AppUser.DisplayName))
+                 .ForMember(d => d.Username, o => o.MapFrom(s => s.AppUser.UserName));
+                
+           
             CreateMap<AppUser, Profiles.Profile>()
                 .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.DisplayName))
                 .ForMember(d => d.Username, o => o.MapFrom(s => s.UserName));
+            
+            CreateMap<Comment, CommentsDto>()
+            .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.Author.DisplayName))
+            .ForMember(d => d.Username, o => o.MapFrom(s => s.Author.UserName))
+            .ForMember(d => d.Image, o => o.MapFrom(s => s.Author.Photos.FirstOrDefault(x=>x.IsMain).Url));
                
         }
     }

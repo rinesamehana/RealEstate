@@ -12,11 +12,11 @@ namespace Domain
     {
 
         public String DisplayName { get; set; }
-       
+         public ICollection<Rezervimi> Rezervimet { get; set; } = new List<Rezervimi>();
+        public Photo? Photo { get; set; }
 
         //  public ICollection<Rezervimi> Shtepite { get; set; }=new List<Rezervimi>();
 
-         public ICollection<Rezervimi> Rezervimet { get; set; } = new List<Rezervimi>();
 
         //  public ICollection<RezervimiAttendee> Rezervimi {get; set;}
 
