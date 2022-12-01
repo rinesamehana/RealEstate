@@ -1,13 +1,85 @@
+.photo-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+text-align: center;
+    color:white;
+    width:100%;
+
+    height:60vh;
+    background-image: url('https://www.bostonrealestate.com/media/bushari/images/staticpage/about-us-bg.jpg');
+}
+
+.photo-nav p{
+    color: white;
+font-size: 50px;
+
+}
+
 .section-contact{
 	width: 100%;
-	min-height: 100vh;
+	min-height: 30vh;
 	background-color: white;
 }
 .container2{
 	width: 80%;
 	display: block;
 	margin:auto;
-	padding-top: 100px;
+	padding-top: 50px;
+}
+.container2 p{
+    text-align: center;
+    font-size: 18px;
+    color:#7a7a7a;
+}
+.container2 h1{
+    text-align: center;
+    font-size: 38px;
+    color:#7a7a7a;
+}
+.about-image{
+    margin-top: 25px;
+}
+.our-service{
+    display: flex;
+    height: 40vh;
+    align-items: center;
+    justify-content: center;
+   text-align: center;
+   background-size: cover;
+    background-position: center center;
+    background-image: url('https://www.bostonrealestate.com/media/bushari/images/staticpage/buyer-us-bg.jpg');
+}
+.our-servic-text{
+    max-width: 1250px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+   font-size: 19px;
+}
+.button-service button{
+    background-color: transparent;
+    border-radius: 25px;
+    color: #fff;
+    border: 2px solid #fff;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-family: 'proxima_novasemibold';
+    text-align: center;
+    line-height: 34px;
+    letter-spacing: 1px;
+    padding: 6px 70px;
+    display: inline-block;
+    cursor: pointer;
+}
+.our-service p{
+    color:white;
+}
+.our-service h1{
+    color:white;
 }
 .content-section{
 	float: left;
@@ -134,7 +206,7 @@ img{
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    background-color: #ddd;
+    background-color: rgb(255, 255, 255);
 }
 .section-title-contact{
     flex: 0 0 100%;
@@ -158,7 +230,7 @@ img{
     position: absolute;
     height: 3px;
     right: 32%;
-    background-color: #50c5fc;
+    background-color: black;
     bottom: -5px;
 
 }
@@ -229,7 +301,7 @@ margin-bottom: 0;
     position: absolute;
     width: 100%;
     height: 100%;
-    padding: 35px;
+    
     top: 0;
     left:0;
     display: flex;
@@ -249,30 +321,31 @@ margin-bottom: 0;
     width: 40px;
     height: 40px;
     margin-right:5px ;
-    padding: 11px 0 10px 0;
+    padding: 5px 0 10px 0;
     font-size: 16px;
     font-weight: 300;
     line-height: 16px;
     text-align: center;
     color: #ffffff;
+    background-color: black;
     border-radius: 10px;
     transition: all .3s;
     margin-top: 50px;
 }
 .team-conc .team-social a.social-tw{
-    background: #00acee;
+    background-color: #00acee;
 }
 .team-conc .team-social a.social-fb{
-    background: #3b5998;
+    background-color: #9a3737;
 }
 .team-conc .team-social a.social-li{
-    background: #0e76a8;
+    background-color: #0e76a8;
 }
 .team-conc .team-social a.social-in{
-    background: #3f729b;
+    background-color: #3f729b;
 }
 .team-conc .team-social a.social-yt{
-    background: #c4302b;
+    background-color: #c4302b;
 }
 .team-conc .team-social a:last-child{
     margin-right: 0;
@@ -281,7 +354,7 @@ margin-bottom: 0;
     margin-top: 0;
 }
 .team-conc .team-social a:hover{
-    background: #222222;
+    background: #d2d1d1;
 }
 
 
