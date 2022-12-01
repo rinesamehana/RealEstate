@@ -26,7 +26,7 @@ export default observer( function ProfileHeader({profile} :Props){
                     </Item>
                     </Item.Group>     
             </Grid.Column>
-            <Grid.Column width={4}>
+            {/* <Grid.Column width={4}>
                  <Statistic.Group widths={2}>
                     <Statistic label='Followers' value ='5'/>
                     <Statistic label='Following' value ='42'/>
@@ -44,7 +44,7 @@ export default observer( function ProfileHeader({profile} :Props){
                         />
                     </Reveal.Content>
                  </Reveal>
-            </Grid.Column>
+            </Grid.Column> */}
         </Grid>
        </Segment>
 

@@ -26,16 +26,16 @@ export default observer(function ProfilePage() {
         <div>
          <Navbar/>
         
-        {/* <Grid>
-            <Grid.Column width={16}> */}
+        <Grid>
+            <Grid.Column width={16}>
                 {profile &&
                     <>
                         <ProfileHeader profile={profile} />
                         <ProfileContent profile={profile} />
                     </>}
                     
-            {/* </Grid.Column>
-        </Grid> */}
+            </Grid.Column>
+        </Grid>
          </div>
     )
 })
