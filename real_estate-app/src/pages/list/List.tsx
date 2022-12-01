@@ -11,7 +11,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import Footer from "../../components/footer/Footer";
 
 
-export default observer(function List() {
+export default observer(function List( ) {
+  const perPage = 4;
+
+  const [next, setNext] = useState(perPage);
+  
   const { shtepiaStore } = useStore();
   const { shtepiat, loadShtepite } = shtepiaStore;
 
@@ -20,14 +24,95 @@ export default observer(function List() {
   const keys=["cmimi","titulli", "lokacioni"];
 
   useEffect(() => {
-
+     
     loadShtepite();
  
 }, [loadShtepite]);
+<<<<<<< Updated upstream
       
    
 
  
+=======
+
+const handleMoreHouse = () => {
+  setNext (next  + perPage);
+}
+ 
+const LabelStyle: CSS.Properties = {
+  width: "310px",
+  padding: "10px",
+marginBottom:"15px",
+
+height:"50px",
+
+};
+
+const { rezervimiStore } = useStore();
+const { createRezervimin, updateRezervimin, loading ,loadRezervimin} = rezervimiStore;
+
+
+const history = useHistory();
+const { rezervimiId } = useParams<{ rezervimiId: string }>();
+
+const [rezervimi, setRezervimi] = useState({
+rezervimiId: '',
+check_in: '',
+check_out: '',
+nrPersonave : '',
+pagesa:''
+
+});
+
+const validationSchema = Yup.object({
+check_in: Yup.string().required('Data eshte e zbrazet!'),
+check_out: Yup.string().required('Data eshte e zbrazet!'),
+nrPersonave: Yup.string().required('Numri i personave eshte i zbrazet!'),
+pagesa: Yup.string().required('Mesazhi eshte i zbrazet!'),
+});
+
+
+useEffect(() => {
+if (rezervimiId) loadRezervimin(rezervimiId).then(rezervimi => setRezervimi(rezervimi!))
+}, [rezervimiId, loadRezervimin]);
+
+
+function handleFormSubmit(rezervimi: Rezervimi) {
+  if (rezervimi.rezervimiId.length === 0) {
+    let newRezrvim = {
+      ...rezervimi,
+      rezervimiId: uuid(),
+    };
+    createRezervimin(newRezrvim).then(() =>
+
+    history.push(`/rezervimi`) 
+    
+  );     alert('Rezervimi u krijua me sukses!')
+  } else {
+    updateRezervimin(rezervimi).then(() => history.push(`/rezervimi/${rezervimi.rezervimiId}`));
+  }
+}
+
+const options=[
+  {value:"E-banking", desc:"E-banking"},
+  {value:"Cash", desc:"Cash"},
+  {value:"Crypto", desc:"Crypto"},
+
+]
+
+const [modal , setModal] = useState(false);
+
+
+const togglePopup = () =>{
+    setModal(!modal)
+}
+if(modal){
+  document.body.classList.add("active")
+}else{
+  document.body.classList.remove("active")
+}
+
+>>>>>>> Stashed changes
   return (
     <>
     <Navbar />
@@ -46,8 +131,8 @@ export default observer(function List() {
     <div className="wrapper-houses">
    
       {shtepiat.filter((shtepia:any)=> keys.some((key)=>shtepia[key].toLowerCase().includes(query))).map((shtepia) => {
+        
         return (
-          
           <div key={shtepia.shtepiaId}>
             <div className="lists1">
               <div className="list1">
