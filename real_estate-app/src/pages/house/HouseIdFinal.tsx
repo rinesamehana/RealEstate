@@ -13,30 +13,41 @@ import "./house.css";
 import Neighborhoods from "../../components/neighborhoods/Neighborhoods";
 import Partners from "../../components/partners/Partners";
 
-
 import HouseId from "./HouseId";
 import ShtepiaIdTest from "./ShtepiaIdTest";
 import { useParams } from "react-router-dom";
+import Contact from "../../components/contact/contact";
+import ContactHouse from "./ContactHouse";
+import { flexbox } from "@mui/system";
 
 export default observer(function Home() {
-    const{shtepiaStore}=useStore();
+  const { shtepiaStore } = useStore();
 
   const { shtepiaId } = useParams<{ shtepiaId: string }>();
   const { userStore, modalStore } = useStore();
   return (
-    <><HouseId />
-    <div className="Space1">
+    <>
+      <>
+        <HouseId />
+        <div className="Space1">
           <div className="Space">
+            <div className="latest-houses">
+              <h2 className="homeTitle-id" style={{ marginTop: "15px" }}>
+                Latest Houses
+              </h2>
+            </div>
+            {userStore.isLoggedIn || !userStore.isLoggedIn}
+            {<HousesThree />}
 
-
-
-          <h2 className="homeTitle-id">Latest Houses</h2>
-              {userStore.isLoggedIn || !(userStore.isLoggedIn)}{<HousesThree />}
+            <div className="reviews-contact">
+              <div className="review-contact"style={{ marginTop: "15px", display:"flex", gap:"30px" }}>
               <ShtepiaIdTest shtepiaId={shtepiaId} />
-
+              <ContactHouse /></div>
+            </div>
           </div>
-      </div></>
-  
- 
+        </div>
+      </>{" "}
+      <Footer />
+    </>
   );
 });

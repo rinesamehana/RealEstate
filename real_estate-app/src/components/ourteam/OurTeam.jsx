@@ -9,7 +9,9 @@ const OurTeam = () => {
             <Navbar/>
 
             <div class="section-contact">
+            <img src={'https://www.bostonrealestate.com/media/bushari/images/staticpage/about-us-bg.jpg'}/>
 		<div class="container2">
+           
 			<div class="content-section">
 				<div class="title">
 					<h1>About Us</h1>
