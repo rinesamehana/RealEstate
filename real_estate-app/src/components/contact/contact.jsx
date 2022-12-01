@@ -4,7 +4,6 @@ import emailjs from "@emailjs/browser";
 import Navbar from "../navbar/Navbar";
 import { Message } from "semantic-ui-react";
 import "./contact.css"
-import Footer from "../footer/Footer";
 
 
 
@@ -47,7 +46,7 @@ const Contact = () => {
         <h1>Contact Us</h1>
       </div> */}
 
-     
+
      {/* <StyledContactForm>  */}
      <div class="contact-section-c">
      
@@ -66,8 +65,6 @@ const Contact = () => {
       </div>
      {/* </StyledContactForm>  */}
 
-     
-<Footer />
     </div>
   );
 };

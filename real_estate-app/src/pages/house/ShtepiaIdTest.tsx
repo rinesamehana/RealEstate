@@ -9,7 +9,7 @@ import { formatDistanceToNow } from 'date-fns'
 import { useStore } from '../../app/stores/store'
 import Houses from '../../components/houses/Houses'
 const CardStyles: CSS.Properties = {
-  background:"black",
+  background:"#f5961d",
   border:"none",
   };
 interface Props {
@@ -29,7 +29,7 @@ export default observer(function ActivityDetailedChat({ shtepiaId }: Props) {
     }, [commentStore, shtepiaId]);
 
     return (
-        <div className='review-contact' style={{width:"600px"}}>
+        <div className='review-contact'>
 
             <Segment
                 textAlign='center'
@@ -92,8 +92,6 @@ export default observer(function ActivityDetailedChat({ shtepiaId }: Props) {
                     ))}
                 </Comment.Group>
             </Segment>
-
-        
         </div>
 
     )

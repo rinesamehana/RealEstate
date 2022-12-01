@@ -6,7 +6,6 @@ import {
   TiSocialTwitterCircular,
   TiSocialYoutubeCircular,
 } from "react-icons/ti";
-import React from "react";
 const Footer = () => {
   return (
     <footer>
