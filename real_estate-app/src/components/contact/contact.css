@@ -1,8 +1,16 @@
 .contact-section-c{
-    background-color: white;
+  
+    background-color: #fafafa;
     background-size: cover;
-    padding: 40px 0;
+    box-shadow: 0 13px 16px rgb(0 0 0 / 16%);
+    padding: 50px 0;
+    width: 500px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 500px;
+    
   }
+
   .contact-section-c h1{
     text-align: center;
     color: rgb(0, 0, 0);

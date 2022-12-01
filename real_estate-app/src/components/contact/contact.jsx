@@ -47,7 +47,7 @@ const Contact = () => {
         <h1>Contact Us</h1>
       </div> */}
 
-
+     
      {/* <StyledContactForm>  */}
      <div class="contact-section-c">
      
@@ -65,6 +65,8 @@ const Contact = () => {
       </form>
       </div>
      {/* </StyledContactForm>  */}
+
+     
 <Footer />
     </div>
   );
