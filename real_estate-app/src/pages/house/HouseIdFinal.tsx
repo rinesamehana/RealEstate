@@ -6,34 +6,37 @@ import Footer from "../../components/footer/Footer";
 
 import Header from "../../components/header/Header";
 import Houses from "../../components/houses/Houses";
+import HousesThree from "../../components/houses/HousesThree";
 
 import Navbar from "../../components/navbar/Navbar";
-
+import "./house.css";
 import Neighborhoods from "../../components/neighborhoods/Neighborhoods";
 import Partners from "../../components/partners/Partners";
 
-import PropertyList from "../../components/propertyList/PropertyList";
-import "./home.css";
+
+import HouseId from "./HouseId";
+import ShtepiaIdTest from "./ShtepiaIdTest";
+import { useParams } from "react-router-dom";
 
 export default observer(function Home() {
+    const{shtepiaStore}=useStore();
+
+  const { shtepiaId } = useParams<{ shtepiaId: string }>();
   const { userStore, modalStore } = useStore();
   return (
-    <div>
-      <Navbar />
+    <><HouseId />
+    <div className="Space1">
+          <div className="Space">
 
-      <Header type={undefined} />
 
-      <div className="homeContainer">
-        <Featured />
-        <Neighborhoods />
-        <PropertyList />
-        <h1 className="homeTitle">Latest   Houses</h1>
-        {userStore.isLoggedIn || !(userStore.isLoggedIn)}{
-        <Houses />
-        }
-        <Partners />
-        <Footer />
-      </div>
-    </div>
+
+          <h2 className="homeTitle-id">Latest Houses</h2>
+              {userStore.isLoggedIn || !(userStore.isLoggedIn)}{<HousesThree />}
+              <ShtepiaIdTest shtepiaId={shtepiaId} />
+
+          </div>
+      </div></>
+  
+ 
   );
 });

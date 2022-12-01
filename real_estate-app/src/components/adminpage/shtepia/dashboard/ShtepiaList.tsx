@@ -38,7 +38,7 @@ export default observer(function ShtepiaList() {
           </Link>
         </div>
       </div>
-      <Table sx={{ minWidth: 700 }} aria-label="simple table">
+      <Table sx={{ minWidth: 800 }} aria-label="simple table">
         <TableHead></TableHead>
         <TableRow style={{height:"40"}}>
           <TableCell className="tableCell">ID</TableCell>
@@ -52,7 +52,7 @@ export default observer(function ShtepiaList() {
           <TableCell className="tableCell">NrDhomave</TableCell>
           <TableCell className="tableCell">NrBanjove</TableCell>
           <TableCell className="tableCell">Siperfaqja</TableCell>
-          <TableCell className="tableCell">Pershkrimi</TableCell>
+          <TableCell className="tableCell" sx={{ minWidth: 800 }}>Pershkrimi</TableCell>
           <TableCell className="tableCell">LagjjaId</TableCell>
           <TableCell className="tableCell">LlojiShtepiseId</TableCell>
           <TableCell className="tableCell">GjendjaShtepiseId</TableCell>
@@ -65,12 +65,12 @@ export default observer(function ShtepiaList() {
 
         <TableBody>
           {shtepiat.map((shtepia) => (
-            <TableRow key={shtepia.shtepiaId}>
+            <TableRow key={shtepia.shtepiaId} >
               <TableCell className="tableCell">{shtepia.shtepiaId}</TableCell>
               <TableCell className="tableCell">
                 {shtepia.photo}
               </TableCell>
-              <TableCell className="tableCell" style={{width:"100"}}>
+              <TableCell className="tableCell" >
                 {shtepia.photo2}
               </TableCell>
               <TableCell className="tableCell">

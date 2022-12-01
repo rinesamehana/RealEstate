@@ -36,7 +36,7 @@ namespace Application.Comments
             {
                 var comments=await this.context.Comments
                 .Where(x=>x.Shtepia.ShtepiaId==request.ShtepiaId)
-                .OrderBy(x=>x.CreatedAt)
+                .OrderByDescending(x=>x.CreatedAt)
                 .ProjectTo<CommentsDto>(this.mapper.ConfigurationProvider)
                 .ToListAsync();
 

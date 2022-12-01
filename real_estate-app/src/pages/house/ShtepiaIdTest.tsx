@@ -3,11 +3,15 @@ import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Segment, Header, Comment, Loader } from 'semantic-ui-react'
-
+import CSS from "csstype";
 import * as Yup from 'yup';
 import { formatDistanceToNow } from 'date-fns'
 import { useStore } from '../../app/stores/store'
-
+import Houses from '../../components/houses/Houses'
+const CardStyles: CSS.Properties = {
+  background:"#f5961d",
+  border:"none",
+  };
 interface Props {
     shtepiaId: string;
 }
@@ -25,15 +29,16 @@ export default observer(function ActivityDetailedChat({ shtepiaId }: Props) {
     }, [commentStore, shtepiaId]);
 
     return (
-        <>
+        <div className='review-contact'>
+
             <Segment
                 textAlign='center'
                 attached='top'
                 inverted
-                color='teal'
-                style={{ border: 'none' }}
+               
+                style={ CardStyles}
             >
-                <Header>Chat about this event</Header>
+                <Header style={CardStyles}>Customer reviews</Header>
             </Segment>
             <Segment attached clearing>
                 <Formik
@@ -87,7 +92,7 @@ export default observer(function ActivityDetailedChat({ shtepiaId }: Props) {
                     ))}
                 </Comment.Group>
             </Segment>
-        </>
+        </div>
 
     )
 })

@@ -9,12 +9,27 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
+import CSS from "csstype";
 
+  const CardStyles: CSS.Properties = {
+    marginLeft: "60px",
+    display: "grid",
+    gridTemplateColumns:"1fr 1fr 1fr 1fr ",
+    gridTemplateRows:"repeat(1, 1fr)",
+    gap:"2rem",
+    justifyContent:"center",
+    marginBottom:"45px",
+  
+  };
+  const CardStyles2: CSS.Properties = {
+   width:"300px",
+  
+  };
 
 export default observer(function Houses() {
   const { shtepiaStore } = useStore();
   const { userStore, modalStore } = useStore();
-  const { n6Shtepiav, loadShtepite } = shtepiaStore;
+  const { n3Shtepiav, loadShtepite } = shtepiaStore;
 
   const [query, setQuery]=useState(""); 
 
@@ -35,18 +50,18 @@ export default observer(function Houses() {
   
 
      
-    <div className="wrapper-houses">
+    <div className="wrapper-houses" style={CardStyles}>
    
-      {n6Shtepiav.filter((shtepia:any)=> keys.some((key)=>shtepia[key].toLowerCase().includes(query))).map((shtepia) => {
+      {n3Shtepiav.map((shtepia) => {
         return (
           
           <div key={shtepia.shtepiaId}>
             <div className="lists1">
               <div className="list1">
-                <div className="home1">
+                <div className="home1" style={CardStyles2}>
                   <div className="image1">
                  <Link to={`/houses/${shtepia.shtepiaId}`}>
-                    <img src={shtepia.photo}/>
+                    <img src={shtepia.photo} style={CardStyles2}/>
                     </Link>
                     <div className="button_Add1">
                       <Button>
@@ -54,6 +69,7 @@ export default observer(function Houses() {
                           style={{
                             color: "rgb(53, 51, 51)",
                             fontSize: "40px",
+
                           }}
                         />
                       </Button>

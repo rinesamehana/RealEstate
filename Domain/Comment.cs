@@ -8,7 +8,7 @@ namespace Domain
     public int Id{get;set;}
     public string Body{get;set;}
 
-    public AppUser Author{get;set;}
+    public AppUser Author {get;set;}
 
     public Shtepia Shtepia{get;set;}
 
