@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 // import styled from "styled-components";
-import Navbar from "../navbar/Navbar";
+
 import { Message } from "semantic-ui-react";
-import "./contact.css"
-import Footer from "../footer/Footer";
+import "./contact-house.css"
 
 
 
@@ -42,32 +41,32 @@ const Contact = () => {
 
   return (
    <div>
-     <Navbar/>
+   
      {/* <div className="title">
         <h1>Contact Us</h1>
       </div> */}
 
-     
+
      {/* <StyledContactForm>  */}
      <div class="contact-section-c">
      
-     <h1>CONTACT US</h1>
+     <h3>More about this property:</h3>
      <div class="border"></div>
       <form class="contact-form-c" ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="user_name" class="contact-form-text-c"/>
-        <label>Email</label>
-        <input type="email" name="user_email" class="contact-form-text-c"/>
-        <label>Message</label>
-        <textarea name="message" class="contact-form-text-c"/>
+        <div className="name-email" >
+    
+        <input type="text" name="user_name" placeholder="Name" class="contact-form-text-c"/>
+  
+      
+        <input type="email" name="user_email" placeholder="Email" class="contact-form-text-c"/>  </div>
+      
+        <textarea name="message" placeholder="Message" class="contact-form-text-c"/>
         <input type="submit" value="Send" class="contact-form-btn"/> 
        
       </form>
       </div>
      {/* </StyledContactForm>  */}
 
-     
-<Footer />
     </div>
   );
 };

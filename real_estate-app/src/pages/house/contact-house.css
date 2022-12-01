@@ -1,26 +1,21 @@
 .contact-section-c{
-  
     background-color: #fafafa;
     background-size: cover;
-    box-shadow: 0 13px 16px rgb(0 0 0 / 16%);
-    padding: 50px 0;
-    width: 500px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-left: 500px;
-    
+box-shadow: 0 13px 16px rgb(0 0 0 / 16%);
+    padding: 40px 0;
+    width:400px;
   }
-
-  .contact-section-c h1{
+  .contact-section-c h3{
     text-align: center;
     color: rgb(0, 0, 0);
-    font-size: 40px;
+   
   }
   .border{
     width: 100px;
-    height: 10px;
-    background: #223445;
-    margin: 40px auto;
+    height: 2px;
+    background: black;
+    margin: 20px auto;
+  
   }
   
   .contact-form-c{
@@ -35,9 +30,38 @@
     width: 100%;
     box-sizing: border-box;
     margin: 16px 0;
-    border: 0;
-    background: rgba(135, 135, 142, 0.807);
-    padding: 20px 40px;
+    border:1px solid gray;
+    border-radius: 15px;
+    background: white;
+    padding: 20px 20px;
+    outline: none;
+    color: rgb(2, 1, 1);
+    transition: 0.5s;
+  }
+  .name-email{
+    display:flex;
+    justify-content: space-around;
+
+  }
+  .reviews-contact{
+display: flex;
+    border-top:2px solid black;
+    justify-content: space-around;
+    margin-top: 25px;
+    gap:5px;
+
+  }
+
+
+  .name-email input{
+    display: block;
+    width: 47%;
+    box-sizing: border-box;
+    margin: 16px 0;
+    border:1px solid gray;
+    border-radius: 15px;
+    background: white;
+    padding: 20px 20px;
     outline: none;
     color: rgb(2, 1, 1);
     transition: 0.5s;

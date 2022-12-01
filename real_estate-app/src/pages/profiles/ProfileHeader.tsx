@@ -21,8 +21,6 @@ export default observer( function ProfileHeader({profile} :Props){
                             <Item.Content verticalAlign='middle'>
                                 <Header as='h1' content={profile.displayName}/>
                             </Item.Content>
-
-                      
                     </Item>
                     </Item.Group>     
             </Grid.Column>
