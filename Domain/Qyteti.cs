@@ -20,15 +20,15 @@ namespace Domain
 
 
 
-        public Guid ShtetiId { get; set; }
+        public Guid? ShtetiId { get; set; }
 
-        public Shteti Shteti { get; set; }
+        public Shteti? Shteti { get; set; }
 
         public ICollection<Lagjja> Lagjet { get; set; }
 
         public ICollection<Stafi> Stafii { get; set; }
 
-        public ICollection<Shtepia> Shtepite { get; set; }
+        public ICollection<Shtepia> Shtepite { get; set; }= new List<Shtepia>();
 
     }
 }

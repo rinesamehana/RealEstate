@@ -6,5 +6,5 @@ export interface Qyteti {
   emri: string;
   kodiPostar: string;
   shtetiId: string;
-
+ shteti?:Shteti;
 }

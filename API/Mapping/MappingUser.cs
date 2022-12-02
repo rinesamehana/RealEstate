@@ -10,8 +10,9 @@ namespace API.Mapping
     {
         public MappingUser()
         {
-            CreateMap<AppUser, GetUserDto>()
-                .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x=>x.IsMain).Url));
+           
+                CreateMap<AppUser, GetUserDto>()
+                .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos));
             CreateMap<Rezervimi, Profiles.UserProfile>()
                 .ForMember(d => d.Check_in, o => o.MapFrom(s => s.Check_in))
                 .ForMember(d => d.Check_out, o => o.MapFrom(s => s.Check_out))

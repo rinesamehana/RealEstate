@@ -15,9 +15,9 @@ namespace Application.QytetiA
 {
     public class List
     {
-        public class Query : IRequest<Result<List<QytetiDto>>>{}
+        public class Query : IRequest<Result<List<Qyteti>>>{}
         
-            public class Handler : IRequestHandler<Query, Result<List<QytetiDto>>>
+            public class Handler : IRequestHandler<Query, Result<List<Qyteti>>>
             {
                 private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -28,13 +28,13 @@ namespace Application.QytetiA
                _mapper = mapper;
             }
 
-                public async Task<Result<List<QytetiDto>>> Handle(Query request, CancellationToken cancellationToken)
+                public async Task<Result<List<Qyteti>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var qyteti = await _context.Qytetet.ToListAsync();
 
-                var qytetiR = _mapper.Map<List<QytetiDto>>(qyteti);
+                var qytetiR = _mapper.Map<List<Qyteti>>(qyteti);
 
-                return Result<List<QytetiDto>>.Success(qytetiR);
+                return Result<List<Qyteti>>.Success(qytetiR);
             }
             }
 

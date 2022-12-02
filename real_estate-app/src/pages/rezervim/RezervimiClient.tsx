@@ -39,7 +39,7 @@ const {user}=userStore;
           <TableCell className="tableCell">Check_out</TableCell>
           <TableCell className="tableCell">NrPersonave</TableCell>
           <TableCell className="tableCell">Pagesa</TableCell>
-          
+          <TableCell className="tableCell">Kontata</TableCell>
         </TableRow>
 
         <TableBody>
@@ -50,7 +50,7 @@ const {user}=userStore;
               <TableCell className="tableCell">{rezervimi.check_out}</TableCell>
               <TableCell className="tableCell">{rezervimi.nrPersonave}</TableCell>
               <TableCell className="tableCell">{rezervimi.pagesa}</TableCell>
-              
+              <TableCell className="tableCell">{rezervimi.kontrata}</TableCell>
             </TableRow>
           ))}
         </TableBody>

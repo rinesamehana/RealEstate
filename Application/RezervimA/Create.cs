@@ -44,6 +44,8 @@ namespace Application.RezervimA
 
                  var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
 
+                 
+
                 request.Rezervimi.AppUser = user;
 
                 _context.Rezervimet.Add(request.Rezervimi);

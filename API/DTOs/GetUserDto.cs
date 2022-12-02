@@ -13,6 +13,6 @@ namespace API.DTOs
         public string Image { get; set; }
 
         public ICollection<string> Roli { get; set; }
-        public ICollection<UserProfile> Rezervimet { get; set; }
+          public ICollection<UserProfile> Rezervimet { get; set; }
     }
 }

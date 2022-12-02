@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class ffdhfdffddsinhda : Migration
+    public partial class finhal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

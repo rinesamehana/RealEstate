@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class ffdhfdffddinhda : Migration
+    public partial class final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -226,6 +226,7 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     LagjjaId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Photo = table.Column<string>(type: "TEXT", nullable: true),
                     Emri = table.Column<string>(type: "TEXT", nullable: true),
                     QytetiId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
@@ -245,6 +246,7 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     StafiId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Photo = table.Column<string>(type: "TEXT", nullable: true),
                     Emri = table.Column<string>(type: "TEXT", nullable: true),
                     Mbiemri = table.Column<string>(type: "TEXT", nullable: true),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
@@ -265,7 +267,7 @@ namespace Persistence.Migrations
                         column: x => x.GjiniaId,
                         principalTable: "Gjinite",
                         principalColumn: "GjiniaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Stafii_Kohaa_KohaId",
                         column: x => x.KohaId,
@@ -497,7 +499,7 @@ namespace Persistence.Migrations
                         column: x => x.ShtepiaId,
                         principalTable: "Shtepiat",
                         principalColumn: "ShtepiaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -556,7 +558,9 @@ namespace Persistence.Migrations
                     Check_out = table.Column<DateTime>(type: "TEXT", nullable: false),
                     nrPersonave = table.Column<string>(type: "TEXT", nullable: true),
                     Pagesa = table.Column<string>(type: "TEXT", nullable: true),
+                    Kontrata = table.Column<string>(type: "TEXT", nullable: true),
                     AppUserId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    ShtepiaId = table.Column<Guid>(type: "TEXT", nullable: true),
                     KontrataId = table.Column<Guid>(type: "TEXT", nullable: true),
                     MenyraPagesesId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
@@ -568,7 +572,7 @@ namespace Persistence.Migrations
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rezervimet_Kontratat_KontrataId",
                         column: x => x.KontrataId,
@@ -581,6 +585,12 @@ namespace Persistence.Migrations
                         principalTable: "MenyraPagesave",
                         principalColumn: "MenyraPagesesId",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Rezervimet_Shtepiat_ShtepiaId",
+                        column: x => x.ShtepiaId,
+                        principalTable: "Shtepiat",
+                        principalColumn: "ShtepiaId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -664,6 +674,11 @@ namespace Persistence.Migrations
                 name: "IX_Rezervimet_MenyraPagesesId",
                 table: "Rezervimet",
                 column: "MenyraPagesesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rezervimet_ShtepiaId",
+                table: "Rezervimet",
+                column: "ShtepiaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShtepiaPajisjets_ShtepiaId",

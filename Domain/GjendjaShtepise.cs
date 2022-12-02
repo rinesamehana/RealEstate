@@ -12,6 +12,6 @@ namespace Domain
         public Guid GjendjaId { get; set; }
         public String Gjendja { get; set; } = string.Empty;
 
-        public ICollection<Shtepia> Shtepite{ get; set; }
+        public ICollection<Shtepia> Shtepite{ get; set; }= new List<Shtepia>();
     }
 }

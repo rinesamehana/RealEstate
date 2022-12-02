@@ -75,7 +75,7 @@ namespace Domain
        [JsonIgnore]
         [ForeignKey("StafiId")]
         public Stafi Stafi { get; set; }
-
+  public ICollection<Rezervimi> Rezervimet { get; set; } = new List<Rezervimi>();
 
         public ICollection<ShtepiaAmbiente> Ambientet { get; set; }
 
