@@ -39,7 +39,8 @@ export default observer(function RezrvimiForm() {
     check_in: '',
     check_out: '',
     nrPersonave : '',
-    pagesa:''
+    pagesa:'',
+    kontrata:''
   
   });
 
@@ -48,6 +49,7 @@ export default observer(function RezrvimiForm() {
     check_out: Yup.string().required('Data eshte e zbrazet!'),
     nrPersonave: Yup.string().required('Numri i personave eshte i zbrazet!'),
     pagesa: Yup.string().required('Mesazhi eshte i zbrazet!'),
+    kontrata: Yup.string().required('Mesazhi eshte i zbrazet!'),
  });
 
 
@@ -76,6 +78,14 @@ export default observer(function RezrvimiForm() {
       {value:"E-banking", desc:"E-banking"},
       {value:"Cash", desc:"Cash"},
       {value:"Crypto", desc:"Crypto"},
+
+    ]
+    const optionss=[
+      {value:"None", desc:"None"},
+      {value:"One Month Contract", desc:"One Month Contract"},
+      {value:"Six Month Contract", desc:"Six Month Contract"},
+      {value:"One Year Contract", desc:"One Year Contract"},
+
 
     ]
   
@@ -114,6 +124,7 @@ export default observer(function RezrvimiForm() {
                             <MyTextInput name='nrPersonave' placeholder='Nr. Personave' />
 
                             <MyNewSelect options={options} name="pagesa" label={""} />
+                            <MyNewSelect options={optionss} name="kontrata" label={""} />
                             {/* <MyTextInput name='pagesa' placeholder='Pagesa' /> */}
                           <Button
                             disable={isSubmitting || !dirty || !isValid}

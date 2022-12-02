@@ -22,7 +22,7 @@ import { Rezervimi } from "../../app/models/Rezervimi";
 import { MyNewSelect   } from "../../app/common/form1/MyNewSelect";
 import CSS from "csstype";
 import ShtepiaIdTest from "../house/ShtepiaIdTest";
-import "../rezervim/RezervimiForm.css";
+// import "../rezervim/RezervimiForm.css";
 
 export default observer(function List() {
   const { shtepiaStore } = useStore();
@@ -59,7 +59,8 @@ rezervimiId: '',
 check_in: '',
 check_out: '',
 nrPersonave : '',
-pagesa:''
+pagesa:'',
+kontrata:'',
 
 });
 
@@ -68,6 +69,7 @@ check_in: Yup.string().required('Data eshte e zbrazet!'),
 check_out: Yup.string().required('Data eshte e zbrazet!'),
 nrPersonave: Yup.string().required('Numri i personave eshte i zbrazet!'),
 pagesa: Yup.string().required('Mesazhi eshte i zbrazet!'),
+kontrata: Yup.string().required('Mesazhi eshte i zbrazet!'),
 });
 
 
@@ -96,6 +98,15 @@ const options=[
   {value:"E-banking", desc:"E-banking"},
   {value:"Cash", desc:"Cash"},
   {value:"Crypto", desc:"Crypto"},
+
+]
+
+const optionss=[
+  {value:"None", desc:"None"},
+  {value:"One Month Contract", desc:"One Month Contract"},
+  {value:"Six Month Contract", desc:"Six Month Contract"},
+  {value:"One Year Contract", desc:"One Year Contract"},
+
 
 ]
 
@@ -221,6 +232,7 @@ if(modal){
                             <MyTextInput name='nrPersonave' placeholder='Nr. Personave' />
 
                             <MyNewSelect options={options} name="pagesa" label={""} />
+                            <MyNewSelect options={optionss} name="kontrata" label={""} />
                             {/* <MyTextInput name='pagesa' placeholder='Pagesa' /> */}
                           <Button
                             disable={isSubmitting || !dirty || !isValid}

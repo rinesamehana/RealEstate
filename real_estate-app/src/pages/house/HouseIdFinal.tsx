@@ -20,11 +20,14 @@ import { useParams } from "react-router-dom";
 import Contact from "../../components/contact/contact";
 import ContactHouse from "./ContactHouse";
 import { flexbox } from "@mui/system";
+import LoadingComponent from "../../app/axios/LoadingComponent";
 export default observer(function Home() {
     const{shtepiaStore}=useStore();
 
   const { shtepiaId } = useParams<{ shtepiaId: string }>();
   const { userStore, modalStore } = useStore();
+
+
   return (
    
       <><>

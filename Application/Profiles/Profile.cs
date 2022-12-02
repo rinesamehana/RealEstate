@@ -13,6 +13,6 @@ namespace Application.Profiles
 
         public string Image{get;set;} = string.Empty;
 
-        // public ICollection<Photo> Photos {get;set;}
+        public ICollection<Photo> Photos {get;set;}
     }
 }

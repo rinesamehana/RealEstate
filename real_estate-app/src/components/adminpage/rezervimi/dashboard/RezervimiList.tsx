@@ -46,6 +46,7 @@ export default observer(function PamjaList() {
           <TableCell className="tableCell">Check_out</TableCell>
           <TableCell className="tableCell">NrPersonave</TableCell>
           <TableCell className="tableCell">Pagesa</TableCell>
+          <TableCell className="tableCell">Kontrata</TableCell>
           <TableCell className="tableCell"></TableCell>
         </TableRow>
 
@@ -58,6 +59,7 @@ export default observer(function PamjaList() {
               <TableCell className="tableCell">{rezervimi.check_out}</TableCell>
               <TableCell className="tableCell">{rezervimi.nrPersonave}</TableCell>
               <TableCell className="tableCell">{rezervimi.pagesa}</TableCell>
+              <TableCell className="tableCell">{rezervimi.kontrata}</TableCell>
               <Table.Cell>
                 <Button
                   // onClick={() => gjiniaStore.selectGjini(gjinia.gjiniaId)}

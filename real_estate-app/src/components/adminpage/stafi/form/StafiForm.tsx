@@ -53,10 +53,17 @@ export default observer(function StafiForm() {
     loadRolet();
     loadLlojiUserit();
     loadkohetePunes();
-    loadGjinite();
-    loadQytetet();
 
-  }, [loadRolet, loadLlojiUserit,loadkohetePunes,loadGjinite,loadQytetet]);
+    loadQytetet();
+   
+
+
+
+  }, [loadRolet, loadLlojiUserit,loadkohetePunes,loadQytetet]);
+
+  useEffect(() => {
+    loadGjinite();
+}, [loadGjinite])
   const { stafiId } = useParams<{ stafiId: string }>();
 
   const [stafi, setStafi] = useState({
