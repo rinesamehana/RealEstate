@@ -1,3 +1,4 @@
+import React from "react";
 import "./featured.css";
 
 const Featured = () => {
@@ -7,7 +8,7 @@ const Featured = () => {
         <div className="description">
           <div className="items">
             <div className="heading">
-              <h2>Who's Who in Real Estate</h2>
+              <h2 style={{ color: "white"}}>Who's Who in Real Estate</h2>
             </div>
             </div>
             <div className="otherheading">

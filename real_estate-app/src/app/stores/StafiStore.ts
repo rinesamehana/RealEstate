@@ -13,7 +13,7 @@ export default class StafiStore {
     makeAutoObservable(this);
   }
   get stafii() {
-    return Array.from(this.stafiRegistry.values());
+    return Array.from(this.stafiRegistry.values()).slice(-4);
   }
   loadStafii = async () => {
     this.loadingInitial = true;

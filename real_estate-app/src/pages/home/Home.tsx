@@ -1,4 +1,6 @@
 import { observer } from "mobx-react-lite";
+import React from "react";
+import LoadingComponent from "../../app/axios/LoadingComponent";
 import { useStore } from "../../app/stores/store";
 import Featured from "../../components/featured/Featured";
 import Footer from "../../components/footer/Footer";
@@ -15,7 +17,9 @@ import PropertyList from "../../components/propertyList/PropertyList";
 import "./home.css";
 
 export default observer(function Home() {
-  const { userStore, modalStore } = useStore();
+  const {  userStore, modalStore } = useStore();
+
+
   return (
     <div>
       <Navbar />
@@ -24,9 +28,10 @@ export default observer(function Home() {
 
       <div className="homeContainer">
         <Featured />
+   
         <Neighborhoods />
         <PropertyList />
-        <h1 className="homeTitle">Latest   Houses</h1>
+        <h1 className="homeTitle" >Latest   Houses</h1>
         {userStore.isLoggedIn || !(userStore.isLoggedIn)}{
         <Houses />
         }

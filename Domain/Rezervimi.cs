@@ -55,9 +55,11 @@ namespace Domain
         public string nrPersonave { get; set; }
         public string Pagesa { get; set; }
 
+        public string Kontrata{get;set;}
+         public AppUser AppUser{get;set;}
 
         public Guid? AppUserId { get; set; } 
-        public AppUser? AppUser { get; set; }
+        // public AppUser? AppUser { get; set; }
 
         
     }

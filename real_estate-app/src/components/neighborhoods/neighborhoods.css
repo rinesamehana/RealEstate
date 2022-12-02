@@ -6,20 +6,25 @@
  
 }
 
-.neighborhoods .title {
+
+
+
+.neighborhoods-2 .title {
   float: right;
   margin-right: 40px;
 
   margin-top: 15px;
 
 }
-.title p{
+
+.title h1{
   font-size: 45px;
+ 
 }
 
 .featuredd {
   width: 100%;
-  display: flex;
+ color:white;
   justify-content: space-between;
   gap: 8px;
   z-index: 1;
@@ -37,18 +42,21 @@
 .featuredItemm img {
   width: 505px;
   height: 439px;
+  opacity: 0.7;
   object-fit: cover;
 }
 
-.featuredTitless {
+.featuredTitles {
   padding: 15px;
   position: absolute;
   bottom: 0;
   width: 100%;
+  color: white;
   background-color: rgba(0, 0, 0, 0.6);
 }
-.featuredTitless p{
+.featuredTitles p{
   font-size: 23px;
+  color: white;
 }
 .seemore p{
  display: flex;

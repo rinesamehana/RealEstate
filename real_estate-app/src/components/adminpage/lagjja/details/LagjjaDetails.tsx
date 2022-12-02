@@ -62,6 +62,9 @@ export default observer(function LagjjaDetails() {
               <h1>Edit</h1>
             </div>
             <Card fluid style={CardStyles}>
+            <Card.Content style={CRStyles}>
+                Lagjja: {lagjja.photo}
+              </Card.Content>
               <Card.Content style={CRStyles}>
                 Lagjja: {lagjja.emri}
               </Card.Content>

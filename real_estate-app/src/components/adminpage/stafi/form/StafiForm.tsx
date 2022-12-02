@@ -53,14 +53,22 @@ export default observer(function StafiForm() {
     loadRolet();
     loadLlojiUserit();
     loadkohetePunes();
-    loadGjinite();
-    loadQytetet();
 
-  }, [loadRolet, loadLlojiUserit,loadkohetePunes,loadGjinite,loadQytetet]);
+    loadQytetet();
+   
+
+
+
+  }, [loadRolet, loadLlojiUserit,loadkohetePunes,loadQytetet]);
+
+  useEffect(() => {
+    loadGjinite();
+}, [loadGjinite])
   const { stafiId } = useParams<{ stafiId: string }>();
 
   const [stafi, setStafi] = useState({
     stafiId: "",
+    photo: "",
     emri: "",
     mbiemri: "",
     email: "",
@@ -148,6 +156,7 @@ export default observer(function StafiForm() {
                           onSubmit={handleSubmit}
                           autoComplete="off"
                         >
+                          <MyTextInput name="photo" placeholder="Photo" />
                           <MyTextInput name="emri" placeholder="Emri" />
                           <MyTextInput name="mbiemri" placeholder="Mbiemri" />
                           <MyTextInput name="email" placeholder="Email" />

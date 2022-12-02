@@ -10,10 +10,11 @@ namespace Domain
     {
         public Guid StafiId { get; set; }
 
+public String Photo { get; set; }
         public String Emri { get; set; }
 
         public String Mbiemri { get; set; }
-
+ 
         public String Email { get; set; }
 
         public String NrTelefonit { get; set; }

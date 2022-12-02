@@ -11,6 +11,7 @@ namespace API.Profiles
         public DateTime Check_out { get; set; }
         public string nrPersonave { get; set; }
         public string Pagesa { get; set; }
+          public string Kontrata { get; set; }
 
         // public ICollection<Rezervimi> Rezervimet { get; set; } = new List<Rezervimi>();
 

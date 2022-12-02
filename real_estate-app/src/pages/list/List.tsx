@@ -4,9 +4,13 @@ import Navbar from "../../components/navbar/Navbar";
 import { BsHeart } from "react-icons/bs";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
+import React, { useEffect, useState } from "react";
+
 import SearchIcon from "@mui/icons-material/Search";
 import Footer from "../../components/footer/Footer";
-import React, { useEffect, useState } from "react";
+import LoadingComponent from "../../app/axios/LoadingComponent";
+
+
 import { ChangeEvent } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { Button, FormField, Item, Label, Segment, Select } from "semantic-ui-react";
@@ -15,7 +19,7 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import MyTextInput from "../../app/common/form1/MyTextInput";
 import { Rezervimi } from "../../app/models/Rezervimi";
-import { MyNewSelect } from "../../app/common/form1/MyNewSelect";
+import { MyNewSelect   } from "../../app/common/form1/MyNewSelect";
 import CSS from "csstype";
 import ShtepiaIdTest from "../house/ShtepiaIdTest";
 import "../rezervim/RezervimiForm.css";
@@ -63,7 +67,8 @@ rezervimiId: '',
 check_in: '',
 check_out: '',
 nrPersonave : '',
-pagesa:''
+pagesa:'',
+kontrata:'',
 
 });
 
@@ -72,6 +77,7 @@ check_in: Yup.string().required('Data eshte e zbrazet!'),
 check_out: Yup.string().required('Data eshte e zbrazet!'),
 nrPersonave: Yup.string().required('Numri i personave eshte i zbrazet!'),
 pagesa: Yup.string().required('Mesazhi eshte i zbrazet!'),
+kontrata: Yup.string().required('Mesazhi eshte i zbrazet!'),
 });
 
 
@@ -100,6 +106,15 @@ const options=[
   {value:"E-banking", desc:"E-banking"},
   {value:"Cash", desc:"Cash"},
   {value:"Crypto", desc:"Crypto"},
+
+]
+
+const optionss=[
+  {value:"None", desc:"None"},
+  {value:"One Month Contract", desc:"One Month Contract"},
+  {value:"Six Month Contract", desc:"Six Month Contract"},
+  {value:"One Year Contract", desc:"One Year Contract"},
+
 
 ]
 
@@ -228,6 +243,7 @@ if(modal){
                             <MyTextInput name='nrPersonave' placeholder='Nr. Personave' />
 
                             <MyNewSelect options={options} name="pagesa" label={""} />
+                            <MyNewSelect options={optionss} name="kontrata" label={""} />
                             {/* <MyTextInput name='pagesa' placeholder='Pagesa' /> */}
                           <Button
                             disable={isSubmitting || !dirty || !isValid}

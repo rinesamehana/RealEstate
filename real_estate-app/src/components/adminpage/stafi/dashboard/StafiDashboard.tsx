@@ -1,4 +1,5 @@
 import { observer } from "mobx-react-lite";
+import React from "react";
 import { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
 import LoadingComponent from "../../../../app/axios/LoadingComponent";

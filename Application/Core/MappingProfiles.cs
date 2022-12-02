@@ -58,20 +58,23 @@ namespace Application.Core
                 CreateMap<Rezervimi, Rezervimi>();
             CreateMap<Rezervimi, RezervimiDto>()
                 .ForMember(d => d.HostName, o=>o.MapFrom(s=>s.AppUser.UserName))
-                 .ForMember(d => d.User, o => o.MapFrom(s => s.AppUser))
+
                  .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.AppUser.DisplayName))
                  .ForMember(d => d.Username, o => o.MapFrom(s => s.AppUser.UserName));
+                        //  .ForMember(d => d.Image, o => o.MapFrom(s => s.AppUser.Photos.FirstOrDefault(x=>x.IsMain).Url));
                 
            
             CreateMap<AppUser, Profiles.Profile>()
                 .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.DisplayName))
-                .ForMember(d => d.Username, o => o.MapFrom(s => s.UserName));
-            
+                .ForMember(d => d.Username, o => o.MapFrom(s => s.UserName))
+             .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x=>x.IsMain).Url));
             CreateMap<Comment, CommentsDto>()
             .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.Author.DisplayName))
             .ForMember(d => d.Username, o => o.MapFrom(s => s.Author.UserName))
             .ForMember(d => d.Image, o => o.MapFrom(s => s.Author.Photos.FirstOrDefault(x=>x.IsMain).Url));
                
+
+      
         }
     }
 }

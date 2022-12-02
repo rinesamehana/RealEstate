@@ -39,6 +39,7 @@ export default observer(function LagjjaList() {
         <TableHead></TableHead>
         <TableRow>
           <TableCell className="tableCell">ID</TableCell>
+          <TableCell className="tableCell">Photo</TableCell>
           <TableCell className="tableCell">lagjja</TableCell>
           <TableCell className="tableCell">Qyteti</TableCell>
           <TableCell className="tableCell"></TableCell>
@@ -48,7 +49,7 @@ export default observer(function LagjjaList() {
           {lagjet.map((lagjja) => (
             <TableRow key={lagjja.lagjjaId}>
               <TableCell className="tableCell">{lagjja.lagjjaId}</TableCell>
-
+              <TableCell className="tableCell">{lagjja.photo}</TableCell>
               <TableCell className="tableCell">{lagjja.emri}</TableCell>
               <TableCell className="tableCell">{lagjja.qytetiId}</TableCell>
               <Table.Cell>

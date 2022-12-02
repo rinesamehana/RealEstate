@@ -12,7 +12,7 @@ namespace Domain
         [Key]
         public Guid LagjjaId { get; set; }
 
-      
+        public String Photo{get;set;}
         public String Emri { get; set; }
 
         public Guid? QytetiId { get; set; }

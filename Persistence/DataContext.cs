@@ -93,11 +93,14 @@ namespace Persistence
                 .WithMany(l => l.Lagjet)
                 .HasForeignKey(q => q.QytetiId);
 
- modelBuilder.Entity<Rezervimi>()
-                .HasOne(s => s.AppUser)
-                .WithMany(q => q.Rezervimet)
-                .HasForeignKey(s => s.AppUserId);
-
+//  modelBuilder.Entity<Rezervimi>()
+//                 .HasOne(s => s.Author)
+//                 .WithMany(q => q.Rezervimet)
+//                 .HasForeignKey(s => s.);
+   modelBuilder.Entity<Rezervimi>()
+            .HasOne(a=>a.AppUser)
+            .WithMany(c=>c.Rezervimet)
+            .OnDelete(DeleteBehavior.Cascade);
 
             
 
@@ -137,6 +140,9 @@ namespace Persistence
                 .WithMany(l => l.Stafii)
                 .HasForeignKey(q => q.GjiniaId);
 
+
+
+// Map one-to-zero or one relationship
 
 
             //------SHTEPIA-------
@@ -271,10 +277,10 @@ namespace Persistence
                 // .WithMany(q => q.Attendees)
                 // .HasForeignKey(aa => aa.RezervimiId);
 
-                     modelBuilder.Entity<Rezervimi>()
-                .HasOne(s => s.AppUser)
-                .WithMany(q => q.Rezervimet)
-                .HasForeignKey(s => s.AppUserId);
+                //      modelBuilder.Entity<Rezervimi>()
+                // .HasOne(s => s.AppUser)
+                // .WithMany(q => q.Rezervimet)
+                // .HasForeignKey(s => s.AppUserId);
         }
 
 

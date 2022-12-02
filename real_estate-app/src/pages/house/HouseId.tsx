@@ -41,7 +41,8 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
     
   ];
 
-
+  if (shtepiaStore.loadingInitial)
+  return <LoadingComponent content="Loading..." />;
   return (
     
     <div>
@@ -90,7 +91,7 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
       </div>
       </div>
 {/* <ShtepiaIdTest shtepiaId={shtepiaId}/> */}
-      <Footer />
+
     </div>
   );
 })

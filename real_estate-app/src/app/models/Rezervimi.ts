@@ -9,6 +9,7 @@ export interface Rezervimi{
     check_out: string;
     nrPersonave: string;
     pagesa: string;
+    kontrata:string;
     appUserId?: string;
     user?: UserProfile ;
 }
