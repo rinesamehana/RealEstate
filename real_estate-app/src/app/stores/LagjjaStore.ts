@@ -16,6 +16,9 @@ export default class LagjjaStore {
   get lagjet() {
     return Array.from(this.lagjjaRegistry.values());
   }
+  get n6Lagje(){
+    return Array.from(this.lagjjaRegistry.values()).slice(-6).reverse();
+      }
   loadLagjet = async () => {
     this.loadingInitial = true;
     try {

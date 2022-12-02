@@ -39,6 +39,7 @@ export default observer(function StafiList() {
         <TableHead></TableHead>
         <TableRow>
           <TableCell className="tableCell">ID</TableCell>
+          <TableCell className="tableCell">Photo</TableCell>
           <TableCell className="tableCell">Emri</TableCell>
           <TableCell className="tableCell">Mbiemri</TableCell>
           <TableCell className="tableCell">Email</TableCell>
@@ -57,7 +58,7 @@ export default observer(function StafiList() {
           {stafii.map((stafi) => (
             <TableRow key={stafi.stafiId}>
               <TableCell className="tableCell">{stafi.stafiId}</TableCell>
-
+              <TableCell className="tableCell">{stafi.photo}</TableCell>
               <TableCell className="tableCell">{stafi.emri}</TableCell>
               <TableCell className="tableCell">{stafi.mbiemri}</TableCell>
               <TableCell className="tableCell">{stafi.email}</TableCell>

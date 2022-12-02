@@ -61,6 +61,7 @@ export default observer(function StafiForm() {
 
   const [stafi, setStafi] = useState({
     stafiId: "",
+    photo: "",
     emri: "",
     mbiemri: "",
     email: "",
@@ -148,6 +149,7 @@ export default observer(function StafiForm() {
                           onSubmit={handleSubmit}
                           autoComplete="off"
                         >
+                          <MyTextInput name="photo" placeholder="Photo" />
                           <MyTextInput name="emri" placeholder="Emri" />
                           <MyTextInput name="mbiemri" placeholder="Mbiemri" />
                           <MyTextInput name="email" placeholder="Email" />

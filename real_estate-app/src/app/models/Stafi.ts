@@ -2,6 +2,7 @@ import { Qyteti } from "./Qyteti";
 
 export interface Stafi {
   stafiId: string;
+  photo: string;
   emri: string;
   mbiemri: string;
   email: string;

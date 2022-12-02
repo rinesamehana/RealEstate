@@ -31,8 +31,8 @@ export default observer(function Home() {
           <HouseId />
           <div className="Space1">
               <div className="Space">
-                  <div className="latest-houses">
-                      <h2 className="homeTitle-id" style={{ marginTop: "15px" }}>
+                  <div className="latest-houses" >
+                      <h2 className="homeTitle-id" style={{ marginBottom: "15px" }}>
                           Latest Houses
                       </h2>
                   </div>

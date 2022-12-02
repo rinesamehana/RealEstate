@@ -10,7 +10,7 @@ const Widgets = ({ type }) => {
   let data;
 
   //temporary
-  const amount = 100;
+
   const diff = 20;
 
   switch (type) {
@@ -18,6 +18,7 @@ const Widgets = ({ type }) => {
       data = {
         title: "USERS",
         isMoney: false,
+        amount:8,
         link: "See all users",
         icon: (
           <PersonOutlinedIcon
@@ -33,6 +34,7 @@ const Widgets = ({ type }) => {
     case "houses":
       data = {
         title: "Houses",
+        amount:12,
         isMoney: false,
         link: "See all houses",
         icon: (
@@ -50,6 +52,7 @@ const Widgets = ({ type }) => {
       data = {
         title: "Bookings",
         isMoney: false,
+        amount:5,
         link: "See all bookings",
         icon: (
           <EventNoteOutlinedIcon
@@ -64,9 +67,10 @@ const Widgets = ({ type }) => {
       break;
     case "earning":
       data = {
-        title: "Earnings",
-        isMoney: true,
-        link: "View net earnings",
+        title: "Towns",
+        amount:8,
+        isMoney: false,
+        link: "View Towns",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -84,7 +88,7 @@ const Widgets = ({ type }) => {
         <span className="title">{data.title}</span>
         <span className="counter">
           {data.isMoney && "$"}
-          {amount}
+          {data.amount}
         </span>
         <span className="link">{data.link}</span>
       </div>

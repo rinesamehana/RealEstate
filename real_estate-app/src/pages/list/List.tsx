@@ -5,10 +5,11 @@ import { Button} from "semantic-ui-react";
 import { BsHeart } from "react-icons/bs";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import Footer from "../../components/footer/Footer";
+import LoadingComponent from "../../app/axios/LoadingComponent";
 
 
 export default observer(function List() {

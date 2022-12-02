@@ -34,7 +34,7 @@ export default observer(function ActivityDetailedChat({ shtepiaId }: Props) {
                 textAlign='center'
                 attached='top'
                 inverted
-                color='teal'
+              
                 style={ CardStyles}
             >
                 <Header style={CardStyles}>Customer reviews</Header>

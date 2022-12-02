@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
+import LoadingComponent from "../../app/axios/LoadingComponent";
 
 
 export default observer(function Houses() {
@@ -26,7 +27,7 @@ export default observer(function Houses() {
  
 }, [loadShtepite]);
       
-   
+
 
  
   return (

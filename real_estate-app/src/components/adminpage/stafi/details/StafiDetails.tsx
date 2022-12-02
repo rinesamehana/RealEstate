@@ -52,6 +52,7 @@ export default observer(function StafiDetails() {
               <h1>Edit</h1>
             </div>
             <Card fluid style={CardStyles}>
+            <Card.Content style={CRStyles}>Emri: {stafi.photo}</Card.Content>
               <Card.Content style={CRStyles}>Emri: {stafi.emri}</Card.Content>
               <Card.Content style={CRStyles}>
                 Mbiemri: {stafi.mbiemri}

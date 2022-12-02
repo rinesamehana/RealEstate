@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import LoadingComponent from "../../app/axios/LoadingComponent";
 
 import { useStore } from "../../app/stores/store";
 import Navbar from "../../components/navbar/Navbar";
@@ -14,7 +15,8 @@ export default observer(function NeighborhoodPage() {
   useEffect(() => {
     loadQytetet();
   }, [loadQytetet]);
-
+  // if (qytetiStore.loadingInitial)
+  // return <LoadingComponent content="Loading..." />;
   return (
     <>
       <Navbar />
@@ -32,7 +34,7 @@ export default observer(function NeighborhoodPage() {
                   className="featuredImg"
                 />
                 <div className="featureddTitles">
-                  <h1>{qyteti.emri}</h1>
+                  <h1 style={{ color: "white"}}>{qyteti.emri}</h1>
                  
                 </div>
               </div>
