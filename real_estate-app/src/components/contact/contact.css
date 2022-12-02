@@ -1,58 +1,110 @@
-.contact-section-c{
-    background-color: white;
-    background-size: cover;
-    padding: 40px 0;
-  }
-  .contact-section-c h1{
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: 40px;
-  }
-  .border{
-    width: 100px;
-    height: 10px;
-    background: #223445;
-    margin: 40px auto;
-  }
-  
-  .contact-form-c{
-    max-width: 600px;
-    margin: auto;
-    padding: 0 10px;
-    overflow: hidden;
-  }
-  
-  .contact-form-text-c{
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 16px 0;
-    border: 0;
-    background: rgba(135, 135, 142, 0.807);
-    padding: 20px 40px;
-    outline: none;
-    color: rgb(2, 1, 1);
-    transition: 0.5s;
-  }
-  .contact-form-text-c:focus{
-    box-shadow: 0 0 10px 4px #1a1b34;
-  }
-  textarea.contact-form-text-c{
-    resize: none;
-    height: 120px;
-  }
-  .contact-form-btn{
-    float: right;
-    border: 0;
-    background: #3d4855;
-    color: rgb(255, 255, 255);
-    padding: 12px 50px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.5s;
-  }
-  .contact-form-btn:hover{
-    background: #081e2c;
-  }
+.kontenjeri{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 80px 100px;
+}
 
+.kontenjeri:after{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: url("https://media.istockphoto.com/id/1263319152/vector/woman-holding-keys-from-house-for-sale-and-smiling.jpg?s=612x612&w=0&k=20&c=P3HPAsY-YxeqRLfLzX0l1cnqGZYtuISgfCmbG1NRfNg=") no-repeat center;
+	background-size: cover;
+	filter: blur(50px);
+	z-index: -1;
+}
+.kontaktboks{
+	max-width: 900px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+  
+}
 
+.majtas{
+	background: url("https://media.istockphoto.com/id/1263319152/vector/woman-holding-keys-from-house-for-sale-and-smiling.jpg?s=612x612&w=0&k=20&c=P3HPAsY-YxeqRLfLzX0l1cnqGZYtuISgfCmbG1NRfNg=") no-repeat center;
+	background-size: cover;
+	height: 100%;
+}
+
+.djathtas{
+	padding: 25px 40px;
+}
+
+h2{
+	position: relative;
+	padding: 0 0 10px;
+	margin-bottom: 10px;
+}
+
+h2:after{
+	content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 50px;
+    border-radius: 2px;
+    background-color: #1f1c2d;
+}
+
+.fielddd{
+	width: 100%;
+	border: 2px solid rgba(0, 0, 0, 0);
+	outline: none;
+	background-color: rgba(230, 230, 230, 0.6);
+	padding: 0.5rem 1rem;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+	transition: .3s;
+}
+
+.fielddd:hover{
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+textarea{
+	min-height: 150px;
+}
+
+.btn22{
+	width: 100%;
+	padding: 0.5rem 1rem;
+	background-color: #53545b;
+	color: #fff;
+	font-size: 1.1rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: .3s;
+}
+
+.btn22:hover{
+    background-color: #1b1c25;
+}
+
+.fielddd:focus{
+    border: 2px solid rgba(30,85,250,0.47);
+    background-color: #fff;
+}
+
+@media screen and (max-width: 880px){
+	.kontaktboks{
+		grid-template-columns: 1fr;
+	}
+	.majtas{
+		height: 200px;
+	}
+}

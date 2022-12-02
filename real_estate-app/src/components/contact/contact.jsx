@@ -49,21 +49,29 @@ const Contact = () => {
 
 
      {/* <StyledContactForm>  */}
-     <div class="contact-section-c">
+     <div class="kontenjeri">
+     <div  class="kontaktboks">
+     <div class="majtas"></div>
+     <div class="djathtas">
+     <h2>CONTACT US</h2>
      
-     <h1>CONTACT US</h1>
-     <div class="border"></div>
-      <form class="contact-form-c" ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="user_name" class="contact-form-text-c"/>
-        <label>Email</label>
-        <input type="email" name="user_email" class="contact-form-text-c"/>
-        <label>Message</label>
-        <textarea name="message" class="contact-form-text-c"/>
-        <input type="submit" value="Send" class="contact-form-btn"/> 
+      <form ref={form} onSubmit={sendEmail}>
+        {/* <label>Name</label> */}
+        <input type="text" name="user_name" class="fielddd" placeholder="Your name"/>
+        {/* <label>Email</label> */}
+        <input type="email" name="user_email" class="fielddd" placeholder="Your email"/>
+        {/* <label>Message</label> */}
+        <textarea name="message" class="fielddd" placeholder="Your message"/>
+        <input type="submit" value="Send" class="btn22"/> 
        
       </form>
       </div>
+      </div>
+      </div>
+
+
+
+
      {/* </StyledContactForm>  */}
      <Footer />
     </div>
