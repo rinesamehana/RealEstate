@@ -3,13 +3,10 @@ import emailjs from "@emailjs/browser";
 // import styled from "styled-components";
 import Navbar from "../navbar/Navbar";
 import { Message } from "semantic-ui-react";
-import "./contact.css"
+import "./contact.css";
 import Footer from "../footer/Footer";
 
-
-
 // npm i @emailjs/browser
-
 
 const Contact = () => {
   const form = useRef();
@@ -28,52 +25,56 @@ const Contact = () => {
         (result) => {
           console.log(result.text);
           alert("Your email has been sent successfully");
-          
         },
         (error) => {
           console.log(error.text);
         }
       );
-
   };
-  
-
- 
 
   return (
-   <div>
-     <Navbar/>
-     {/* <div className="title">
+    <div>
+      <Navbar />
+      {/* <div className="title">
         <h1>Contact Us</h1>
       </div> */}
 
+      {/* <StyledContactForm>  */}
+      <div class="kontenjeri">
+        <div class="kontaktboks">
+          <div class="majtas"></div>
+          <div class="djathtas">
+            <h2>CONTACT US</h2>
 
-     {/* <StyledContactForm>  */}
-     <div class="kontenjeri">
-     <div  class="kontaktboks">
-     <div class="majtas"></div>
-     <div class="djathtas">
-     <h2>CONTACT US</h2>
-     
-      <form ref={form} onSubmit={sendEmail}>
-        {/* <label>Name</label> */}
-        <input type="text" name="user_name" class="fielddd" placeholder="Your name"/>
-        {/* <label>Email</label> */}
-        <input type="email" name="user_email" class="fielddd" placeholder="Your email"/>
-        {/* <label>Message</label> */}
-        <textarea name="message" class="fielddd" placeholder="Your message"/>
-        <input type="submit" value="Send" class="btn22"/> 
-       
-      </form>
+            <form ref={form} onSubmit={sendEmail}>
+              {/* <label>Name</label> */}
+              <input
+                type="text"
+                name="user_name"
+                class="fielddd"
+                placeholder="Your name"
+              />
+              {/* <label>Email</label> */}
+              <input
+                type="email"
+                name="user_email"
+                class="fielddd"
+                placeholder="Your email"
+              />
+              {/* <label>Message</label> */}
+              <textarea
+                name="message"
+                class="fielddd"
+                placeholder="Your message"
+              />
+              <input type="submit" value="Send" class="btn22" />
+            </form>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
 
-
-
-
-     {/* </StyledContactForm>  */}
-     <Footer />
+      {/* </StyledContactForm>  */}
+      <Footer />
     </div>
   );
 };
