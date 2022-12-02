@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
+import { Pagination, PagingParams } from "../models/pagination";
 
 import { Shtepia } from "../models/Shtepia";
 
@@ -9,10 +10,28 @@ export default class ShtepiaStore {
   editMode = false;
   loading = false;
   loadingInitial = false;
+  pagination: Pagination | null = null;
+  pagingParams = new PagingParams();
 
   constructor() {
     makeAutoObservable(this);
   }
+
+  setPagingParams = (pagingParams: PagingParams)=> {
+    this.pagingParams = pagingParams;
+  }
+
+  get axiosParams(){
+    const params = new URLSearchParams();
+    params.append('pageNumber', this.pagingParams.pageNumber.toString());
+    params.append('pageSize', this.pagingParams.pageSize.toString());
+    return params;
+  }
+
+
+
+
+
   get shtepiat() {
     return Array.from(this.shtepiaRegistry.values());
   }
@@ -37,11 +56,12 @@ return Array.from(this.shtepiaRegistry.values()).slice(-6).reverse();
   loadShtepite = async () => {
     this.loadingInitial = true;
     try {
-      const shtepiat = await agent.Shtepiat.list();
+      const result = await agent.Shtepiat.list(this.axiosParams);
 
-      shtepiat.forEach((shtepia) => {
+      result.data.forEach((shtepia) => {
         this.setShtepia(shtepia);
       });
+      this.setPagination(result.pagination);
       this.setLoadingInitial(false);
     } catch (error) {
       console.log(error);
@@ -49,6 +69,11 @@ return Array.from(this.shtepiaRegistry.values()).slice(-6).reverse();
       this.setLoadingInitial(false);
     }
   };
+
+   setPagination = (pagination: Pagination) => {
+     this.pagination = pagination;
+   }
+
 
   
   loadShtepi = async (shtepiaId: string) => {

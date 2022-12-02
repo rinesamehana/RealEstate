@@ -53,6 +53,8 @@ namespace Application.Core
 
             //    CreateMap<AppUser, Profiles.Profile>()
             //     .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));  
+
+             CreateMap <Shtepia, ShtepiaDto>();
                 CreateMap<Rezervimi, Rezervimi>();
             CreateMap<Rezervimi, RezervimiDto>()
                 .ForMember(d => d.HostName, o=>o.MapFrom(s=>s.AppUser.UserName))

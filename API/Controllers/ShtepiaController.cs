@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Core;
 using Application.ShtepiaA;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
@@ -17,9 +18,9 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetShtepiat()
+        public async Task<IActionResult> GetShtepiat([FromQuery]PagingParams param)
         {
-            return HandleResult(await Mediator.Send(new List.Query()));
+            return HandlePagedResult(await Mediator.Send(new List.Query{Params = param}));
         }
         [AllowAnonymous]
         [HttpGet("{id}")]

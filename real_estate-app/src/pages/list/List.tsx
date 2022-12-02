@@ -19,13 +19,21 @@ import { MyNewSelect } from "../../app/common/form1/MyNewSelect";
 import CSS from "csstype";
 import ShtepiaIdTest from "../house/ShtepiaIdTest";
 import "../rezervim/RezervimiForm.css";
+import { PagingParams } from "../../app/models/pagination";
 
 export default observer(function List() {
   const { shtepiaStore } = useStore();
   const { shtepiat, loadShtepite } = shtepiaStore;
-
   const [query, setQuery]=useState(""); 
+  const {setPagingParams, pagination } = shtepiaStore;
+  const [loadingNext, setLoadingNext] = useState(false);
 
+
+  function handleGetText(){
+    setLoadingNext(true);
+    setPagingParams(new PagingParams(pagination!.currentPage + 1))
+    loadShtepite().then(() => setLoadingNext(false));
+  }
   const keys=["cmimi","titulli", "lokacioni"];
 
   useEffect(() => {
@@ -108,10 +116,6 @@ if(modal){
 }
 
 
-
-
-
-
  
   return (
     <>
@@ -123,9 +127,8 @@ if(modal){
       <div className="houses-title">
       <h1>Listings - Homes for Rent</h1>
       </div>
-
+       
       <div>
-   
 </div>
      
     <div className="wrapper-houses">
@@ -184,6 +187,14 @@ if(modal){
         );
       })}
     </div>
+    <Button 
+      floated='left'
+      content = 'More...'
+      positive
+      onClick={handleGetText}
+      loading = {loadingNext}
+      disabled = {pagination?.totalPages === pagination?.currentPage}
+      />
     <Footer />
     {modal && ( <div className="modal">
        <div onClick={togglePopup} className="overlay"></div>

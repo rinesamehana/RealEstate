@@ -25,6 +25,7 @@ import { Stafi } from "../models/Stafi";
 import { Shtepia } from "../models/Shtepia";
 import { Rezervimi } from "../models/Rezervimi";
 import { Photo, Profile } from "../models/profile";
+import { PaginatedResult } from "../models/pagination";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
@@ -43,7 +44,16 @@ axios.interceptors.request.use((config) => {
 });
 // http://localhost:5000/api
 axios.interceptors.response.use(async response => {
-  if(process.env.NODE_ENV === 'development') await sleep(1000);
+  if(process.env.NODE_ENV === 'development')
+  await sleep(1000);
+   
+  const pagination = response.headers['pagination'];
+  if(pagination){
+    response.data = new PaginatedResult(response.data, JSON.parse(pagination));
+    return response as AxiosResponse<PaginatedResult<any>>
+  }
+
+
   return response;
 }, (error: AxiosError) => {
 const {status, data, config}:any = error.response!;
@@ -101,7 +111,8 @@ const Ambientet = {
 };
 
 const Shtepiat = {
-  list: () => requests.get<Shtepia[]>("/shtepia"),
+  list: (params:URLSearchParams) => axios.get<PaginatedResult<Shtepia[]>>("/shtepia", {params})
+  .then(responseBody),
   details: (shtepiaId: string) =>
     requests.get<Shtepia>(`/shtepia/${shtepiaId}`),
   create: (shtepia: Shtepia) => requests.post<void>(`/shtepia`, shtepia),

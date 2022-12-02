@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import { Grid } from "semantic-ui-react";
 import LoadingComponent from "../../../../app/axios/LoadingComponent";
 
@@ -9,7 +10,7 @@ import ShtepiaList from "./ShtepiaList";
 
 export default observer(function ShtepiaDashboard() {
   const { shtepiaStore } = useStore();
-  const { loadShtepite, shtepiaRegistry } = shtepiaStore;
+  const { loadShtepite, shtepiaRegistry, setPagingParams, pagination } = shtepiaStore;
 
   useEffect(() => {
     if (shtepiaRegistry.size <= 1) loadShtepite();
