@@ -1,7 +1,7 @@
 import { ErrorMessage, Form, Formik } from "formik";
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Button, Header, Input, Label } from "semantic-ui-react";
+import { Button, Divider, Header, Input, Label } from "semantic-ui-react";
 import MyTextInput from "../../app/common/form1/MyTextInput";
 import { useStore } from "../../app/stores/store";
 
@@ -66,8 +66,18 @@ export default observer(function LoginForm() {
                 <div className="orSignIn">
                   <h4>— Or Sign In With —</h4>
                   <div className="login-options">
-                    <div className="facebook-login"><p>Facebook</p></div>
-                    <div className="twitter-login"><p>Twitter</p></div>
+                  <Divider horizontal inverted>Or</Divider>
+                            <Button 
+                                loading={userStore.fbLoading}
+                                size='huge'
+                                inverted
+                                color='facebook'
+                                content='Login with Facebook'
+                                onClick={userStore.facebookLogin}
+                            />
+
+                    {/* <div className="facebook-login"><p>Facebook</p></div>
+                    <div className="twitter-login"><p>Twitter</p></div> */}
                   </div>
                 </div>
               </div>
