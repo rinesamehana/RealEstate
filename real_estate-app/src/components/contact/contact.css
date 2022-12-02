@@ -15,15 +15,13 @@
 	height: 100%;
 	left: 0;
 	top: 0;
-	background: url("https://www.samys.com/images/product/main/S-008448x1000.jpg") no-repeat center;
+	background: url("https://media.istockphoto.com/id/1263319152/vector/woman-holding-keys-from-house-for-sale-and-smiling.jpg?s=612x612&w=0&k=20&c=P3HPAsY-YxeqRLfLzX0l1cnqGZYtuISgfCmbG1NRfNg=") no-repeat center;
 	background-size: cover;
-	filter: blur(30px);
+	filter: blur(50px);
 	z-index: -1;
 }
 .kontaktboks{
-	max-width: 950px;
-	height:70vh;
-	border-radius: 10px;
+	max-width: 900px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	justify-content: center;
@@ -34,9 +32,8 @@
   
 }
 
-.majtas{	
-	border-radius: 10px;
-	background: url("https://cdn.shopify.com/s/files/1/0036/1984/8292/articles/Ripple_Monitoring__0003_real_estate_agent_safety_device_1500x1000.jpg?v=1599574694") no-repeat center;
+.majtas{
+	background: url("https://media.istockphoto.com/id/1263319152/vector/woman-holding-keys-from-house-for-sale-and-smiling.jpg?s=612x612&w=0&k=20&c=P3HPAsY-YxeqRLfLzX0l1cnqGZYtuISgfCmbG1NRfNg=") no-repeat center;
 	background-size: cover;
 	height: 100%;
 }
@@ -85,19 +82,17 @@ textarea{
 .btn22{
 	width: 100%;
 	padding: 0.5rem 1rem;
-	background-color: #000000;
+	background-color: #53545b;
 	color: #fff;
-	font-weight: 600;
 	font-size: 1.1rem;
 	border: none;
 	outline: none;
-	border-radius: 7px;
 	cursor: pointer;
 	transition: .3s;
 }
 
 .btn22:hover{
-    background-color: #4f4f51;
+    background-color: #1b1c25;
 }
 
 .fielddd:focus{
