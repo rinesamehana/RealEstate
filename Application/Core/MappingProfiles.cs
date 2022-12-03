@@ -55,16 +55,15 @@ namespace Application.Core
             //     .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));  
                 CreateMap<Rezervimi, Rezervimi>();
             CreateMap<Rezervimi, RezervimiDto>()
-                .ForMember(d => d.User, o => o.MapFrom(s => s.AppUser))
-                .ForMember(d=>d.Shtepiaa, o=>o.MapFrom(s=>s.Shtepia));
+                .ForMember(d => d.User, o => o.MapFrom(s => s.AppUser));
+              
              
             CreateMap<AppUser, Profiles.Profile>()
                 .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.DisplayName))
                 .ForMember(d => d.Username, o => o.MapFrom(s => s.UserName))
                 .ForMember(d => d.Image, o => o.MapFrom(s => s.Photo.Url));
             
-            CreateMap<Shtepia, Profiles.ShtepiaP>()
-                .ForMember(d => d.Titulli, o => o.MapFrom(s => s.Titulli));
+
               
             CreateMap<Comment, CommentsDto>()
             .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.Author.DisplayName))

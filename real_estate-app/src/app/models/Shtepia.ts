@@ -21,18 +21,18 @@ export interface Shtepia {
     siperfaqja: string;
     pershkrimi: string;
     lagjjaId: string;
-    lagjja?:Lagjja [];
+    // lagjja?:Lagjja [];
     llojiShtepiseId: string;
-    lojiShtepise?:LlojiShtepise[];
+    // lojiShtepise?:LlojiShtepise[];
     gjendjaShtepiseId: string;
-    gjendjaShtepise?:Gjendja[];
+    // gjendjaShtepise?:Gjendja[];
     pamjaId: string;
-    pamja:Pamja[];
+    // pamja:Pamja[];
     kafshetId: string;
-    kafshet?: Kafshet[];
+    // kafshet?: Kafshet[];
     stafiId: string;
-    stafi?:Stafi[]
-    rezervimet?: Rezervimi[];
+    // stafi?:Stafi[]
+
 
   }
   

@@ -36,7 +36,7 @@ export default observer(function PamjaList() {
           </Link>
         </div>
       </div>
-      <Table sx={{ minWidth: 500 }} aria-label="simple table">
+      <Table sx={{ minWidth: 800 }} aria-label="simple table">
         <TableHead></TableHead>
         <TableRow>
     

@@ -105,11 +105,7 @@ builder.Entity<Shteti>()
             .WithMany(c=>c.Rezervimet)
             .OnDelete(DeleteBehavior.Cascade);
 
-             builder.Entity<Rezervimi>()
-            .HasOne(a=>a.Shtepia)
-            .WithMany(c=>c.Rezervimet)
-            .OnDelete(DeleteBehavior.Cascade);
-
+           
             
 
             //---------------Stafi------------

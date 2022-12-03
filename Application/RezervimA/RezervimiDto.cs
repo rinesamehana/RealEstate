@@ -62,8 +62,6 @@ namespace Application.RezervimA
         public Guid AppUserId { get; set; } 
            public Profile User { get; set; }
 
-           public Guid ShtepiaId { get; set; } 
-           public ShtepiaP Shtepiaa { get; set; }
         
 
         //    public string Username{get;set;}

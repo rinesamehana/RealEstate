@@ -27,10 +27,7 @@ namespace Application.ShtepiaA
 
         public string Pershkrimi {get;set;}
 
-        public string HostUsername{get;set;}
 
-        public bool IsCancelled{get;set;}
-
-        public ICollection<Profile> Attendees {get;set;}
+     
     }
 }

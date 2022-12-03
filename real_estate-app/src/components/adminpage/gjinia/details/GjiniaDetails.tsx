@@ -54,6 +54,9 @@ export default observer(function GjiniaDetails() {
               <Card.Content style={CRStyles}>
                 Gender: {gjinia.lloji}
               </Card.Content>
+              <Card.Content style={CRStyles}>
+                Gender: {gjinia.test}
+              </Card.Content>
               <Card.Content>
                 <Button.Group style={CRdStyles}>
                   <Button

@@ -11,6 +11,7 @@ import { observer } from "mobx-react-lite";
 import Sidebar from "../../components/adminpage/sidebar/Sidebar";
 import Navbar from "../../components/adminpage/navbar/Navbar2";
 import RezervimiDashboard from "../../components/adminpage/rezervimi/dashboard/RezervimiDashboard";
+import React from "react";
 
 function RezervimiAPI() {
   const { rezervimiStore } = useStore();

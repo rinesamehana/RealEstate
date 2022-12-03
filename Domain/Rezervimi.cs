@@ -60,8 +60,7 @@ namespace Domain
 
         public Guid? AppUserId { get; set; } 
 
-             public Guid? ShtepiaId { get; set; } 
-  public Shtepia Shtepia {get;set;}
+
 
     
         // public AppUser? AppUser { get; set; }

@@ -13,8 +13,8 @@ export interface Rezervimi{
     kontrata:string;
     appUserId?: string;
     user?: UserProfile;
-    shtepiaId?:string;
-    shtepia?:ShtepiaProfile;
+
+
 }
 // export interface Rezervimi {
 //     rezervimiId: string;
