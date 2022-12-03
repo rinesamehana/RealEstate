@@ -59,14 +59,16 @@ namespace Application.RezervimA
        public  string HostName{get;set;}
 
         // public ICollection<Profile> Profiles {get;set;}
-        // public Guid AppUserId { get; set; } 
-        //    public Profile User { get; set; }
+        public Guid AppUserId { get; set; } 
+           public Profile User { get; set; }
 
+           public Guid ShtepiaId { get; set; } 
+           public ShtepiaP Shtepiaa { get; set; }
+        
 
         //    public string Username{get;set;}
         //    public string DisplayName{get;set;}
-          public string Username{get;set;}
-    public string DisplayName{get;set;}
+   
 
  
     }

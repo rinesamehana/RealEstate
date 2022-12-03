@@ -40,7 +40,8 @@ export default observer(function RezrvimiForm() {
     check_out: '',
     nrPersonave : '',
     pagesa:'',
-    kontrata:''
+    kontrata:'',
+    
   
   });
 

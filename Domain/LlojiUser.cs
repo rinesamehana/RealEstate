@@ -15,7 +15,7 @@ namespace Domain
         public Guid LlojiUserId { get; set; }
 
         public String Lloji { get; set; } = string.Empty;
-        public ICollection<Stafi> Stafii { get; set; }
+        public ICollection<Stafi> Stafii { get; set; }= new List<Stafi>();
 
     }
 }

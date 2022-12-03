@@ -44,7 +44,7 @@ namespace Application.QytetiA
                 qyteti.Emri = request.Qyteti.Emri;
                  qyteti.Photo = request.Qyteti.Photo;
                   qyteti.KodiPostar = request.Qyteti.KodiPostar;
-                qyteti.ShtetiId = request.Qyteti.ShtetiId;
+                qyteti.ShtetiId= request.Qyteti.Shteti.ShtetiId;
                 var result = await _context.SaveChangesAsync() > 0;
 
                 if (!result) return Result<Unit>.Failure("Failure to update Qytet");

@@ -42,6 +42,7 @@ export default observer(function PamjaList() {
     
           <TableCell className="tableCell">Emri</TableCell>
           <TableCell className="tableCell">username</TableCell>
+          {/* <TableCell className="tableCell">Shtepia</TableCell> */}
           <TableCell className="tableCell">Check_in</TableCell>
           <TableCell className="tableCell">Check_out</TableCell>
           <TableCell className="tableCell">NrPersonave</TableCell>
@@ -54,7 +55,9 @@ export default observer(function PamjaList() {
           {rezervimet.map((rezervimi) => (
             <TableRow key={rezervimi.rezervimiId}>
               <TableCell className="tableCell">{rezervimi.user?.displayName}</TableCell>
+              
               <TableCell className="tableCell">{rezervimi.user?.username}</TableCell>
+              {/* <TableCell className="tableCell">{rezervimi.shtepia?.titulli}</TableCell> */}
               <TableCell className="tableCell">{rezervimi.check_in}</TableCell>
               <TableCell className="tableCell">{rezervimi.check_out}</TableCell>
               <TableCell className="tableCell">{rezervimi.nrPersonave}</TableCell>

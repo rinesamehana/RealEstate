@@ -48,6 +48,7 @@ namespace Application.RezervimA
                 rezervimi.nrPersonave = request.Rezervimi.nrPersonave;
                 rezervimi.Pagesa = request.Rezervimi.Pagesa;
                 rezervimi.AppUserId = rezervimi.AppUserId;
+                rezervimi.Shtepia.Titulli=rezervimi.Shtepia.Titulli;
 
                 // _mapper.Map(request.Rezervimi, rezervimi);
                 var result = await _context.SaveChangesAsync() > 0;

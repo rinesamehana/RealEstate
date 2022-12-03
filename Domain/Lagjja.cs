@@ -20,7 +20,7 @@ namespace Domain
 
         public Qyteti Qyteti { get; set; }
 
-        public ICollection<Shtepia> Shtepite { get; set; }
+        public ICollection<Shtepia> Shtepite { get; set; }= new List<Shtepia>();
 
 
 

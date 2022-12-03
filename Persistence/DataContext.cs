@@ -64,41 +64,49 @@ namespace Persistence
                 options.UseSqlServer("A FALLBACK CONNECTION STRING");
             }
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
 
-            
-             modelBuilder.Entity<AppUser>()
+            base.OnModelCreating(builder);
+             builder.Entity<AppUser>()
                 .HasMany(ur => ur.UserRoles)
                 .WithOne(u => u.User)
                 .HasForeignKey(ur => ur.UserId)
                 .IsRequired();
 
-            modelBuilder.Entity<AppRole>()
+            builder.Entity<AppRole>()
                 .HasMany(ur => ur.UserRoles)
                 .WithOne(u => u.Role)
                 .HasForeignKey(ur => ur.RoleId)
                 .IsRequired();
 
             //One to many(shteti dhe qyteti)
-            base.OnModelCreating(modelBuilder);
+       
 
-            modelBuilder.Entity<Qyteti>()
-                .HasOne(s => s.Shteti)
-                .WithMany(q => q.Qytetet)
-                .HasForeignKey(s => s.ShtetiId);
-
-            modelBuilder.Entity<Lagjja>()
+            // builder.Entity<Qyteti>()
+            //     .HasOne(s => s.Shteti)
+            //     .WithMany(q => q.Qytetet)
+            //      .OnDelete(DeleteBehavior.Cascade);
+builder.Entity<Shteti>()
+        .HasMany(c => c.Qytetet)
+        .WithOne(e => e.Shteti)
+ .IsRequired();
+            builder.Entity<Lagjja>()
                 .HasOne(q => q.Qyteti)
                 .WithMany(l => l.Lagjet)
                 .HasForeignKey(q => q.QytetiId);
 
-//  modelBuilder.Entity<Rezervimi>()
+//  builder.Entity<Rezervimi>()
 //                 .HasOne(s => s.Author)
 //                 .WithMany(q => q.Rezervimet)
 //                 .HasForeignKey(s => s.);
-   modelBuilder.Entity<Rezervimi>()
+   builder.Entity<Rezervimi>()
             .HasOne(a=>a.AppUser)
+            .WithMany(c=>c.Rezervimet)
+            .OnDelete(DeleteBehavior.Cascade);
+
+             builder.Entity<Rezervimi>()
+            .HasOne(a=>a.Shtepia)
             .WithMany(c=>c.Rezervimet)
             .OnDelete(DeleteBehavior.Cascade);
 
@@ -109,36 +117,36 @@ namespace Persistence
 
 
 
-            modelBuilder.Entity<Stafi>()
+            builder.Entity<Stafi>()
                 .HasOne(q => q.RoliUser)
                 .WithMany(l => l.Stafii)
                 .HasForeignKey(q => q.RoliId);
 
-            modelBuilder.Entity<Stafi>()
+            builder.Entity<Stafi>()
                 .HasOne(s => s.Shteti)
                 .WithMany(q => q.Stafii)
                 .HasForeignKey(s => s.ShtetiId);
 
 
-            modelBuilder.Entity<Stafi>()
+            builder.Entity<Stafi>()
                 .HasOne(q => q.Qyteti)
                 .WithMany(l => l.Stafii)
                 .HasForeignKey(q => q.QytetiId);
 
-            modelBuilder.Entity<Stafi>()
+            builder.Entity<Stafi>()
                 .HasOne(s => s.LlojiUser)
                 .WithMany(q => q.Stafii)
                 .HasForeignKey(s => s.LlojiUserId);
 
-            modelBuilder.Entity<Stafi>()
+            builder.Entity<Stafi>()
                 .HasOne(q => q.KohaEPunes)
                 .WithMany(l => l.Stafii)
                 .HasForeignKey(q => q.KohaId);
 
-            modelBuilder.Entity<Stafi>()
+            builder.Entity<Stafi>()
                 .HasOne(q => q.Gjinia)
                 .WithMany(l => l.Stafii)
-                .HasForeignKey(q => q.GjiniaId);
+                .OnDelete(DeleteBehavior.Cascade);
 
 
 
@@ -150,33 +158,33 @@ namespace Persistence
 
 
             //-- lidhje shum me shum--
-            modelBuilder.Entity<ShtepiaAmbiente>(x => x.HasKey(aa => new { aa.AmbientiId, aa.ShtepiaId }));
+            builder.Entity<ShtepiaAmbiente>(x => x.HasKey(aa => new { aa.AmbientiId, aa.ShtepiaId }));
 
-            modelBuilder.Entity<ShtepiaAmbiente>()
+            builder.Entity<ShtepiaAmbiente>()
             .HasOne(u => u.Ambienti)
             .WithMany(a => a.Shtepite)
             .HasForeignKey(aa => aa.AmbientiId);
 
 
-            modelBuilder.Entity<ShtepiaAmbiente>()
+            builder.Entity<ShtepiaAmbiente>()
             .HasOne(u => u.Shtepia)
             .WithMany(a => a.Ambientet)
             .HasForeignKey(aa => aa.ShtepiaId);
 
 
-            modelBuilder.Entity<ShtepiaPajisjet>(x => x.HasKey(aa => new { aa.PajisjaId, aa.ShtepiaId }));
+            builder.Entity<ShtepiaPajisjet>(x => x.HasKey(aa => new { aa.PajisjaId, aa.ShtepiaId }));
 
-            modelBuilder.Entity<ShtepiaPajisjet>()
+            builder.Entity<ShtepiaPajisjet>()
             .HasOne(u => u.Pajisja)
             .WithMany(a => a.Shtepite)
             .HasForeignKey(aa => aa.PajisjaId);
 
 
-            modelBuilder.Entity<ShtepiaPajisjet>()
+            builder.Entity<ShtepiaPajisjet>()
             .HasOne(u => u.Shtepia)
             .WithMany(a => a.Pajisjet)
             .HasForeignKey(aa => aa.ShtepiaId);
-     modelBuilder.Entity<Comment>()
+     builder.Entity<Comment>()
             .HasOne(a=>a.Shtepia)
             .WithMany(c=>c.Comments)
             .OnDelete(DeleteBehavior.Cascade);
@@ -189,41 +197,41 @@ namespace Persistence
             //--perfundojne lidhjet shum me shum
 
 
-            modelBuilder.Entity<Shtepia>()
+            builder.Entity<Shtepia>()
                 .HasOne(q => q.LlojiShtepise)
                 .WithMany(l => l.Shtepite)
                 .HasForeignKey(q => q.LlojiShtepiseId);
 
-            modelBuilder.Entity<Shtepia>()
+            builder.Entity<Shtepia>()
                 .HasOne(q => q.GjendjaShtepise)
                 .WithMany(l => l.Shtepite)
                 .HasForeignKey(q => q.GjendjaShtepiseId);
 
 
-            modelBuilder.Entity<Shtepia>()
+            builder.Entity<Shtepia>()
                 .HasOne(q => q.Kafshet)
                 .WithMany(l => l.Shtepite)
                 .HasForeignKey(q => q.KafshetId);
 
 
-            modelBuilder.Entity<Shtepia>()
+            builder.Entity<Shtepia>()
                 .HasOne(q => q.Pamja)
                 .WithMany(l => l.Shtepite)
                 .HasForeignKey(q => q.PamjaId);
 
       
 
-             modelBuilder.Entity<Shtepia>()
+             builder.Entity<Shtepia>()
                 .HasOne(s => s.Qyteti)
                 .WithMany(q => q.Shtepite)
                 .HasForeignKey(s => s.QytetiId);
 
-                modelBuilder.Entity<Shtepia>()
+                builder.Entity<Shtepia>()
                 .HasOne(s => s.Stafi)
                 .WithMany(q => q.Shtepite)
                 .HasForeignKey(s => s.StafiId);
             
-             modelBuilder.Entity<Shtepia>()
+             builder.Entity<Shtepia>()
             .HasOne(u => u.Lagjja)
             .WithMany(a => a.Shtepite)
             .HasForeignKey(aa => aa.LagjjaId);
@@ -231,12 +239,12 @@ namespace Persistence
 
 
             //Rezervimi
-            // modelBuilder.Entity<Rezervimi>()
+            // builder.Entity<Rezervimi>()
             //     .HasOne(s => s.MenyraPageses)
             //     .WithMany(q => q.Rezervimet)
             //     .HasForeignKey(s => s.MenyraPagesesId);
 
-            //     modelBuilder.Entity<Rezervimi>()
+            //     builder.Entity<Rezervimi>()
             //     .HasOne(s => s.Kontrata)
             //     .WithMany(q => q.Rezervimet)
             //     .HasForeignKey(s => s.KontrataId);
@@ -244,13 +252,13 @@ namespace Persistence
 
 //------------------------------------------------
 
-                // modelBuilder.Entity<Rezervimi>(x=>x.HasKey(aa=>new {aa.AppUserId, aa.ShtepiaId}));
-                // modelBuilder.Entity<Rezervimi>()
+                // builder.Entity<Rezervimi>(x=>x.HasKey(aa=>new {aa.AppUserId, aa.ShtepiaId}));
+                // builder.Entity<Rezervimi>()
                 // .HasOne(s => s.AppUser)
                 // .WithMany(q => q.Shtepite)
                 // .HasForeignKey(s => s.AppUserId);
 
-                //  modelBuilder.Entity<Rezervimi>()
+                //  builder.Entity<Rezervimi>()
                 // .HasOne(s => s.Shtepia)
                 // .WithMany(q => q.Attendees)
                 // .HasForeignKey(s => s.ShtepiaId);
@@ -261,23 +269,23 @@ namespace Persistence
 // -------------------------------- Rezervimi dhe AppUser
 
 
-                // modelBuilder.Entity<RezervimiAttendee>(x=>x.HasKey(aa=>new {aa.AppUserId, aa.RezervimiId}));
-                // modelBuilder.Entity<RezervimiAttendee>()
+                // builder.Entity<RezervimiAttendee>(x=>x.HasKey(aa=>new {aa.AppUserId, aa.RezervimiId}));
+                // builder.Entity<RezervimiAttendee>()
                 // .HasOne(u => u.AppUser)
                 // .WithMany(a => a.Rezervimi)
                 // .HasForeignKey(s => s.AppUserId);
 
-                //  modelBuilder.Entity<RezervimiAttendee>()
+                //  builder.Entity<RezervimiAttendee>()
                 // .HasOne(u => u.Rezervimi)
                 // .WithMany(a => a.Attendees)
                 // .HasForeignKey(s => s.RezervimiId);
 
-                //  modelBuilder.Entity<Rezervimi>()
+                //  builder.Entity<Rezervimi>()
                 // .HasOne(u => u.Shtepia)
                 // .WithMany(q => q.Attendees)
                 // .HasForeignKey(aa => aa.RezervimiId);
 
-                //      modelBuilder.Entity<Rezervimi>()
+                //      builder.Entity<Rezervimi>()
                 // .HasOne(s => s.AppUser)
                 // .WithMany(q => q.Rezervimet)
                 // .HasForeignKey(s => s.AppUserId);

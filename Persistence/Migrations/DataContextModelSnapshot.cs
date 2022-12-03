@@ -138,19 +138,9 @@ namespace Persistence.Migrations
                     b.Property<Guid>("RoleId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("RoleId1")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("UserId1")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("RoleId1");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("AspNetUserRoles");
                 });
@@ -383,7 +373,8 @@ namespace Persistence.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ShtetiId")
+                    b.Property<Guid?>("ShtetiId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("QytetiId");
@@ -420,6 +411,9 @@ namespace Persistence.Migrations
                     b.Property<string>("Pagesa")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("ShtepiaId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("nrPersonave")
                         .HasColumnType("TEXT");
 
@@ -430,6 +424,8 @@ namespace Persistence.Migrations
                     b.HasIndex("KontrataId");
 
                     b.HasIndex("MenyraPagesesId");
+
+                    b.HasIndex("ShtepiaId");
 
                     b.ToTable("Rezervimet");
                 });
@@ -728,25 +724,17 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.AppUserRole", b =>
                 {
-                    b.HasOne("Domain.AppRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Domain.AppRole", "Role")
                         .WithMany("UserRoles")
-                        .HasForeignKey("RoleId1");
-
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.AppUser", "User")
                         .WithMany("UserRoles")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Role");
 
@@ -811,7 +799,14 @@ namespace Persistence.Migrations
                         .WithMany("Rezervimet")
                         .HasForeignKey("MenyraPagesesId");
 
+                    b.HasOne("Domain.Shtepia", "Shtepia")
+                        .WithMany("Rezervimet")
+                        .HasForeignKey("ShtepiaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.Navigation("AppUser");
+
+                    b.Navigation("Shtepia");
                 });
 
             modelBuilder.Entity("Domain.Shtepia", b =>
@@ -901,7 +896,8 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Gjinia", "Gjinia")
                         .WithMany("Stafii")
-                        .HasForeignKey("GjiniaId");
+                        .HasForeignKey("GjiniaId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Domain.KohaEPunes", "KohaEPunes")
                         .WithMany("Stafii")
@@ -1067,6 +1063,8 @@ namespace Persistence.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Pajisjet");
+
+                    b.Navigation("Rezervimet");
                 });
 
             modelBuilder.Entity("Domain.Shteti", b =>

@@ -1,3 +1,4 @@
+import { ShtepiaProfile } from "./ShtepiaProfile";
 import { UserProfile } from "./userProfile";
 
 
@@ -11,7 +12,9 @@ export interface Rezervimi{
     pagesa: string;
     kontrata:string;
     appUserId?: string;
-    user?: UserProfile ;
+    user?: UserProfile;
+    shtepiaId?:string;
+    shtepia?:ShtepiaProfile;
 }
 // export interface Rezervimi {
 //     rezervimiId: string;

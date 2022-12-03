@@ -37,10 +37,7 @@ export default observer(function QytetiList() {
     if (shtetiId) loadShtet(shtetiId);
   }, [shtetiId, loadShtet]);
  
-  {qytetet.map((qyteti) => (
-   
-   console.log(qyteti.shteti?.shtetiId)
-  ))}
+ 
 
   return (
     <TableContainer className="table">
@@ -73,7 +70,7 @@ export default observer(function QytetiList() {
               <TableCell className="tableCell">{qyteti.photo}</TableCell>
               <TableCell className="tableCell">{qyteti.emri}</TableCell>
               <TableCell className="tableCell">{qyteti.kodiPostar}</TableCell>
-              <TableCell className="tableCell" >{qyteti.shteti?.emri}</TableCell>
+              <TableCell className="tableCell" >{qyteti.shtetiId}</TableCell>
               <Table.Cell>
                 <Button
                   // onClick={() => gjiniaStore.selectGjini(gjinia.gjiniaId)}
