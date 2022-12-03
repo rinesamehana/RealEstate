@@ -35,7 +35,7 @@ export default observer(function GjiniaForm() {
   const [gjinia, setGjinia] = useState({
     gjiniaId: "",
     lloji: "",
-    test: "",
+   
   });
 
   const validationSchema = Yup.object({
@@ -92,7 +92,7 @@ export default observer(function GjiniaForm() {
                         >
                           <MyTextInput name="lloji" placeholder="Gjinia" />
 
-                          <MyTextInput name="test" placeholder="Test" />
+                      
                          
                           <Button
                             disable={isSubmitting || !dirty || !isValid}

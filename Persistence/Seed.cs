@@ -94,25 +94,7 @@ namespace Persistence
                 await context.Shtetet.AddRangeAsync(shtetet);
 
             }
-            if (context.Kohaa.Any()) return;
-            {
-                var kohaa = new List<KohaEPunes>
-            {
-                new KohaEPunes {
-
-                KohaEPuness = "Full-time",
-                Koha = "8 ore"
-
-                },
-                new KohaEPunes {
-
-                KohaEPuness = "Part-time",
-                Koha = "4 ore"
-                }
-
-            };
-                await context.Kohaa.AddRangeAsync(kohaa);
-            }
+            
             if (context.Rolet.Any()) return;
             {
                 var rolet = new List<RoliUser>
@@ -129,30 +111,7 @@ namespace Persistence
             };
                 await context.Rolet.AddRangeAsync(rolet);
             }
-            if (context.Pamjet.Any()) return;
-
-            {
-
-                var pamjet = new List<Pamja>()
-                {
-                    new Pamja
-                    {
-
-                        Pamjaa="Nga deti",
-
-
-                    },
-                    new Pamja
-                    {
-
-                        Pamjaa="Nga mali",
-
-                    },
-
-                };
-                await context.Pamjet.AddRangeAsync(pamjet);
-
-            }
+           
             if (context.Gjendjet.Any()) return;
 
             {
@@ -177,29 +136,7 @@ namespace Persistence
             }
 
         
-            if (context.LlojiShtepive.Any()) return;
-
-            {
-
-                var llojishtepive = new List<LlojiShtepise>()
-                {
-                    new LlojiShtepise
-                    {
-
-                        LlojiiShtepise= "Dy Kateshe"
-                    },
-                    new LlojiShtepise
-                    {
-
-                        LlojiiShtepise= "Tre kateshe"
-                    },
-
-
-                };
-                await context.LlojiShtepive.AddRangeAsync(llojishtepive);
-
-            }
-
+            
 
             if (context.MenyraPagesave.Any()) return;
 

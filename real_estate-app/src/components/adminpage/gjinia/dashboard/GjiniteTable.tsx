@@ -82,7 +82,7 @@ export default observer(function GjiniteTable() {
         <TableRow>
           <TableCell className="tableCell">ID</TableCell>
           <TableCell className="tableCell">Gjinia</TableCell>
-          <TableCell className="tableCell">Test</TableCell>
+          
           <TableCell className="tableCell"></TableCell>
         </TableRow>
 
@@ -92,7 +92,7 @@ export default observer(function GjiniteTable() {
               <TableCell className="tableCell">{gjinia.gjiniaId}</TableCell>
 
               <TableCell className="tableCell">{gjinia.lloji}</TableCell>
-              <TableCell className="tableCell">{gjinia.test}</TableCell>
+           
               <Table.Cell>
                 <Button
                   inverted

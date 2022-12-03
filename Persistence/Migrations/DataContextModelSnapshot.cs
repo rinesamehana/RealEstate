@@ -195,9 +195,6 @@ namespace Persistence.Migrations
                     b.Property<string>("Lloji")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("test")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("GjiniaId");
 
                     b.ToTable("Gjinite");

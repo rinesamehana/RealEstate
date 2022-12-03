@@ -9,7 +9,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221202175009_final")]
+    [Migration("20221203133831_final")]
     partial class final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -376,6 +376,7 @@ namespace Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("ShtetiId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("QytetiId");
@@ -778,7 +779,9 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Shteti", "Shteti")
                         .WithMany("Qytetet")
-                        .HasForeignKey("ShtetiId");
+                        .HasForeignKey("ShtetiId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Shteti");
                 });
@@ -798,14 +801,11 @@ namespace Persistence.Migrations
                         .WithMany("Rezervimet")
                         .HasForeignKey("MenyraPagesesId");
 
-                    b.HasOne("Domain.Shtepia", "Shtepia")
+                    b.HasOne("Domain.Shtepia", null)
                         .WithMany("Rezervimet")
-                        .HasForeignKey("ShtepiaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ShtepiaId");
 
                     b.Navigation("AppUser");
-
-                    b.Navigation("Shtepia");
                 });
 
             modelBuilder.Entity("Domain.Shtepia", b =>

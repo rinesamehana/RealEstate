@@ -15,7 +15,7 @@ namespace Domain
 
         public String Lloji { get; set; } = string.Empty;
 
-        public String test{get;set;}
+
 
         public ICollection<Stafi> Stafii { get; set; }
 

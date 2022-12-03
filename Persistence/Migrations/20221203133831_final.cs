@@ -208,7 +208,7 @@ namespace Persistence.Migrations
                     Photo = table.Column<string>(type: "TEXT", nullable: true),
                     Emri = table.Column<string>(type: "TEXT", nullable: true),
                     KodiPostar = table.Column<string>(type: "TEXT", nullable: true),
-                    ShtetiId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    ShtetiId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -218,7 +218,7 @@ namespace Persistence.Migrations
                         column: x => x.ShtetiId,
                         principalTable: "Shtetet",
                         principalColumn: "ShtetiId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -560,9 +560,9 @@ namespace Persistence.Migrations
                     Pagesa = table.Column<string>(type: "TEXT", nullable: true),
                     Kontrata = table.Column<string>(type: "TEXT", nullable: true),
                     AppUserId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    ShtepiaId = table.Column<Guid>(type: "TEXT", nullable: true),
                     KontrataId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    MenyraPagesesId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    MenyraPagesesId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    ShtepiaId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -590,7 +590,7 @@ namespace Persistence.Migrations
                         column: x => x.ShtepiaId,
                         principalTable: "Shtepiat",
                         principalColumn: "ShtepiaId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

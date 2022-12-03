@@ -68,13 +68,7 @@ export default observer(function Navbar() {
 
                           </div>
                         </Dropdown.Item>):   
-                        <Dropdown.Item
-                          position="top"
-                          as={Link}
-                          to={`reservations/${user?.username}`}
-                          content="Reservations"
-                         
-                        />}
+                        ""}
                         <Dropdown.Item
                           onClick={logout}
                           text="Logout"
