@@ -22,7 +22,7 @@ import { Rezervimi } from "../../app/models/Rezervimi";
 import { MyNewSelect   } from "../../app/common/form1/MyNewSelect";
 import CSS from "csstype";
 import ShtepiaIdTest from "../house/ShtepiaIdTest";
-// import "../rezervim/RezervimiForm.css";
+import "../rezervim/RezervimiForm.css";
 
 export default observer(function List() {
   const { shtepiaStore } = useStore();
