@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
 import LoadingComponent from "../../app/axios/LoadingComponent";
-
+import RezervimiForm from "../../pages/rezervim/RezervimiForm";
 
 export default observer(function Houses() {
   const { shtepiaStore } = useStore();
@@ -21,21 +21,27 @@ export default observer(function Houses() {
 
   const keys=["cmimi","titulli", "lokacioni"];
 
+  const [modal , setModal] = useState(false);
+
   useEffect(() => {
 
     loadShtepite();
  
 }, [loadShtepite]);
       
-
+const togglePopup = () =>{
+ 
+  setModal(!modal)
+}
+if(modal){
+document.body.classList.add("active")
+}else{
+document.body.classList.remove("active")
+}
 
  
   return (
-    <>
- 
-  
-
-     
+    <>  
     <div className="wrapper-houses">
    
       {n6Shtepiav.filter((shtepia:any)=> keys.some((key)=>shtepia[key].toLowerCase().includes(query))).map((shtepia) => {
@@ -81,7 +87,7 @@ export default observer(function Houses() {
                         <br /> Jamaica Plaim */}
                       </div>
                       <div className="buttonn1">
-                        <Button type="submit" content="Book Now" />
+                        <Button onClick={togglePopup} type="submit" content="Book Now" />
                       </div>
                     </div>
                   </div>
@@ -91,6 +97,16 @@ export default observer(function Houses() {
           </div>
         );
       })}
-    </div></>
+    </div>
+    {modal && ( <div className="modal">
+       <div onClick={togglePopup} className="overlay"></div>
+      <div className="newContainer  modal-content">
+      <button className="close-modal" onClick={togglePopup}>&times;</button>      
+           <RezervimiForm/>
+       </div>
+   </div>
+   )}
+    
+    </>
   );
 });

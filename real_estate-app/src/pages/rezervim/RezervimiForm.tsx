@@ -95,8 +95,7 @@ export default observer(function RezrvimiForm() {
   return (
 
 
-      <div className="newContainer">
-        <Navbar />      
+      <div className="newContainer">     
         <div className="new">
           <div className="newContainer">
             <div className="top">

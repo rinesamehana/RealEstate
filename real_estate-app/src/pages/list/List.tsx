@@ -24,6 +24,9 @@ import CSS from "csstype";
 import ShtepiaIdTest from "../house/ShtepiaIdTest";
 import "../rezervim/RezervimiForm.css";
 
+import RezervimiClient from "../rezervim/RezervimiClient";
+import RezervimiForm from "../rezervim/RezervimiForm";
+
 export default observer(function List() {
   const { shtepiaStore } = useStore();
   const { shtepiat, loadShtepite } = shtepiaStore;
@@ -122,11 +125,6 @@ if(modal){
   document.body.classList.remove("active")
 }
 
-
-
-
-
-
  
   return (
     <>
@@ -204,62 +202,7 @@ if(modal){
        <div onClick={togglePopup} className="overlay"></div>
       <div className="newContainer  modal-content">
       <button className="close-modal" onClick={togglePopup}>&times;</button>      
-        <div className="new">
-          <div className="newContainer">
-            <div className="top">
-              <h1>Book your favorite house</h1>
-            </div>
-            <div className="bottom">
-              <div className="right">
-                <div className="formInput">
-                  <Segment clearing>
-                    <Formik
-                      key={rezervimi.rezervimiId}
-                      validationSchema={validationSchema}
-                      enableReinitialize
-                      initialValues={rezervimi}
-                      onSubmit={(value) => handleFormSubmit(value)}
-                    >
-                      {({ handleSubmit, isValid, isSubmitting, dirty }) => (
-                        <Form
-                        key={rezervimi.rezervimiId}
-                          className="ui-form"
-                          onSubmit={handleSubmit}
-                          autoComplete="off"
-                        >
-                          <Field style={LabelStyle} type='date' name="check_in" className='form-control' /><br/>
-                          <Field style={LabelStyle} type='date' name="check_out" className='form-control' />
-                            <MyTextInput name='nrPersonave' placeholder='Nr. Personave' />
-
-                            <MyNewSelect options={options} name="pagesa" label={""} />
-                            <MyNewSelect options={optionss} name="kontrata" label={""} />
-                            {/* <MyTextInput name='pagesa' placeholder='Pagesa' /> */}
-                          <Button
-                            disable={isSubmitting || !dirty || !isValid}
-                            loading={loading}
-                            floated="right"
-                            positive
-                            inverted
-                            type="submit"
-                            content="Submit"
-                          />
-                          <Button
-                            as={Link}
-                            to="/"
-                            floated="right"
-                      
-                            type="button"
-                            content="Cancel"
-                          />
-                        </Form>
-                      )}
-                    </Formik>
-                  </Segment>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
+           <RezervimiForm/>
        </div>
    </div>
    )}  
