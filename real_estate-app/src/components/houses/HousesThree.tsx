@@ -3,11 +3,12 @@ import { Button } from "semantic-ui-react";
 import { BsHeart } from "react-icons/bs";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
-import { useEffect, useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import React from "react";
 import CSS from "csstype";
+import RezervimiForm from "../../pages/rezervim/RezervimiForm";
 
   const CardStyles: CSS.Properties = {
     marginLeft: "60px",
@@ -24,6 +25,8 @@ import CSS from "csstype";
 
   };
 
+
+
 export default observer(function Houses() {
   const { shtepiaStore } = useStore();
   const { userStore, modalStore } = useStore();
@@ -39,7 +42,16 @@ export default observer(function Houses() {
 
 }, [loadShtepite]);
 
+const [modal , setModal] = useState(false);
 
+const togglePopup = () =>{
+  setModal(!modal)
+}
+if(modal){
+document.body.classList.add("active")
+}else{
+document.body.classList.remove("active")
+}
 
 
   return (
@@ -94,7 +106,7 @@ export default observer(function Houses() {
                         <br /> Jamaica Plaim */}
                       </div>
                       <div className="buttonn1">
-                        <Button type="submit" content="Book Now" />
+                        <Button onClick={togglePopup} type="submit" content="Book Now" />
                       </div>
                     </div>
                   </div>
@@ -104,6 +116,16 @@ export default observer(function Houses() {
           </div>
         );
       })}
-    </div></>
+    </div>
+    {modal && ( <div className="modal">
+  <div onClick={togglePopup} className="overlay"></div>
+ <div className="newContainer  modal-content">
+ <button className="close-modal" onClick={togglePopup}>&times;</button>      
+      <RezervimiForm/>
+  </div>
+</div>
+)}
+    
+    </>
   );
 });

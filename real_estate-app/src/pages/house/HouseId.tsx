@@ -18,15 +18,15 @@ import { ImLocation } from "react-icons/im";
 import { RiPriceTag3Line } from "react-icons/ri";
 import React from "react";
 import ShtepiaIdTest from "./ShtepiaIdTest";
-
-
+import RezervimiForm from "../rezervim/RezervimiForm";
+import '../rezervim/RezervimiForm.css';
 
 export default observer(function HouseId() {
  
 const{shtepiaStore}=useStore();
 const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = shtepiaStore;
   const { shtepiaId } = useParams<{ shtepiaId: string }>();
-
+  const [modal , setModal] = useState(false);
   useEffect(() => {
    
     if (shtepiaId) loadShtepi(shtepiaId);
@@ -40,6 +40,15 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
     { url: `${shtepia.photo4}` },
     
   ];
+ 
+const togglePopup = () =>{
+    setModal(!modal)
+}
+if(modal){
+  document.body.classList.add("active")
+}else{
+  document.body.classList.remove("active")
+}
 
   if (shtepiaStore.loadingInitial)
   return <LoadingComponent content="Loading..." />;
@@ -47,7 +56,6 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
     
     <div>
       <Navbar />
-      
       <div className="Space1">
 
       <div className="Space">
@@ -68,7 +76,7 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
               <p className="houseDesc">
                 {shtepia.pershkrimi}
               </p>
-              <button className="bookNow">Reserve or Book Now!</button>
+              <button  onClick={togglePopup} className="bookNow">Reserve or Book Now!</button>
             </div>
           </div>
     </div>
@@ -91,9 +99,17 @@ const { selectedShtepia: shtepia, loadShtepi,loadingInitial, loadShtepite } = sh
       </div>
       </div>
 {/* <ShtepiaIdTest shtepiaId={shtepiaId}/> */}
-
-    </div>
+{modal && ( <div className="modal">
+  <div onClick={togglePopup} className="overlay"></div>
+ <div className="newContainer  modal-content">
+ <button className="close-modal" onClick={togglePopup}>&times;</button>      
+      <RezervimiForm/>
+  </div>
+</div>
+)}
+    </div> 
   );
+
 })
 
 

@@ -21,10 +21,11 @@ body.active-modal {
 }
 
 .overlay {
+    position: fixed;
     background: rgba(0,0,0,0.8);
 }
 .modal-content {
-    position: absolute;
+    position: fixed;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
